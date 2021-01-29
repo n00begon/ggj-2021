@@ -16,13 +16,10 @@ const config: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
 
     physics: {
-        default: "matter",
-        matter: {
-            debug: false, // This displays the physics boxes
-            gravity: {
-                x: 0,
-                y: 1,
-            },
+        default: "arcade",
+        arcade: {
+            debug: false,
+            gravity: { y: 0 },
         },
     },
 

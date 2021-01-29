@@ -5,12 +5,12 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 116,
-				"h": 176
+				"h": 520
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "Pirate_Basic",
+					"filename": "pirate_walk_1",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -29,6 +29,69 @@
 						"w": 114,
 						"h": 174
 					}
+				},
+				{
+					"filename": "pirate_walk_3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 171
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 171
+					},
+					"frame": {
+						"x": 1,
+						"y": 177,
+						"w": 114,
+						"h": 171
+					}
+				},
+				{
+					"filename": "pirate_walk_2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 169
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 169
+					},
+					"frame": {
+						"x": 1,
+						"y": 350,
+						"w": 114,
+						"h": 169
+					}
+				},
+				{
+					"filename": "pirate_walk_4",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 169
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 169
+					},
+					"frame": {
+						"x": 1,
+						"y": 350,
+						"w": 114,
+						"h": 169
+					}
 				}
 			]
 		}
@@ -36,6 +99,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:d69f316bf5c3bd9970da9fa946ae9f7e:d5eea28f12d3fb2973ee22b6bded1e25:1eabdf11f75e3a4fe3147baf7b5be24b$"
+		"smartupdate": "$TexturePacker:SmartUpdate:64628f1969310d0fb93e6d29ec9396ae:1b027f3c497a9c6a986461cd5b5ec034:1eabdf11f75e3a4fe3147baf7b5be24b$"
 	}
 }

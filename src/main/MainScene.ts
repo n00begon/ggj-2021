@@ -22,7 +22,7 @@ export class Main extends Phaser.Scene {
     public create(): void {
         new AudioManager(this);
         new BackgroundManager(this);
-        // this.interactiveManager = new InteractiveManager(this);
+        this.interactiveManager = new InteractiveManager(this);
         // this.scene.run("UI");
         // this.scene.start("Credits");
         this.scale.on("resize", this.resize);
@@ -32,7 +32,7 @@ export class Main extends Phaser.Scene {
      * The main update loop for the scene.
      */
     public update(): void {
-        // this.interactiveManager.update();
+        this.interactiveManager.update();
     }
 
     /**
