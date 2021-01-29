@@ -26,6 +26,7 @@ export class Preloader extends Phaser.Scene {
         this.loadAudio();
         this.loadJSON();
         this.loadFonts();
+        this.loadMap();
     }
 
     /**
@@ -39,7 +40,7 @@ export class Preloader extends Phaser.Scene {
      * Loads the sprite sheets into the atlas
      */
     private loadSpriteSheets(): void {
-        const spritesheets = ["sprites", "background"];
+        const spritesheets = ["sprites"];
         this.load.setPath(`${Preloader.ASSET_DIRECTORY}/spritesheets/`);
 
         for (const sheet of spritesheets) {
@@ -82,5 +83,13 @@ export class Preloader extends Phaser.Scene {
                 families: [GameSettings.DISPLAY_FONT],
             },
         });
+    }
+
+    private loadMap(): void {
+
+        this.load.setPath(`${Preloader.ASSET_DIRECTORY}/map/`);
+
+        this.load.tilemapTiledJSON('map', 'map.json');
+        this.load.image('background', 'background.png');
     }
 }
