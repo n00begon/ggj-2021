@@ -6,7 +6,6 @@ import { MainEventsManager } from "./MainEventsManager";
 export class ControlManager {
     private static readonly PAD_THRESHOLD = 0.1;
 
-    private jumpKey: Phaser.Input.Keyboard.Key;
     private jumpKey2: Phaser.Input.Keyboard.Key;
     private leftKey: Phaser.Input.Keyboard.Key;
     private rightKey: Phaser.Input.Keyboard.Key;
@@ -20,7 +19,6 @@ export class ControlManager {
      */
     constructor(scene: Phaser.Scene) {
         this.scene = scene;
-        this.jumpKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.jumpKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         this.leftKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         this.rightKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
@@ -52,10 +50,6 @@ export class ControlManager {
 
         if (this.rightKey.isDown || this.rightKey2.isDown) {
             MainEventsManager.emit("rightMove");
-        }
-
-        if (this.jumpKey.isDown || this.jumpKey2.isDown) {
-            MainEventsManager.emit("jumpMove");
         }
     }
 

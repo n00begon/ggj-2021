@@ -16,14 +16,14 @@ export class AnimationManager {
      */
     private createCoinAnimation(scene: Phaser.Scene): void {
         scene.anims.create({
-            frameRate: 10,
+            frameRate: 6,
             frames: scene.anims.generateFrameNames("sprites", {
                 start: 1,
-                end: 6,
-                prefix: "gold_",
+                end: 4,
+                prefix: "pirate_walk_",
             }),
 
-            key: "coinSpin",
+            key: "pirateWalk",
             repeat: -1,
         });
     }

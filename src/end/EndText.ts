@@ -15,7 +15,7 @@ export class EndText {
         this.textList.push(
             new TypewriterText(
                 scene,
-                "You ate all the coins!",
+                "You found the treasure",
                 (top - 60) / defaultHeight,
                 wait * order++,
                 GameSettings.LARGE_FONT_SIZE * scale,

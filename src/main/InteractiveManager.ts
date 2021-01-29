@@ -1,6 +1,4 @@
-import { Toasty } from "./objects/Toasty";
-import { Hill } from "./objects/Hill";
-import { Coin } from "./objects/Coin";
+import { Pirate } from "./objects/Pirate";
 import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
@@ -21,7 +19,7 @@ export class InteractiveManager {
     private controlManager: ControlManager;
     private maxScore: number;
     private currentScore: number;
-    private toasty: Toasty;
+    private pirate: Pirate;
     /**
      * Adds the interactive objects to the scene
      */
@@ -30,26 +28,17 @@ export class InteractiveManager {
         new AnimationManager(scene);
         this.controlManager = new ControlManager(scene);
         this.setupCamera(scene);
-        scene.matter.world.setBounds(
-            InteractiveManager.LEFTBOUNDS,
-            InteractiveManager.TOPBOUNDS,
-            InteractiveManager.WORLDWIDTH,
-            InteractiveManager.WORLDHEIGHT,
-        );
         this.maxScore = 0;
         this.currentScore = 0;
         MainEventsManager.on("maxscore", this.handleMaxScore, this);
         MainEventsManager.on("collection", this.handleCollection, this);
-        this.toasty = new Toasty(scene, InteractiveManager.WORLDWIDTH / 2, InteractiveManager.BOTTOMBOUNDS - 500);
-        this.createCoinRow(scene, 3, InteractiveManager.WORLDWIDTH / 4, InteractiveManager.BOTTOMBOUNDS - 700);
-        this.createCoinRow(scene, 3, (InteractiveManager.WORLDWIDTH / 4) * 3, InteractiveManager.BOTTOMBOUNDS - 700);
-        new Hill(scene, InteractiveManager.WORLDWIDTH / 2 - 50);
+        this.pirate = new Pirate(scene, InteractiveManager.WORLDWIDTH / 2, InteractiveManager.BOTTOMBOUNDS - 500);
     }
     /**
      * The main update loop for the scene.
      */
     public update(): void {
-        this.toasty.update();
+        this.pirate.update();
         this.controlManager.update();
     }
     /**
@@ -79,27 +68,12 @@ export class InteractiveManager {
      */
     private setupCamera(scene: Phaser.Scene): void {
         scene.cameras.main.setBackgroundColor(new Phaser.Display.Color(207, 239, 252).color);
-        scene.cameras.main.setZoom(1.2);
+        scene.cameras.main.setZoom(0.8);
         scene.cameras.main.setBounds(
             InteractiveManager.LEFTBOUNDS,
             InteractiveManager.TOPBOUNDS,
             InteractiveManager.WORLDWIDTH,
             InteractiveManager.WORLDHEIGHT,
         ); // Stops the camera moving off the edge of the screen
-    }
-
-    /**
-     * Creates a row of coins in a location
-     *
-     * @param scene - the scene to add the coins to
-     * @param amount - the number of coins to add
-     * @param x - the x position of the first coin
-     * @param y - the y position for the coins
-     */
-    private createCoinRow(scene: Phaser.Scene, amount: number, x: number, y: number): void {
-        for (let i = 0; i < amount; i++) {
-            new Coin(scene, x, i, y);
-        }
-        MainEventsManager.emit("maxscore", amount);
     }
 }

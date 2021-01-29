@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>5.3.0</string>
+        <string>5.5.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>phaser</string>
         <key>textureFileName</key>
-        <filename>../../../../Work/phaser-jam-template/assets/spritesheets/sprites.png</filename>
+        <filename>sprites.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -132,7 +132,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../../Work/phaser-jam-template/assets/spritesheets/sprites.json</filename>
+                <filename>sprites.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -181,7 +181,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../../../../Work/phaser-jam-template/assets/images/gold_1.png</key>
+            <key type="filename">../rawimages/pirate_walk_1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -190,14 +190,14 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>21,21,42,42</rect>
+                <rect>29,44,57,87</rect>
                 <key>scale9Paddings</key>
-                <rect>21,21,42,42</rect>
+                <rect>29,44,57,87</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../../../../Work/phaser-jam-template/assets/images/gold_2.png</key>
-            <key type="filename">../../../../Work/phaser-jam-template/assets/images/gold_6.png</key>
+            <key type="filename">../rawimages/pirate_walk_2.png</key>
+            <key type="filename">../rawimages/pirate_walk_4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -206,14 +206,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>17,21,33,42</rect>
+                <rect>29,42,57,85</rect>
                 <key>scale9Paddings</key>
-                <rect>17,21,33,42</rect>
+                <rect>29,42,57,85</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../../../../Work/phaser-jam-template/assets/images/gold_3.png</key>
-            <key type="filename">../../../../Work/phaser-jam-template/assets/images/gold_5.png</key>
+            <key type="filename">../rawimages/pirate_walk_3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -222,68 +221,19 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>13,21,25,42</rect>
+                <rect>29,43,57,85</rect>
                 <key>scale9Paddings</key>
-                <rect>13,21,25,42</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../../../Work/phaser-jam-template/assets/images/gold_4.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>4,21,7,42</rect>
-                <key>scale9Paddings</key>
-                <rect>4,21,7,42</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../../../Work/phaser-jam-template/assets/images/hill.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>510,188,1020,375</rect>
-                <key>scale9Paddings</key>
-                <rect>510,188,1020,375</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../../../Work/phaser-jam-template/assets/images/toasty.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>42,46,85,92</rect>
-                <key>scale9Paddings</key>
-                <rect>42,46,85,92</rect>
+                <rect>29,43,57,85</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>../../../../Work/phaser-jam-template/assets/images/toasty.png</filename>
-            <filename>../../../../Work/phaser-jam-template/assets/images/hill.png</filename>
-            <filename>../../../../Work/phaser-jam-template/assets/images/gold_1.png</filename>
-            <filename>../../../../Work/phaser-jam-template/assets/images/gold_2.png</filename>
-            <filename>../../../../Work/phaser-jam-template/assets/images/gold_3.png</filename>
-            <filename>../../../../Work/phaser-jam-template/assets/images/gold_4.png</filename>
-            <filename>../../../../Work/phaser-jam-template/assets/images/gold_5.png</filename>
-            <filename>../../../../Work/phaser-jam-template/assets/images/gold_6.png</filename>
+            <filename>../rawimages/pirate_walk_1.png</filename>
+            <filename>../rawimages/pirate_walk_2.png</filename>
+            <filename>../rawimages/pirate_walk_3.png</filename>
+            <filename>../rawimages/pirate_walk_4.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

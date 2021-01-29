@@ -29,18 +29,7 @@ export class LicenceText {
         this.textList.push(
             new PlainText(
                 scene,
-                "Music Arpent from freepd.com by Kevin MacLeod",
-                (top + gap * count++) / defaultHeight,
-                wait * order++,
-                GameSettings.MEDIUM_FONT_SIZE * scale,
-                LicenceEventsManager,
-            ),
-        );
-
-        this.textList.push(
-            new PlainText(
-                scene,
-                "Sound Effects and Background from https://kenney.nl/",
+                "Background from https://kenney.nl/",
                 (top + gap * count) / defaultHeight,
                 wait * order,
                 GameSettings.MEDIUM_FONT_SIZE * scale,
