@@ -3,8 +3,8 @@
     {
      "export":
         {
-         "format":"tmx",
-         "target":"map..tmx"
+         "format":"json",
+         "target":"map..json"
         }
     },
  "height":10,
