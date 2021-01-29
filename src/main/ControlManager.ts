@@ -56,20 +56,36 @@ export class ControlManager {
     }
 
     private keyboardInput() {
-        if (this.leftKey.isDown || this.leftKey2.isDown) {
+        if (this.leftKey.isDown) {
             MainEventsManager.emit("leftMove");
         }
 
-        if (this.rightKey.isDown || this.rightKey2.isDown) {
+        if (this.rightKey.isDown) {
             MainEventsManager.emit("rightMove");
         }
 
-        if (this.upKey.isDown || this.upKey2.isDown) {
+        if (this.upKey.isDown) {
             MainEventsManager.emit("upMove");
         }
 
-        if (this.downKey.isDown || this.downKey2.isDown) {
+        if (this.downKey.isDown) {
             MainEventsManager.emit("downMove");
+        }
+
+        if (this.leftKey2.isDown) {
+            MainEventsManager.emit("leftMove2");
+        }
+
+        if (this.rightKey2.isDown) {
+            MainEventsManager.emit("rightMove2");
+        }
+
+        if (this.upKey2.isDown) {
+            MainEventsManager.emit("upMove2");
+        }
+
+        if (this.downKey2.isDown) {
+            MainEventsManager.emit("downMove2");
         }
     }
 

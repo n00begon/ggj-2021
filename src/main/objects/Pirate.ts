@@ -1,5 +1,10 @@
 import { MainEventsManager } from "../MainEventsManager";
 
+export enum KeyControls {
+    WASD,
+    Arrows
+}
+
 /**
  * Pirate is the character that the player controls.
  */
@@ -24,17 +29,26 @@ export class Pirate {
      * @param x - the x position where pirate will start
      * @param y - the y position where pirate will start
      */
-    constructor(scene: Phaser.Scene, x: number, y: number) {
+    constructor(scene: Phaser.Scene, controls: KeyControls, x: number, y: number) {
         this.scene = scene;
         this.pirate = scene.physics.add.sprite(x, y, "sprites", "pirate");
 
         this.pirate.setFriction(0);
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
-        MainEventsManager.on("leftMove", this.handleLeftMove, this);
-        MainEventsManager.on("rightMove", this.handleRightMove, this);
-        MainEventsManager.on("upMove", this.handleUpMove, this);
-        MainEventsManager.on("downMove", this.handleDownMove, this);
+
+
+        if(controls === KeyControls.Arrows) {
+            MainEventsManager.on("leftMove2", this.handleLeftMove, this);
+            MainEventsManager.on("rightMove2", this.handleRightMove, this);
+            MainEventsManager.on("upMove2", this.handleUpMove, this);
+            MainEventsManager.on("downMove2", this.handleDownMove, this);
+        } else if(controls == KeyControls.WASD) {
+            MainEventsManager.on("leftMove", this.handleLeftMove, this);
+            MainEventsManager.on("rightMove", this.handleRightMove, this);
+            MainEventsManager.on("upMove", this.handleUpMove, this);
+            MainEventsManager.on("downMove", this.handleDownMove, this);
+        }
     }
 
     /**

@@ -2,15 +2,15 @@
  * Background manager controls the non interactive background objects
  */
 
- export enum PirateTile {
+export enum PirateTile {
     IslandA = 6,
     DarkIsland = 7,
     LightIsland = 8,
 
     Rock = 9,
     PlantA = 10,
-    PlantB = 11
- }
+    PlantB = 11,
+}
 
 export class BackgroundManager {
     /**
