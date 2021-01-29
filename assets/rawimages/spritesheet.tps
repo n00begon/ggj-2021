@@ -70,7 +70,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>0</uint>
+        <uint>4</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -199,6 +199,7 @@
             <key type="filename">top_middle_edge_sand.png</key>
             <key type="filename">top_right_corner_sand.png</key>
             <key type="filename">top_right_edge_sand.png</key>
+            <key type="filename">water.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -234,6 +235,7 @@
             <filename>top_middle_edge_sand.png</filename>
             <filename>top_right_corner_sand.png</filename>
             <filename>top_right_edge_sand.png</filename>
+            <filename>water.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
