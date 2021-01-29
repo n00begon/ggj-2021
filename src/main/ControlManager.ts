@@ -6,7 +6,6 @@ import { MainEventsManager } from "./MainEventsManager";
 export class ControlManager {
     private static readonly PAD_THRESHOLD = 0.1;
 
-    private jumpKey: Phaser.Input.Keyboard.Key;
     private jumpKey2: Phaser.Input.Keyboard.Key;
     private leftKey: Phaser.Input.Keyboard.Key;
     private rightKey: Phaser.Input.Keyboard.Key;

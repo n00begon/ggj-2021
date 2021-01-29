@@ -18,7 +18,7 @@ export class CreditsText {
         this.textList.push(
             new FadeText(
                 scene,
-                "Phaser Jam Template",
+                "Lost Treasure",
                 (top - 60) / defaultHeight,
                 wait * order++,
                 GameSettings.LARGE_FONT_SIZE * scale,
@@ -29,7 +29,7 @@ export class CreditsText {
         this.textList.push(
             new FadeText(
                 scene,
-                "By n00begon",
+                "By Griff, John, Leon, Stepan and Tim",
                 (top + 100 * order) / defaultHeight,
                 wait * order++,
                 80 * scale,
@@ -40,7 +40,7 @@ export class CreditsText {
         this.textList.push(
             new FadeText(
                 scene,
-                "github.com/n00begon/phaser-jam-template",
+                "Global Game Jam 2021",
                 (assets + 100 * assetsCount++) / defaultHeight,
                 wait * order++,
                 GameSettings.MEDIUM_FONT_SIZE * scale,

@@ -32,7 +32,7 @@ export class Main extends Phaser.Scene {
      * The main update loop for the scene.
      */
     public update(): void {
-       // this.interactiveManager.update();
+        // this.interactiveManager.update();
     }
 
     /**
