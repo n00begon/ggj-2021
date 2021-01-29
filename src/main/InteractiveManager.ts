@@ -3,7 +3,6 @@ import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
 
-
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
  * The core game logic is controlled from here
@@ -35,8 +34,18 @@ export class InteractiveManager {
         this.currentScore = 0;
         MainEventsManager.on("maxscore", this.handleMaxScore, this);
         MainEventsManager.on("collection", this.handleCollection, this);
-        this.pirateA = new Pirate(scene, KeyControls.WASD, InteractiveManager.WORLDWIDTH / 2, InteractiveManager.BOTTOMBOUNDS - 500);
-        this.pirateB = new Pirate(scene, KeyControls.Arrows, InteractiveManager.WORLDWIDTH / 2, InteractiveManager.BOTTOMBOUNDS - 300);
+        this.pirateA = new Pirate(
+            scene,
+            KeyControls.WASD,
+            InteractiveManager.WORLDWIDTH / 2,
+            InteractiveManager.BOTTOMBOUNDS - 500,
+        );
+        this.pirateB = new Pirate(
+            scene,
+            KeyControls.Arrows,
+            InteractiveManager.WORLDWIDTH / 2,
+            InteractiveManager.BOTTOMBOUNDS - 300,
+        );
     }
     /**
      * The main update loop for the scene.

@@ -2,7 +2,7 @@ import { MainEventsManager } from "../MainEventsManager";
 
 export enum KeyControls {
     WASD,
-    Arrows
+    Arrows,
 }
 
 /**
@@ -21,7 +21,6 @@ export class Pirate {
     private downMove = false;
     private currentSpeedY = 0;
 
-
     /**
      * Creates the pirate object
      *
@@ -37,13 +36,12 @@ export class Pirate {
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
 
-
-        if(controls === KeyControls.Arrows) {
+        if (controls === KeyControls.Arrows) {
             MainEventsManager.on("leftMove2", this.handleLeftMove, this);
             MainEventsManager.on("rightMove2", this.handleRightMove, this);
             MainEventsManager.on("upMove2", this.handleUpMove, this);
             MainEventsManager.on("downMove2", this.handleDownMove, this);
-        } else if(controls == KeyControls.WASD) {
+        } else if (controls == KeyControls.WASD) {
             MainEventsManager.on("leftMove", this.handleLeftMove, this);
             MainEventsManager.on("rightMove", this.handleRightMove, this);
             MainEventsManager.on("upMove", this.handleUpMove, this);
@@ -57,8 +55,7 @@ export class Pirate {
     public update(): void {
         this.pirate.setVelocityX(0);
 
-        
-        if(this.leftMove || this.rightMove || this.upMove || this.downMove) {
+        if (this.leftMove || this.rightMove || this.upMove || this.downMove) {
             this.pirate.play("pirateWalk", true);
         } else {
             this.pirate.anims.stop();
