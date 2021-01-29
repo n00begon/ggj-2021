@@ -43,6 +43,13 @@ export class Pirate {
     public update(): void {
         this.pirate.setVelocityX(0);
 
+        
+        if(this.leftMove || this.rightMove || this.upMove || this.downMove) {
+            this.pirate.play("pirateWalk", true);
+        } else {
+            this.pirate.anims.stop();
+        }
+
         let x_dir = 0;
         if (this.leftMove) {
             x_dir = -1;
