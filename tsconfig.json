@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "moduleResolution": "node",
+        "module": "CommonJS",
+        "strict": true,
+        "sourceMap": true,
+        "esModuleInterop": true // for Webpack imports
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
