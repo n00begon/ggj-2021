@@ -7,9 +7,15 @@ export class Pirate {
     private static readonly MOVE_SPEED = 100;
     private pirate: Phaser.Physics.Arcade.Sprite;
     private scene: Phaser.Scene;
-    private currentSpeed = 0;
+
+    private currentSpeedX = 0;
     private leftMove = false;
     private rightMove = false;
+
+    private upMove = false;
+    private downMove = false;
+    private currentSpeedY = 0;
+
 
     /**
      * Creates the pirate object
@@ -27,6 +33,8 @@ export class Pirate {
         this.pirate.play("pirateWalk");
         MainEventsManager.on("leftMove", this.handleLeftMove, this);
         MainEventsManager.on("rightMove", this.handleRightMove, this);
+        MainEventsManager.on("upMove", this.handleUpMove, this);
+        MainEventsManager.on("downMove", this.handleDownMove, this);
     }
 
     /**
@@ -35,23 +43,39 @@ export class Pirate {
     public update(): void {
         this.pirate.setVelocityX(0);
 
-        let direction = 0;
+        let x_dir = 0;
         if (this.leftMove) {
-            direction = -1;
+            x_dir = -1;
         }
 
         if (this.rightMove) {
-            direction = 1;
+            x_dir = 1;
         }
-        if (direction !== 0) {
-            this.currentSpeed = direction * Pirate.MOVE_SPEED;
-            this.pirate.setVelocityX(this.currentSpeed);
+        if (x_dir !== 0) {
+            this.currentSpeedX = x_dir * Pirate.MOVE_SPEED;
+            this.pirate.setVelocityX(this.currentSpeedX);
         }
 
         this.leftMove = false;
         this.rightMove = false;
-        this.leftMove = false;
-        this.rightMove = false;
+
+        this.pirate.setVelocityY(0);
+
+        let y_dir = 0;
+        if (this.upMove) {
+            y_dir = -1;
+        }
+
+        if (this.downMove) {
+            y_dir = 1;
+        }
+        if (y_dir !== 0) {
+            this.currentSpeedY = y_dir * Pirate.MOVE_SPEED;
+            this.pirate.setVelocityY(this.currentSpeedY);
+        }
+
+        this.upMove = false;
+        this.downMove = false;
     }
 
     /**
@@ -66,5 +90,19 @@ export class Pirate {
      */
     private handleRightMove(): void {
         this.rightMove = true;
+    }
+
+    /**
+     * handles when it receives a up move event.
+     */
+    private handleUpMove(): void {
+        this.upMove = true;
+    }
+
+    /**
+     * handles when it receives a down move event.
+     */
+    private handleDownMove(): void {
+        this.downMove = true;
     }
 }

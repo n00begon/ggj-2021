@@ -7,10 +7,17 @@ export class ControlManager {
     private static readonly PAD_THRESHOLD = 0.1;
 
     private jumpKey2: Phaser.Input.Keyboard.Key;
+
     private leftKey: Phaser.Input.Keyboard.Key;
     private rightKey: Phaser.Input.Keyboard.Key;
+    private upKey: Phaser.Input.Keyboard.Key;
+    private downKey: Phaser.Input.Keyboard.Key;
+
     private leftKey2: Phaser.Input.Keyboard.Key;
     private rightKey2: Phaser.Input.Keyboard.Key;
+    private upKey2: Phaser.Input.Keyboard.Key;
+    private downKey2: Phaser.Input.Keyboard.Key;
+
     private currentPointer!: Phaser.Input.Pointer | null;
 
     private scene: Phaser.Scene;
@@ -22,8 +29,13 @@ export class ControlManager {
         this.jumpKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         this.leftKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         this.rightKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        this.upKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+        this.downKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+
         this.leftKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.rightKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        this.upKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        this.downKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
 
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
             this.currentPointer = pointer;
@@ -50,6 +62,14 @@ export class ControlManager {
 
         if (this.rightKey.isDown || this.rightKey2.isDown) {
             MainEventsManager.emit("rightMove");
+        }
+
+        if (this.upKey.isDown || this.upKey2.isDown) {
+            MainEventsManager.emit("upMove");
+        }
+
+        if (this.downKey.isDown || this.downKey2.isDown) {
+            MainEventsManager.emit("downMove");
         }
     }
 
