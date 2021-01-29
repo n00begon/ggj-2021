@@ -4,51 +4,387 @@
 			"image": "background.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1066,
-				"h": 1906
+				"w": 649,
+				"h": 465
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "sky",
+					"filename": "bottom_left_corner_sand.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1024
+						"w": 128,
+						"h": 128
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 1024,
-						"h": 1024
+						"w": 128,
+						"h": 128
 					},
 					"frame": {
-						"x": 21,
-						"y": 21,
-						"w": 1024,
-						"h": 1024
+						"x": 1,
+						"y": 1,
+						"w": 128,
+						"h": 128
 					}
 				},
 				{
-					"filename": "backgroundHill",
+					"filename": "bottom_middle_edge_sand.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 1024,
-						"h": 800
+						"w": 128,
+						"h": 128
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 1024,
-						"h": 800
+						"w": 128,
+						"h": 128
 					},
 					"frame": {
-						"x": 21,
-						"y": 1085,
-						"w": 1024,
-						"h": 800
+						"x": 1,
+						"y": 131,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "bottom_right_corner_sand.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 131,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "center_center_gravel_sand.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 1,
+						"y": 261,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "center_center_plain_sand.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 131,
+						"y": 131,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "centre_centre_dots_sand.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 261,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "side_left_edge_sand.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 131,
+						"y": 261,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "side_right_edge_sand.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 261,
+						"y": 131,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "top_left_corner_sand.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 391,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "bottom_right_edge_sand.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 127,
+						"h": 126
+					},
+					"frame": {
+						"x": 521,
+						"y": 1,
+						"w": 127,
+						"h": 126
+					}
+				},
+				{
+					"filename": "top_middle_edge_sand.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 261,
+						"y": 261,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "top_right_corner_sand.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 391,
+						"y": 131,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "top_left_edge_sand.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 127,
+						"h": 126
+					},
+					"frame": {
+						"x": 521,
+						"y": 129,
+						"w": 127,
+						"h": 126
+					}
+				},
+				{
+					"filename": "bottom_left_edge_sand.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 126,
+						"h": 127
+					},
+					"frame": {
+						"x": 391,
+						"y": 261,
+						"w": 126,
+						"h": 127
+					}
+				},
+				{
+					"filename": "object_rock_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 29,
+						"w": 70,
+						"h": 70
+					},
+					"frame": {
+						"x": 1,
+						"y": 391,
+						"w": 70,
+						"h": 70
+					}
+				},
+				{
+					"filename": "object_tree_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 33,
+						"y": 29,
+						"w": 70,
+						"h": 70
+					},
+					"frame": {
+						"x": 73,
+						"y": 391,
+						"w": 70,
+						"h": 70
+					}
+				},
+				{
+					"filename": "top_right_edge_sand.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 126,
+						"h": 127
+					},
+					"frame": {
+						"x": 521,
+						"y": 257,
+						"w": 126,
+						"h": 127
+					}
+				},
+				{
+					"filename": "object_tree_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 25,
+						"w": 90,
+						"h": 78
+					},
+					"frame": {
+						"x": 519,
+						"y": 386,
+						"w": 90,
+						"h": 78
 					}
 				}
 			]
@@ -57,6 +393,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:29ba22fb06a1c420c0fb1b4c8422fd50:5020eba2e1c6fa0911b168f63c3df6bb:2ba65c328dea799e4d80739630892abf$"
+		"smartupdate": "$TexturePacker:SmartUpdate:11741c91b961dc92d038da174f1b1222:cfd2089b6b7a9dab7d659383dfb915d2:2ba65c328dea799e4d80739630892abf$"
 	}
 }
