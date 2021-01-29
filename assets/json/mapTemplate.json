@@ -1,0 +1,21 @@
+{
+  "backgroundcolor":"#656667",
+  "orientation":"orthogonal",
+  "height":100,
+  "width":100,
+  "layers":[ ],
+  "tilesets":[ ],
+  "nextobjectid":1,
+  "renderorder":"right-down",
+  "tileheight":128,
+  "tilewidth":128,
+  "version":1,
+  "tiledversion":"1.0.3",
+  "properties":[
+    {
+      "name":"property1",
+      "type":"string",
+      "value":"one"
+    }
+  ]
+}
