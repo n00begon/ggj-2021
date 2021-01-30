@@ -17,11 +17,10 @@ export class Pirate {
     private currentSpeedX = 0;
     private leftMove = false;
     private rightMove = false;
-    private debugText: Phaser.GameObjects.Text;
+    //private debugText: Phaser.GameObjects.Text;
     private upMove = false;
     private downMove = false;
     private currentSpeedY = 0;
-    private island: Phaser.Tilemaps.TilemapLayer;
     private holes: Phaser.Tilemaps.TilemapLayer;
     private walkSound: Phaser.Sound.BaseSound;
     private controls: KeyControls;
@@ -43,7 +42,6 @@ export class Pirate {
         controls: KeyControls,
         x: number,
         y: number,
-        layer: Phaser.Tilemaps.TilemapLayer,
         collisionLayer: Phaser.Tilemaps.TilemapLayer,
         holeLayer: Phaser.Tilemaps.TilemapLayer,
     ) {
@@ -55,7 +53,6 @@ export class Pirate {
         this.rearDust = scene.add.sprite(x, y, "sprites", "DustBack1");
         this.rearDust.setVisible(false);
 
-        this.island = layer;
         this.pirate.setFriction(0);
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
@@ -82,12 +79,12 @@ export class Pirate {
             MainEventsManager.on("downMove3", this.handleDownMove, this);
         }
 
-        this.debugText = scene.add.text(x, y, "Yo Ho", {
-            fontFamily: GameSettings.DISPLAY_FONT,
-            color: GameSettings.FONT_COLOUR,
-        });
+        // this.debugText = scene.add.text(x, y, "Yo Ho", {
+        //     fontFamily: GameSettings.DISPLAY_FONT,
+        //     color: GameSettings.FONT_COLOUR,
+        // // });
 
-        this.debugText.setFontSize(50);
+        // this.debugText.setFontSize(50);
     }
 
     public getSprite(): Phaser.Physics.Arcade.Sprite {
@@ -102,8 +99,8 @@ export class Pirate {
      * The update cycle.This is controlling the movement
      */
     public update(): void {
-        const currentTile = this.island.getTileAtWorldXY(this.pirate.x, this.pirate.y);
-        const holeTile = this.holes.getTileAtWorldXY(this.pirate.x, this.pirate.y);
+        //  const currentTile = this.island.getTileAtWorldXY(this.pirate.x, this.pirate.y);
+        const holeTile = this.holes.getTileAtWorldXY(this.pirate.getBottomCenter().x, this.pirate.getBottomCenter().y);
         this.pirate.setVelocityX(0);
 
         if (this.digging) {
@@ -175,12 +172,12 @@ export class Pirate {
 
             this.upMove = false;
             this.downMove = false;
-            this.debugText.setPosition(this.pirate.x, this.pirate.y);
-            if (currentTile) {
-                this.debugText.setText("" + currentTile.canCollide + " " + PirateTile[currentTile.index]);
-            } else {
-                this.debugText.setText("null");
-            }
+            //d this.debugText.setPosition(this.pirate.x, this.pirate.y);
+            // if (currentTile) {
+            //     this.debugText.setText("" + currentTile.canCollide + " " + PirateTile[currentTile.index]);
+            // } else {
+            //     this.debugText.setText("null");
+            // }
             this.pirate.depth = this.pirate.getBottomCenter().y;
             this.frontDust.setPosition(this.pirate.x, this.pirate.y + 70);
             this.frontDust.depth = this.pirate.depth + 1;

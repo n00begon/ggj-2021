@@ -40,7 +40,6 @@ export class InteractiveManager {
             KeyControls.WASD,
             this.screenWidth / 2,
             this.screenHeight / 2,
-            backgroundManager.getIslandTilemap(),
             backgroundManager.getCollisionTilemap(),
             backgroundManager.getHoleTilemap(),
         );
@@ -49,7 +48,6 @@ export class InteractiveManager {
             KeyControls.Arrows,
             this.screenWidth / 2,
             this.screenHeight / 2 - 300,
-            backgroundManager.getIslandTilemap(),
             backgroundManager.getCollisionTilemap(),
             backgroundManager.getHoleTilemap(),
         );
