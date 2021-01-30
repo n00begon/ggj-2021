@@ -40,6 +40,9 @@ export class BackgroundManager {
     private static plantAProb = 0.05;
     private static plantBProb = 0.05;
 
+    private water: Phaser.Tilemaps.TilemapLayer;
+    private island: Phaser.Tilemaps.TilemapLayer;
+    private objects: Phaser.Tilemaps.TilemapLayer;
     /**
      * Adds the parallax background to the scene
      */
@@ -62,10 +65,10 @@ export class BackgroundManager {
             Perlin.seed(Math.random());
         }
 
-        const water = map.createBlankLayer("water", tileset);
-        water.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
+        this.water = map.createBlankLayer("water", tileset);
+        this.water.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
 
-        let island = map.createBlankLayer("island", tileset);
+        this.island = map.createBlankLayer("island", tileset);
         // eslint-disable-next-line no-constant-condition
         while (true) {
             let count = 0;
@@ -74,31 +77,39 @@ export class BackgroundManager {
                     const dist = this.distanceSquared(x, y, mapWidth, mapHeight);
                     const noise = (Perlin.perlin2(x / mapWidth, y / mapHeight) + 1) / 2;
                     if (noise > 0.3 + 0.4 * dist) {
-                        island.putTileAt(this.genSand(), x, y);
+                        this.island.putTileAt(this.genSand(), x, y);
                         count++;
                     }
                 }
             }
             if (count / (mapWidth * mapHeight) < 0.5) {
                 map.removeLayer("island");
-                island = map.createBlankLayer("island", tileset);
+                this.island = map.createBlankLayer("island", tileset);
                 if (!GameSettings.DEBUG) Perlin.seed(Math.random());
             } else {
                 break;
             }
         }
 
-        const objects = map.createBlankLayer("objects", tileset);
+        this.objects = map.createBlankLayer("objects", tileset);
         for (let x = 0; x < mapWidth; x++) {
             for (let y = 0; y < mapHeight; y++) {
-                if (island.hasTileAt(x, y)) {
+                if (this.island.hasTileAt(x, y)) {
                     const object = this.genObject();
                     if (object != PirateTile.None) {
-                        objects.putTileAt(object, x, y);
+                        this.objects.putTileAt(object, x, y);
                     }
                 }
             }
         }
+        const debugGraphics = scene.add.graphics();
+
+        this.objects.setCollisionByProperty({ collides: true });
+        this.objects.renderDebug(debugGraphics, {
+            tileColor: new Phaser.Display.Color(5, 5, 5, 100), // Non-colliding tiles
+            collidingTileColor: new Phaser.Display.Color(211, 36, 255, 100), // Colliding tiles
+            faceColor: new Phaser.Display.Color(211, 36, 255, 255), // Colliding face edges
+        });
 
         // temp
         scene.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -146,5 +157,17 @@ export class BackgroundManager {
         }
 
         return PirateTile.None;
+    }
+
+    public getWaterTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.water;
+    }
+
+    public getIslandTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.island;
+    }
+
+    public getObjectsTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.objects;
     }
 }

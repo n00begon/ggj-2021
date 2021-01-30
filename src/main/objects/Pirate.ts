@@ -1,26 +1,29 @@
+import { GameSettings } from "../../utilities/GameSettings";
+import { PlainText } from "../../utilities/text/PlainText";
+import { PirateTile } from "../BackgroundManager";
 import { MainEventsManager } from "../MainEventsManager";
 
 export enum KeyControls {
     WASD,
     Arrows,
+    Mouse,
 }
 
 /**
  * Pirate is the character that the player controls.
  */
 export class Pirate {
-    private static readonly MOVE_SPEED = 100;
+    private static readonly MOVE_SPEED = 300;
     private pirate: Phaser.Physics.Arcade.Sprite;
     private scene: Phaser.Scene;
-
     private currentSpeedX = 0;
     private leftMove = false;
     private rightMove = false;
-
+    private debugText: Phaser.GameObjects.Text;
     private upMove = false;
     private downMove = false;
     private currentSpeedY = 0;
-
+    private island: Phaser.Tilemaps.TilemapLayer;
     /**
      * Creates the pirate object
      *
@@ -28,14 +31,15 @@ export class Pirate {
      * @param x - the x position where pirate will start
      * @param y - the y position where pirate will start
      */
-    constructor(scene: Phaser.Scene, controls: KeyControls, x: number, y: number) {
+    constructor(scene: Phaser.Scene, controls: KeyControls, x: number, y: number, layer: Phaser.Tilemaps.TilemapLayer) {
         this.scene = scene;
         this.pirate = scene.physics.add.sprite(x, y, "sprites", "pirate");
-
+        this.island = layer;
         this.pirate.setFriction(0);
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
-
+        this.pirate.setBounce(0.1);
+        // scene.physics.add.collider(this.pirate, tilemap);
         if (controls === KeyControls.Arrows) {
             MainEventsManager.on("leftMove2", this.handleLeftMove, this);
             MainEventsManager.on("rightMove2", this.handleRightMove, this);
@@ -46,13 +50,26 @@ export class Pirate {
             MainEventsManager.on("rightMove", this.handleRightMove, this);
             MainEventsManager.on("upMove", this.handleUpMove, this);
             MainEventsManager.on("downMove", this.handleDownMove, this);
+        } else if (controls == KeyControls.Mouse) {
+            MainEventsManager.on("leftMove3", this.handleLeftMove, this);
+            MainEventsManager.on("rightMove3", this.handleRightMove, this);
+            MainEventsManager.on("upMove3", this.handleUpMove, this);
+            MainEventsManager.on("downMove3", this.handleDownMove, this);
         }
-    }
 
+        this.debugText = scene.add.text(x, y, "Yo Ho", {
+            fontFamily: GameSettings.DISPLAY_FONT,
+            color: GameSettings.FONT_COLOUR,
+        });
+
+        this.debugText.setFontSize(50);
+    }
     /**
      * The update cycle.This is controlling the movement
      */
     public update(): void {
+        const currentTile = this.island.getTileAtWorldXY(this.pirate.x, this.pirate.y);
+
         this.pirate.setVelocityX(0);
 
         if (this.leftMove || this.rightMove || this.upMove || this.downMove) {
@@ -94,6 +111,12 @@ export class Pirate {
 
         this.upMove = false;
         this.downMove = false;
+        this.debugText.setPosition(this.pirate.x, this.pirate.y);
+        if (currentTile) {
+            this.debugText.setText("" + currentTile.canCollide + " " + PirateTile[currentTile.index]);
+        } else {
+            this.debugText.setText("null");
+        }
     }
 
     /**
