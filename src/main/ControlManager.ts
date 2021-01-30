@@ -14,7 +14,6 @@ export class ControlManager {
     private downKey: Phaser.Input.Keyboard.Key;
     private showPuzzleKey: Phaser.Input.Keyboard.Key;
 
-
     private leftKey2: Phaser.Input.Keyboard.Key;
     private rightKey2: Phaser.Input.Keyboard.Key;
     private upKey2: Phaser.Input.Keyboard.Key;

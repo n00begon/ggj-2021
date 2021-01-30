@@ -1,5 +1,3 @@
-import { GameSettings } from "../utilities/GameSettings";
-
 /**
  * Background manager controls the non interactive background objects
  */
