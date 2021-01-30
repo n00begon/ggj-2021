@@ -43,6 +43,7 @@ export class BackgroundManager {
     private water: Phaser.Tilemaps.TilemapLayer;
     private island: Phaser.Tilemaps.TilemapLayer;
     private objects: Phaser.Tilemaps.TilemapLayer;
+    private collision: Phaser.Tilemaps.TilemapLayer;
     /**
      * Adds the parallax background to the scene
      */
@@ -50,11 +51,6 @@ export class BackgroundManager {
         const tileSize = 128;
         const mapWidth = Math.floor(scene.game.canvas.width / GameSettings.ZOOM_LEVEL / tileSize);
         const mapHeight = Math.floor(scene.game.canvas.height / GameSettings.ZOOM_LEVEL / tileSize);
-
-        // NOTE(Leon) : this is the map dims in world units
-        GameSettings.MAP_WIDTH = mapWidth * tileSize;
-        GameSettings.MAP_HEIGHT = mapHeight * tileSize;
-
         const map = scene.make.tilemap({
             tileWidth: tileSize,
             tileHeight: tileSize,
@@ -219,6 +215,15 @@ export class BackgroundManager {
             }
         }
 
+        this.collision = map.createBlankLayer("collision", tileset);
+        for (let x = 0; x < mapWidth; x++) {
+            for (let y = 0; y < mapHeight; y++) {
+                if (!this.island.hasTileAt(x, y)) {
+                    this.collision.putTileAt(PirateTile.Water, x, y);
+                }
+            }
+        }
+
         const debugGraphics = scene.add.graphics();
 
         this.objects.setCollisionByProperty({ collides: true });
@@ -296,5 +301,9 @@ export class BackgroundManager {
 
     public getObjectsTilemap(): Phaser.Tilemaps.TilemapLayer {
         return this.objects;
+    }
+
+    public getCollisionTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.collision;
     }
 }

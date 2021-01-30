@@ -26,7 +26,14 @@ export class Pirate {
      * @param x - the x position where pirate will start
      * @param y - the y position where pirate will start
      */
-    constructor(scene: Phaser.Scene, controls: KeyControls, x: number, y: number, layer: Phaser.Tilemaps.TilemapLayer) {
+    constructor(
+        scene: Phaser.Scene,
+        controls: KeyControls,
+        x: number,
+        y: number,
+        layer: Phaser.Tilemaps.TilemapLayer,
+        collisionLayer: Phaser.Tilemaps.TilemapLayer,
+    ) {
         this.scene = scene;
         this.pirate = scene.physics.add.sprite(x, y, "sprites", "pirate");
         this.island = layer;
@@ -34,7 +41,8 @@ export class Pirate {
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
         this.pirate.setBounce(0.1);
-        // scene.physics.add.collider(this.pirate, tilemap);
+        scene.physics.add.collider(this.pirate, collisionLayer);
+        collisionLayer.setCollision(PirateTile.Water);
         if (controls === KeyControls.WASD) {
             MainEventsManager.on("leftMove2", this.handleLeftMove, this);
             MainEventsManager.on("rightMove2", this.handleRightMove, this);

@@ -39,6 +39,7 @@ export class InteractiveManager {
             this.screenWidth / 2,
             this.screenHeight / 2,
             backgroundManager.getIslandTilemap(),
+            backgroundManager.getCollisionTilemap(),
         );
         this.pirateB = new Pirate(
             scene,
@@ -46,6 +47,7 @@ export class InteractiveManager {
             this.screenWidth / 2,
             this.screenHeight / 2 - 300,
             backgroundManager.getIslandTilemap(),
+            backgroundManager.getCollisionTilemap(),
         );
         this.pirateC = new Pirate(
             scene,
@@ -53,6 +55,7 @@ export class InteractiveManager {
             this.screenWidth / 2 - 500,
             this.screenHeight / 2 - 300,
             backgroundManager.getIslandTilemap(),
+            backgroundManager.getCollisionTilemap(),
         );
     }
     /**
