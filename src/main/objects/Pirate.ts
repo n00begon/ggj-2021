@@ -4,7 +4,6 @@ import { PirateTile } from "../BackgroundManager";
 import { KeyControls } from "../KeyControls";
 import { MainEventsManager } from "../MainEventsManager";
 
-
 /**
  * Pirate is the character that the player controls.
  */
