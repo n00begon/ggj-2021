@@ -23,7 +23,7 @@ export class ControlManager {
 
     private DEBUGKeys: Phaser.Input.Keyboard.Key[];
     private DEBUGKeyCoords: Phaser.Math.Vector2[];
-    private DEBUGPuzzle: boolean = false;
+    private DEBUGPuzzle = false;
 
     private currentPointer!: Phaser.Input.Pointer | null;
 
@@ -56,7 +56,6 @@ export class ControlManager {
             scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_ONE),
             scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_TWO),
             scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_THREE),
-
         ];
 
         this.DEBUGKeyCoords = [
