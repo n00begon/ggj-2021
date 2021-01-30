@@ -10,7 +10,7 @@ export class AudioManager {
         scene.sound.add("walking1");
         scene.sound.add("explode"); // https://soundbible.com/1467-Grenade-Explosion.html
         scene.sound.add("dig"); // https://www.soundeffectsplus.com/product/shovel-digging-dirt-01/
-        const backgroundMusic = scene.sound.add("the-buccaneers-haul");
+        const backgroundMusic = scene.sound.add("shanty"); //"the-buccaneers-haul");
         backgroundMusic.play({
             loop: true,
             volume: 0.3,
