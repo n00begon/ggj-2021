@@ -2,6 +2,7 @@ import { Pirate, KeyControls } from "./objects/Pirate";
 import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
+import { GameSettings } from "../utilities/GameSettings";
 
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
@@ -10,23 +11,22 @@ import { AnimationManager } from "./AnimationManager";
 export class InteractiveManager {
     private static readonly NEXT_SCENE = "End";
 
-    private static readonly LEFTBOUNDS = 0;
-    private static readonly RIGHTBOUNDS = 2010;
-    private static readonly TOPBOUNDS = -500;
-    private static readonly BOTTOMBOUNDS = 800;
-    private static readonly WORLDWIDTH = InteractiveManager.RIGHTBOUNDS - InteractiveManager.LEFTBOUNDS;
-    private static readonly WORLDHEIGHT = InteractiveManager.BOTTOMBOUNDS - InteractiveManager.TOPBOUNDS;
     private scene: Phaser.Scene;
     private controlManager: ControlManager;
     private maxScore: number;
     private currentScore: number;
     private pirateA: Pirate;
     private pirateB: Pirate;
+    private screenWidth: number;
+    private screenHeight: number;
+
     /**
      * Adds the interactive objects to the scene
      */
     constructor(scene: Phaser.Scene) {
         this.scene = scene;
+        this.screenWidth = scene.game.canvas.width / GameSettings.ZOOM_LEVEL;
+        this.screenHeight = scene.game.canvas.height / GameSettings.ZOOM_LEVEL;
         new AnimationManager(scene);
         this.controlManager = new ControlManager(scene);
         this.setupCamera(scene);
@@ -34,18 +34,8 @@ export class InteractiveManager {
         this.currentScore = 0;
         MainEventsManager.on("maxscore", this.handleMaxScore, this);
         MainEventsManager.on("collection", this.handleCollection, this);
-        this.pirateA = new Pirate(
-            scene,
-            KeyControls.WASD,
-            InteractiveManager.WORLDWIDTH / 2,
-            InteractiveManager.BOTTOMBOUNDS - 500,
-        );
-        this.pirateB = new Pirate(
-            scene,
-            KeyControls.Arrows,
-            InteractiveManager.WORLDWIDTH / 2,
-            InteractiveManager.BOTTOMBOUNDS - 300,
-        );
+        this.pirateA = new Pirate(scene, KeyControls.WASD, this.screenWidth / 4 - 200, this.screenHeight / 4);
+        this.pirateB = new Pirate(scene, KeyControls.Arrows, this.screenWidth / 4 - 200, this.screenHeight / 4 + 200);
     }
     /**
      * The main update loop for the scene.
@@ -82,12 +72,6 @@ export class InteractiveManager {
      */
     private setupCamera(scene: Phaser.Scene): void {
         scene.cameras.main.setBackgroundColor(new Phaser.Display.Color(207, 239, 252).color);
-        scene.cameras.main.setZoom(0.8);
-        scene.cameras.main.setBounds(
-            InteractiveManager.LEFTBOUNDS,
-            InteractiveManager.TOPBOUNDS,
-            InteractiveManager.WORLDWIDTH,
-            InteractiveManager.WORLDHEIGHT,
-        ); // Stops the camera moving off the edge of the screen
+        scene.cameras.main.setZoom(GameSettings.ZOOM_LEVEL);
     }
 }
