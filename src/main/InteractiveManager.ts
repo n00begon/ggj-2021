@@ -1,4 +1,5 @@
 import { Pirate } from "./objects/Pirate";
+import { Barrel } from "./objects/Barrel";
 import { KeyControls } from "./KeyControls";
 import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
@@ -21,6 +22,7 @@ export class InteractiveManager {
     private pirateC: Pirate;
     private screenWidth: number;
     private screenHeight: number;
+    private barrels: Array<Barrel>;
 
     /**
      * Adds the interactive objects to the scene
@@ -57,6 +59,11 @@ export class InteractiveManager {
             backgroundManager.getIslandTilemap(),
             backgroundManager.getCollisionTilemap(),
         );
+
+        this.barrels = new Array<Barrel>(10 + this.randInt(5));
+        for (let i = 0; i < this.barrels.length; i++) {
+            this.barrels[i] = new Barrel(scene, Math.random() * this.screenWidth, Math.random() * this.screenHeight);
+        }
     }
     /**
      * The main update loop for the scene.
@@ -82,5 +89,9 @@ export class InteractiveManager {
     private setupCamera(scene: Phaser.Scene): void {
         scene.cameras.main.setBackgroundColor(new Phaser.Display.Color(207, 239, 252).color);
         scene.cameras.main.setZoom(GameSettings.ZOOM_LEVEL);
+    }
+
+    private randInt(max: number) {
+        return Math.floor(Math.random() * Math.floor(max));
     }
 }
