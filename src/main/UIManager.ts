@@ -199,9 +199,6 @@ export class PuzzleHUD {
  * UIManager controls the user interface elements displayed to the user
  */
 export class UIManager {
-    private scoreTextWASD: ScoreText;
-    private scoreTextArrows: ScoreText;
-
     private piecesWASD: PuzzlePieces;
     private puzzleHUDWASD: PuzzleHUD;
 
@@ -212,19 +209,8 @@ export class UIManager {
      * Adds the interactive objects to the scene
      */
     constructor(scene: Phaser.Scene) {
-        MainEventsManager.on("scoreChange", this.handleScoreChange, this);
-
         MainEventsManager.on("foundPuzzle", this.foundPuzzle, this);
-
         MainEventsManager.on("playerXY", this.playerXY, this);
-
-        this.scoreTextWASD = new ScoreText(scene, 30, 30);
-        this.scoreTextWASD.update(0);
-        this.scoreTextWASD.hide();
-
-        this.scoreTextArrows = new ScoreText(scene, 800, 30);
-        this.scoreTextArrows.update(0);
-        this.scoreTextArrows.hide();
 
         this.piecesWASD = new PuzzlePieces();
         this.puzzleHUDWASD = new PuzzleHUD(scene, 64, 64);
@@ -235,14 +221,6 @@ export class UIManager {
         // HACK(Leon) : treasure pos hard coded for now
         this.puzzleHUDArrows.updateTreasurePos(3000, 2000);
         this.puzzleHUDWASD.updateTreasurePos(3000, 2000);
-    }
-
-    /**
-     * Handles score change by updating the score UI text
-     * @param amount - the amount the score is now
-     */
-    private handleScoreChange(amount: number): void {
-        this.scoreTextWASD.update(amount);
     }
 
     public playerXY(control: KeyControls, x: number, y: number): void {
@@ -262,22 +240,18 @@ export class UIManager {
     }
 
     public showPuzzleForArrows(): void {
-        //this.scoreTextArrows.update(200);
         this.puzzleHUDArrows.show(this.piecesArrows);
     }
 
     public hidePuzzleForArrows(): void {
         this.puzzleHUDArrows.hide();
-        //this.scoreTextArrows.hide();
     }
 
     public showPuzzleForWASD(): void {
-        //this.scoreTextWASD.update(100);
         this.puzzleHUDWASD.show(this.piecesWASD);
     }
 
     public hidePuzzleForWASD(): void {
-        //this.scoreTextWASD.hide();
         this.puzzleHUDWASD.hide();
     }
 }
