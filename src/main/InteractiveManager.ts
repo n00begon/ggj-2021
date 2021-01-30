@@ -55,7 +55,15 @@ export class InteractiveManager {
         this.barrels = new Array<Barrel>();
         const barrelsCoords = backgroundManager.getBarrels();
         for (let i = 0; i < barrelsCoords.length; i++) {
-            this.barrels.push(new Barrel(scene, barrelsCoords[i].getCenterX(), barrelsCoords[i].getCenterY()));
+            this.barrels.push(
+                new Barrel(
+                    scene,
+                    barrelsCoords[i].getCenterX(),
+                    barrelsCoords[i].getCenterY(),
+                    this.pirateA,
+                    this.pirateB,
+                ),
+            );
         }
     }
     /**

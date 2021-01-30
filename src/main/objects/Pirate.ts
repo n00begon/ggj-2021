@@ -78,6 +78,11 @@ export class Pirate {
 
         this.debugText.setFontSize(50);
     }
+
+    public getSprite(): Phaser.Physics.Arcade.Sprite {
+        return this.pirate;
+    }
+
     /**
      * The update cycle.This is controlling the movement
      */
