@@ -78,6 +78,11 @@ export class Pirate {
 
         this.pirate.setVelocityX(0);
 
+        if (this.leftMove)
+            this.pirate.flipX=true;
+        if (this.rightMove)
+            this.pirate.flipX=false;
+
         if (this.leftMove || this.rightMove || this.upMove || this.downMove) {
             this.pirate.play("pirateWalk", true);
             if (!this.walkSound.isPlaying) {
