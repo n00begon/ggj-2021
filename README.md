@@ -1,4 +1,4 @@
-# Lost and Found: In search of tresure!
+# Lost and Found: In search of treasure!
 
 ![Dig](/assets/images/PirateBasicDig.png)
 
