@@ -9,11 +9,16 @@ export class Barrel {
         this.scene = scene;
         this.barrel = scene.physics.add.sprite(x, y, "sprites", "Barrel-01");
         this.barrel.depth = this.barrel.getBottomCenter().y;
+        this.barrel.setImmovable(true);
         scene.physics.add.collider(this.barrel, pirateA.getSprite(), () => {
             if (!this.broken) {
                 console.log("YUM", pirateA);
-                this.barrel.setVisible(false);
-                this.barrel.setActive(false);
+                this.barrel.disableBody();
+                this.barrel.play("barrel-explosion", true);
+                this.barrel.once("animationcomplete", () => {
+                    this.barrel.setVisible(false);
+                    this.barrel.setActive(false);
+                });
                 this.broken = true;
             }
         });
@@ -21,8 +26,13 @@ export class Barrel {
         scene.physics.add.collider(this.barrel, pirateB.getSprite(), () => {
             if (!this.broken) {
                 console.log("YUM", pirateB);
-                this.barrel.setVisible(false);
-                this.barrel.setActive(false);
+                this.barrel.disableBody();
+                this.barrel.play("barrel-explosion", true);
+                this.barrel.once("animationcomplete", () => {
+                    this.barrel.setVisible(false);
+                    this.barrel.setActive(false);
+                });
+                this.broken = true;
             }
         });
     }

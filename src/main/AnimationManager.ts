@@ -32,7 +32,6 @@ export class AnimationManager {
             }),
 
             key: "barrel-explosion",
-            repeat: 0,
         });
     }
 
