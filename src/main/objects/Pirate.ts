@@ -9,7 +9,7 @@ import { MainEventsManager } from "../MainEventsManager";
  */
 export class Pirate {
     private static readonly MOVE_SPEED = 300;
-    public pirate: Phaser.Physics.Arcade.Sprite;
+    private pirate: Phaser.Physics.Arcade.Sprite;
     private scene: Phaser.Scene;
     private currentSpeedX = 0;
     private leftMove = false;
@@ -20,6 +20,7 @@ export class Pirate {
     private currentSpeedY = 0;
     private island: Phaser.Tilemaps.TilemapLayer;
     private walkSound: Phaser.Sound.BaseSound;
+    private controls: KeyControls;
 
     /**
      * Creates the pirate object
@@ -37,6 +38,7 @@ export class Pirate {
         collisionLayer: Phaser.Tilemaps.TilemapLayer,
     ) {
         this.scene = scene;
+        this.controls = controls;
         this.pirate = scene.physics.add.sprite(x, y, "sprites", "pirate");
         this.island = layer;
         this.pirate.setFriction(0);
@@ -133,6 +135,7 @@ export class Pirate {
             this.debugText.setText("null");
         }
         this.pirate.depth = this.pirate.y;
+        MainEventsManager.emit("playerXY", this.controls, this.pirate.getCenter().x, this.pirate.getCenter().y);
     }
 
     /**
