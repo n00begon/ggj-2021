@@ -98,6 +98,8 @@ export class PuzzleHUD {
     public treasurePosRect: Phaser.GameObjects.Image;
     static readonly TILE_WIDTH = 64;
     static readonly TILE_HEIGHT = 64;
+    static readonly DIM_X = 3;
+    static readonly DIM_Y = 3;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.x = x;
@@ -115,10 +117,10 @@ export class PuzzleHUD {
         );
 
         this.rects = [];
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < PuzzleHUD.DIM_X; i++) {
             this.rects[i] = [];
-            for (let j = 0; j < 3; j++) {
-                const ci = j * 3 + i;
+            for (let j = 0; j < PuzzleHUD.DIM_Y; j++) {
+                const ci = j * PuzzleHUD.DIM_Y + i;
                 this.rects[i][j] = build_rect(
                     scene,
                     this.x + i * PuzzleHUD.TILE_WIDTH,
@@ -130,19 +132,18 @@ export class PuzzleHUD {
             }
         }
 
-        this.treasurePosRect = scene.add.image(this.x + 32, this.y + 32, "sprites", "Treasure Chest");
-        this.treasurePosRect.scale = 0.1;
+        this.treasurePosRect = scene.add.image(0, 0, "sprites", "Treasure Chest");
         this.treasurePosRect.scale = 0.08;
 
-        this.playerPosRect = scene.add.image(this.x + 32, this.y + 32, "sprites", "Faceonly");
+        this.playerPosRect = scene.add.image(0, 0, "sprites", "Faceonly");
         this.playerPosRect.scale = 0.4;
     }
 
     public world_space_to_HUD_space(wx: number, wy: number): Phaser.Math.Vector2 {
         const x01 = wx / GameSettings.MAP_WIDTH;
         const y01 = wy / GameSettings.MAP_HEIGHT;
-        let ux = x01 * 3 * PuzzleHUD.TILE_WIDTH;
-        let uy = y01 * 3 * PuzzleHUD.TILE_HEIGHT;
+        let ux = x01 * PuzzleHUD.DIM_X * PuzzleHUD.TILE_WIDTH;
+        let uy = y01 * PuzzleHUD.DIM_Y * PuzzleHUD.TILE_HEIGHT;
         ux += this.x;
         uy += this.y;
         return new Phaser.Math.Vector2(ux, uy);
@@ -159,8 +160,8 @@ export class PuzzleHUD {
     }
 
     public hide(): void {
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
+        for (let i = 0; i < PuzzleHUD.DIM_X; i++) {
+            for (let j = 0; j < PuzzleHUD.DIM_Y; j++) {
                 this.rects[j][i].visible = false;
             }
         }
@@ -171,8 +172,8 @@ export class PuzzleHUD {
     }
 
     public show(pieces: PuzzlePieces): void {
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
+        for (let i = 0; i < PuzzleHUD.DIM_X; i++) {
+            for (let j = 0; j < PuzzleHUD.DIM_Y; j++) {
                 if (pieces.havePiece(i, j)) {
                     this.rects[j][i].visible = true;
                 }
@@ -183,11 +184,11 @@ export class PuzzleHUD {
         this.playerPosRect.visible = true;
 
         // ONLY IF you have that puzzle piece
-        const dx = GameSettings.MAP_WIDTH / 3;
-        const dy = GameSettings.MAP_HEIGHT / 3;
+        const dx = PuzzleHUD.TILE_WIDTH;
+        const dy = PuzzleHUD.TILE_HEIGHT;
         const cxy = this.treasurePosRect.getCenter();
-        const ax = Math.floor(cxy.x / dx);
-        const ay = Math.floor(cxy.y / dy);
+        const ax = Math.floor(cxy.x / dx) - 1;
+        const ay = Math.floor(cxy.y / dy) - 1;
 
         if (pieces.havePiece(ax, ay)) {
             this.treasurePosRect.visible = true;
@@ -219,8 +220,8 @@ export class UIManager {
         this.puzzleHUDArrows = new PuzzleHUD(scene, 800, 64);
 
         // HACK(Leon) : treasure pos hard coded for now
-        this.puzzleHUDArrows.updateTreasurePos(3000, 2000);
-        this.puzzleHUDWASD.updateTreasurePos(3000, 2000);
+        this.puzzleHUDArrows.updateTreasurePos(1850, 2000);
+        this.puzzleHUDWASD.updateTreasurePos(1850, 2000);
     }
 
     public playerXY(control: KeyControls, x: number, y: number): void {

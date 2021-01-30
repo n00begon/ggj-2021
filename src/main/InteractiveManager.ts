@@ -1,7 +1,6 @@
 import { Pirate } from "./objects/Pirate";
 import { Barrel } from "./objects/Barrel";
 import { KeyControls } from "./KeyControls";
-import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
 import { BackgroundManager } from "./BackgroundManager";
@@ -56,7 +55,15 @@ export class InteractiveManager {
         this.barrels = new Array<Barrel>();
         const barrelsCoords = backgroundManager.getBarrels();
         for (let i = 0; i < barrelsCoords.length; i++) {
-            this.barrels.push(new Barrel(scene, barrelsCoords[i].getCenterX(), barrelsCoords[i].getCenterY()));
+            this.barrels.push(
+                new Barrel(
+                    scene,
+                    barrelsCoords[i].getCenterX(),
+                    barrelsCoords[i].getCenterY(),
+                    this.pirateA,
+                    this.pirateB,
+                ),
+            );
         }
     }
     /**
@@ -65,13 +72,6 @@ export class InteractiveManager {
     public update(): void {
         this.pirateA.update();
         this.pirateB.update();
-
-        // NOTE(Leon) I dunno how else to pass coordinates to the HUD system?
-        const xyWASD = this.pirateA.pirate.getCenter();
-        MainEventsManager.emit("playerXY", KeyControls.WASD, xyWASD.x, xyWASD.y);
-
-        const xyArrows = this.pirateB.pirate.getCenter();
-        MainEventsManager.emit("playerXY", KeyControls.Arrows, xyArrows.x, xyArrows.y);
 
         this.controlManager.update();
     }

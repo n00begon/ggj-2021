@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "PirateBasicDigC",
+					"filename": "PirateBasicDig3",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "PirateBasicDigA",
+					"filename": "PirateBasicDig1",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "PirateBasicDigB",
+					"filename": "PirateBasicDig2",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -582,6 +582,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:1150cc3a582977277f9672b16dc20438:2df937b31939cff542bd194edcc5a2c4:1eabdf11f75e3a4fe3147baf7b5be24b$"
+		"smartupdate": "$TexturePacker:SmartUpdate:610a9ae458fe255c25dbe03bdd4acb6a:2df937b31939cff542bd194edcc5a2c4:1eabdf11f75e3a4fe3147baf7b5be24b$"
 	}
 }

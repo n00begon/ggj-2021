@@ -8,7 +8,10 @@ import { MainEventsManager } from "../MainEventsManager";
  */
 export class Pirate {
     private static readonly MOVE_SPEED = 300;
-    public pirate: Phaser.Physics.Arcade.Sprite;
+    private static readonly DIGWAIT = 50;
+    private static readonly DIGTIME = 100;
+
+    private pirate: Phaser.Physics.Arcade.Sprite;
     private scene: Phaser.Scene;
     private currentSpeedX = 0;
     private leftMove = false;
@@ -19,7 +22,10 @@ export class Pirate {
     private currentSpeedY = 0;
     private island: Phaser.Tilemaps.TilemapLayer;
     private walkSound: Phaser.Sound.BaseSound;
-
+    private controls: KeyControls;
+    private digwait = 0;
+    private digtime = 0;
+    private digging = false;
     /**
      * Creates the pirate object
      *
@@ -36,6 +42,7 @@ export class Pirate {
         collisionLayer: Phaser.Tilemaps.TilemapLayer,
     ) {
         this.scene = scene;
+        this.controls = controls;
         this.pirate = scene.physics.add.sprite(x, y, "sprites", "pirate");
         this.island = layer;
         this.pirate.setFriction(0);
@@ -71,6 +78,11 @@ export class Pirate {
 
         this.debugText.setFontSize(50);
     }
+
+    public getSprite(): Phaser.Physics.Arcade.Sprite {
+        return this.pirate;
+    }
+
     /**
      * The update cycle.This is controlling the movement
      */
@@ -79,59 +91,74 @@ export class Pirate {
 
         this.pirate.setVelocityX(0);
 
-        if (this.leftMove) this.pirate.flipX = true;
-        if (this.rightMove) this.pirate.flipX = false;
-
-        if (this.leftMove || this.rightMove || this.upMove || this.downMove) {
-            this.pirate.play("pirateWalk", true);
-            if (!this.walkSound.isPlaying) {
-                this.walkSound.play();
+        if (this.digging) {
+            this.pirate.play("pirateDig", true);
+            this.digwait = 0;
+            if (this.digtime++ >= Pirate.DIGTIME) {
+                this.digging = false;
+                this.digtime = 0;
+                this.pirate.play("pirateWalk", true);
             }
         } else {
-            this.pirate.anims.stop();
-            //this.walkSound.stop();
-        }
+            if (this.leftMove) this.pirate.flipX = true;
+            if (this.rightMove) this.pirate.flipX = false;
 
-        let x_dir = 0;
-        if (this.leftMove) {
-            x_dir = -1;
-        }
+            if (this.leftMove || this.rightMove || this.upMove || this.downMove) {
+                this.pirate.play("pirateWalk", true);
+                if (!this.walkSound.isPlaying) {
+                    this.walkSound.play();
+                }
+                this.digwait = 0;
+            } else {
+                if (this.digwait++ >= Pirate.DIGWAIT) {
+                    this.digging = true;
+                }
 
-        if (this.rightMove) {
-            x_dir = 1;
-        }
-        if (x_dir !== 0) {
-            this.currentSpeedX = x_dir * Pirate.MOVE_SPEED;
-            this.pirate.setVelocityX(this.currentSpeedX);
-        }
+                this.pirate.anims.stop();
+            }
 
-        this.leftMove = false;
-        this.rightMove = false;
+            let x_dir = 0;
+            if (this.leftMove) {
+                x_dir = -1;
+            }
 
-        this.pirate.setVelocityY(0);
+            if (this.rightMove) {
+                x_dir = 1;
+            }
+            if (x_dir !== 0) {
+                this.currentSpeedX = x_dir * Pirate.MOVE_SPEED;
+                this.pirate.setVelocityX(this.currentSpeedX);
+            }
 
-        let y_dir = 0;
-        if (this.upMove) {
-            y_dir = -1;
-        }
+            this.leftMove = false;
+            this.rightMove = false;
 
-        if (this.downMove) {
-            y_dir = 1;
-        }
-        if (y_dir !== 0) {
-            this.currentSpeedY = y_dir * Pirate.MOVE_SPEED;
-            this.pirate.setVelocityY(this.currentSpeedY);
-        }
+            this.pirate.setVelocityY(0);
 
-        this.upMove = false;
-        this.downMove = false;
-        this.debugText.setPosition(this.pirate.x, this.pirate.y);
-        if (currentTile) {
-            this.debugText.setText("" + currentTile.canCollide + " " + PirateTile[currentTile.index]);
-        } else {
-            this.debugText.setText("null");
+            let y_dir = 0;
+            if (this.upMove) {
+                y_dir = -1;
+            }
+
+            if (this.downMove) {
+                y_dir = 1;
+            }
+            if (y_dir !== 0) {
+                this.currentSpeedY = y_dir * Pirate.MOVE_SPEED;
+                this.pirate.setVelocityY(this.currentSpeedY);
+            }
+
+            this.upMove = false;
+            this.downMove = false;
+            this.debugText.setPosition(this.pirate.x, this.pirate.y);
+            if (currentTile) {
+                this.debugText.setText("" + currentTile.canCollide + " " + PirateTile[currentTile.index]);
+            } else {
+                this.debugText.setText("null");
+            }
+            this.pirate.depth = this.pirate.getBottomCenter().y;
         }
-        this.pirate.depth = this.pirate.y;
+        MainEventsManager.emit("playerXY", this.controls, this.pirate.getCenter().x, this.pirate.getCenter().y);
     }
 
     /**

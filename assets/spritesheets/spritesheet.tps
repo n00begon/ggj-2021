@@ -301,7 +301,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../rawimages/PirateBasicDigA.png</key>
+            <key type="filename">../rawimages/PirateBasicDig1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -316,7 +316,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../rawimages/PirateBasicDigB.png</key>
+            <key type="filename">../rawimages/PirateBasicDig2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -331,7 +331,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../rawimages/PirateBasicDigC.png</key>
+            <key type="filename">../rawimages/PirateBasicDig3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -439,9 +439,6 @@
             <filename>../rawimages/pirate_walk_2.png</filename>
             <filename>../rawimages/pirate_walk_3.png</filename>
             <filename>../rawimages/pirate_walk_4.png</filename>
-            <filename>../rawimages/PirateBasicDigA.png</filename>
-            <filename>../rawimages/PirateBasicDigB.png</filename>
-            <filename>../rawimages/PirateBasicDigC.png</filename>
             <filename>../rawimages/Dust Hole DiggingFront/Dust.png</filename>
             <filename>../rawimages/Dust Hole DiggingFront/Dust1.png</filename>
             <filename>../rawimages/Dust Hole DiggingFront/Dust2.png</filename>
@@ -462,6 +459,9 @@
             <filename>../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-03.png</filename>
             <filename>../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-04.png</filename>
             <filename>../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-05.png</filename>
+            <filename>../rawimages/PirateBasicDig1.png</filename>
+            <filename>../rawimages/PirateBasicDig2.png</filename>
+            <filename>../rawimages/PirateBasicDig3.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

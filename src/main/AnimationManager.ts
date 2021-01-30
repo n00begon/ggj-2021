@@ -6,15 +6,11 @@ export class AnimationManager {
      * Creates the animations for the game objects so that they are only created once
      */
     constructor(scene: Phaser.Scene) {
-        this.createCoinAnimation(scene);
+        this.createWalkAnimation(scene);
+        this.createDigAnimation(scene);
     }
 
-    /**
-     * Sets up the coin animation
-     *
-     * @param scene - the scene to add the animation to
-     */
-    private createCoinAnimation(scene: Phaser.Scene): void {
+    private createWalkAnimation(scene: Phaser.Scene): void {
         scene.anims.create({
             frameRate: 6,
             frames: scene.anims.generateFrameNames("sprites", {
@@ -37,6 +33,19 @@ export class AnimationManager {
 
             key: "barrel-explosion",
             repeat: 0,
+        });
+    }
+
+    private createDigAnimation(scene: Phaser.Scene): void {
+        scene.anims.create({
+            frameRate: 6,
+            frames: scene.anims.generateFrameNames("sprites", {
+                start: 1,
+                end: 4,
+                prefix: "PirateBasicDig",
+            }),
+            key: "pirateDig",
+            repeat: -1,
         });
     }
 }
