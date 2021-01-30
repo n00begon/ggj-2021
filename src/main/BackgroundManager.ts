@@ -1,4 +1,3 @@
-import { Pair } from "matter";
 import { GameSettings } from "../utilities/GameSettings";
 import { Perlin } from "../utilities/Perlin";
 
