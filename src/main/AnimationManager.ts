@@ -8,6 +8,7 @@ export class AnimationManager {
     constructor(scene: Phaser.Scene) {
         this.createWalkAnimation(scene);
         this.createDigAnimation(scene);
+        this.createBarrelAnimation(scene);
     }
 
     private createWalkAnimation(scene: Phaser.Scene): void {
@@ -22,17 +23,6 @@ export class AnimationManager {
             key: "pirateWalk",
             repeat: -1,
         });
-
-        scene.anims.create({
-            frameRate: 6,
-            frames: scene.anims.generateFrameNames("sprites", {
-                start: 1,
-                end: 5,
-                prefix: "Barrel-0",
-            }),
-
-            key: "barrel-explosion",
-        });
     }
 
     private createDigAnimation(scene: Phaser.Scene): void {
@@ -45,6 +35,18 @@ export class AnimationManager {
             }),
             key: "pirateDig",
             repeat: -1,
+        });
+    }
+
+    private createBarrelAnimation(scene: Phaser.Scene): void {
+        scene.anims.create({
+            frameRate: 6,
+            frames: scene.anims.generateFrameNames("sprites", {
+                start: 1,
+                end: 5,
+                prefix: "Barrel-0",
+            }),
+            key: "barrelExplode",
         });
     }
 }
