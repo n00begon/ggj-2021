@@ -115,11 +115,11 @@ export class ControlManager {
         }
 
         if (this.DEBUGaddPuzzle00Key.isDown) {
-            MainEventsManager.emit("foundPuzzle00");
+            MainEventsManager.emit("foundPuzzle", 0, 0);
         }
 
         if (this.DEBUGaddPuzzle11Key.isDown) {
-            MainEventsManager.emit("foundPuzzle11");
+            MainEventsManager.emit("foundPuzzle", 1, 1);
         }
     }
 

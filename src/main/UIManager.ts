@@ -24,6 +24,29 @@ export class PuzzlePieces {
         this.piece22 = false;
     }
 
+    public set(i: number, j: number): void {
+        // HACK(Leon) : this sucks
+        if (i == 0 && j == 0) {
+            this.piece00 = true;
+        } else if (i == 1 && j == 0) {
+            this.piece10 = true;
+        } else if (i == 2 && j == 0) {
+            this.piece20 = true;
+        } else if (i == 0 && j == 1) {
+            this.piece01 = true;
+        } else if (i == 1 && j == 1) {
+            this.piece11 = true;
+        } else if (i == 2 && j == 1) {
+            this.piece21 = true;
+        } else if (i == 0 && j == 2) {
+            this.piece02 = true;
+        } else if (i == 1 && j == 2) {
+            this.piece12 = true;
+        } else if (i == 2 && j == 2) {
+            this.piece22 = true;
+        }
+    }
+
     public havePiece(i: number, j: number): boolean {
         // HACK(Leon) : this sucks
         if (i == 0 && j == 0) {
@@ -65,8 +88,8 @@ export class UIManager {
      */
     constructor(scene: Phaser.Scene) {
         MainEventsManager.on("scoreChange", this.handleScoreChange, this);
-        MainEventsManager.on("foundPuzzle00", this.foundPuzzle00, this);
-        MainEventsManager.on("foundPuzzle11", this.foundPuzzle11, this);
+
+        MainEventsManager.on("foundPuzzle", this.foundPuzzle, this);
 
         this.scoreTextWASD = new ScoreText(scene, 30, 30);
         this.scoreTextWASD.update(0);
@@ -97,12 +120,8 @@ export class UIManager {
         this.scoreTextWASD.update(amount);
     }
 
-    private foundPuzzle00(): void {
-        this.piecesWASD.piece00 = true;
-    }
-
-    private foundPuzzle11(): void {
-        this.piecesWASD.piece11 = true;
+    public foundPuzzle(x: number, y: number): void {
+        this.piecesWASD.set(x, y);
     }
 
     public showPuzzleForArrows(): void {
