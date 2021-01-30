@@ -24,7 +24,6 @@ export class InteractiveManager {
     private barrels: Array<Barrel>;
     public XmarksTheSpot: Phaser.Math.Vector2 = new Phaser.Math.Vector2(2000, 2000);
 
-    
     /**
      * Adds the interactive objects to the scene
      */
@@ -45,7 +44,8 @@ export class InteractiveManager {
             this.screenHeight / 2,
             backgroundManager.getCollisionTilemap(),
             backgroundManager.getHoleTilemap(),
-            this.XmarksTheSpot);
+            this.XmarksTheSpot,
+        );
 
         this.pirateB = new Pirate(
             scene,
@@ -54,7 +54,8 @@ export class InteractiveManager {
             this.screenHeight / 2 - 300,
             backgroundManager.getCollisionTilemap(),
             backgroundManager.getHoleTilemap(),
-            this.XmarksTheSpot);
+            this.XmarksTheSpot,
+        );
 
         // NOTE(Leon) : sprinkle our barrels with puzzle pieces!
         const validPuzzleCoords = [

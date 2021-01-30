@@ -45,7 +45,7 @@ export class Pirate {
         y: number,
         collisionLayer: Phaser.Tilemaps.TilemapLayer,
         holeLayer: Phaser.Tilemaps.TilemapLayer,
-        XmarksTheSpot: Phaser.Math.Vector2
+        XmarksTheSpot: Phaser.Math.Vector2,
     ) {
         this.scene = scene;
         this.controls = controls;
