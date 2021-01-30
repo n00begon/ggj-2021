@@ -65,6 +65,13 @@ export class InteractiveManager {
                 ),
             );
         }
+
+        // test puzzle piece barrel
+        const puzzleBarrel = new Barrel(scene, 1500, 1500, this.pirateA, this.pirateB);
+        puzzleBarrel.isPuzzlePiece = true;
+        puzzleBarrel.puzzleX = 1;
+        puzzleBarrel.puzzleX = 2;
+        this.barrels.push(puzzleBarrel);
     }
     /**
      * The main update loop for the scene.

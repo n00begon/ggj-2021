@@ -133,7 +133,7 @@ export class PuzzleHUD {
         }
 
         this.treasurePosRect = scene.add.image(0, 0, "sprites", "Treasure Chest");
-        this.treasurePosRect.scale = 0.08;
+        this.treasurePosRect.scale = 0.1;
 
         this.playerPosRect = scene.add.image(0, 0, "sprites", "Faceonly");
         this.playerPosRect.scale = 0.4;

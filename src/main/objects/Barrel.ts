@@ -5,6 +5,9 @@ export class Barrel {
     private scene: Phaser.Scene;
     private broken = false;
     private isCrate = false;
+    public isPuzzlePiece = false;
+    public puzzleX = 0;
+    public puzzleY = 0;
 
     constructor(scene: Phaser.Scene, x: number, y: number, pirateA: Pirate, pirateB: Pirate) {
         this.scene = scene;
