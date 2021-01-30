@@ -1,8 +1,13 @@
+import { GameSettings } from "../utilities/GameSettings";
+import { Perlin } from "../utilities/Perlin";
+
 /**
  * Background manager controls the non interactive background objects
  */
 
 export enum PirateTile {
+    None = 0,
+
     BottomLeftCornerSand = 1,
     BottomLeftEdgeSand = 2,
     BottomMiddleEdgeSand = 3,
@@ -29,13 +34,22 @@ export enum PirateTile {
 }
 
 export class BackgroundManager {
+    private static gravelSandProb = 0.3;
+    private static plainSandProb = 0.2;
+    private static rockProb = 0.1;
+    private static plantAProb = 0.05;
+    private static plantBProb = 0.05;
+
+    private water: Phaser.Tilemaps.TilemapLayer;
+    private island: Phaser.Tilemaps.TilemapLayer;
+    private objects: Phaser.Tilemaps.TilemapLayer;
     /**
      * Adds the parallax background to the scene
      */
     constructor(scene: Phaser.Scene) {
         const tileSize = 128;
-        const mapWidth = Math.floor(scene.game.canvas.width /* / GameSettings.ZOOM_LEVEL*/ / tileSize);
-        const mapHeight = Math.floor(scene.game.canvas.height /* / GameSettings.ZOOM_LEVEL*/ / tileSize);
+        const mapWidth = Math.floor(scene.game.canvas.width / GameSettings.ZOOM_LEVEL / tileSize);
+        const mapHeight = Math.floor(scene.game.canvas.height / GameSettings.ZOOM_LEVEL / tileSize);
         const map = scene.make.tilemap({
             tileWidth: tileSize,
             tileHeight: tileSize,
@@ -43,225 +57,117 @@ export class BackgroundManager {
             height: mapHeight,
         });
         const tileset = map.addTilesetImage("background", "background", tileSize, tileSize, 0, 4, 1);
-        const water = map.createBlankLayer("water", tileset);
-        const island = map.createBlankLayer("island", tileset);
-        const objects = map.createBlankLayer("objects", tileset);
 
-        const islandData = [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.CenterCenterDotsSand,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            0,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterPlainSand,
-            PirateTile.CenterCenterGravelSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterGravelSand,
-            PirateTile.CenterCenterDotsSand,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterPlainSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterGravelSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            0,
-            0,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterPlainSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterGravelSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            0,
-            0,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterGravelSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            0,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterDotsSand,
-            PirateTile.CenterCenterGravelSand,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-        ];
-
-        const objectData = [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.PlantB,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.Rock,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.PlantA,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.Rock,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            PirateTile.PlantA,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-        ];
-
-        water.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
-        for (let i = 0; i < islandData.length; i++) {
-            island.putTileAt(islandData[i], Math.floor(i / mapHeight), i % mapHeight);
+        Perlin.Init();
+        if (GameSettings.DEBUG) {
+            Perlin.seed(GameSettings.DEBUG_SEED);
+        } else {
+            Perlin.seed(Math.random());
         }
-        for (let i = 0; i < objectData.length; i++) {
-            objects.putTileAt(objectData[i], Math.floor(i / mapHeight), i % mapHeight);
+
+        this.water = map.createBlankLayer("water", tileset);
+        this.water.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
+
+        this.island = map.createBlankLayer("island", tileset);
+        // eslint-disable-next-line no-constant-condition
+        while (true) {
+            let count = 0;
+            for (let x = 3; x < mapWidth - 4; x++) {
+                for (let y = 3; y < mapHeight - 4; y++) {
+                    const dist = this.distanceSquared(x, y, mapWidth, mapHeight);
+                    const noise = (Perlin.perlin2(x / mapWidth, y / mapHeight) + 1) / 2;
+                    if (noise > 0.3 + 0.4 * dist) {
+                        this.island.putTileAt(this.genSand(), x, y);
+                        count++;
+                    }
+                }
+            }
+            if (count / (mapWidth * mapHeight) < 0.5) {
+                map.removeLayer("island");
+                this.island = map.createBlankLayer("island", tileset);
+                if (!GameSettings.DEBUG) Perlin.seed(Math.random());
+            } else {
+                break;
+            }
         }
+
+        this.objects = map.createBlankLayer("objects", tileset);
+        for (let x = 0; x < mapWidth; x++) {
+            for (let y = 0; y < mapHeight; y++) {
+                if (this.island.hasTileAt(x, y)) {
+                    const object = this.genObject();
+                    if (object != PirateTile.None) {
+                        this.objects.putTileAt(object, x, y);
+                    }
+                }
+            }
+        }
+        const debugGraphics = scene.add.graphics();
+
+        this.objects.setCollisionByProperty({ collides: true });
+        this.objects.renderDebug(debugGraphics, {
+            tileColor: new Phaser.Display.Color(5, 5, 5, 100), // Non-colliding tiles
+            collidingTileColor: new Phaser.Display.Color(211, 36, 255, 100), // Colliding tiles
+            faceColor: new Phaser.Display.Color(211, 36, 255, 255), // Colliding face edges
+        });
 
         // temp
         scene.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    }
+
+    private distanceSquared(x: number, y: number, width: number, height: number): number {
+        const dx = (2 * x) / width - 1;
+        const dy = (2 * y) / height - 1;
+        return dx * dx + dy * dy;
+    }
+
+    private genSand(): PirateTile {
+        let rnd = Math.random();
+
+        if (rnd < BackgroundManager.gravelSandProb) {
+            return PirateTile.CenterCenterGravelSand;
+        } else {
+            rnd -= BackgroundManager.gravelSandProb;
+        }
+
+        if (rnd < BackgroundManager.plainSandProb) {
+            return PirateTile.CenterCenterPlainSand;
+        }
+
+        return PirateTile.CenterCenterDotsSand;
+    }
+
+    private genObject(): PirateTile {
+        let rnd = Math.random();
+
+        if (rnd < BackgroundManager.rockProb) {
+            return PirateTile.Rock;
+        } else {
+            rnd -= BackgroundManager.rockProb;
+        }
+
+        if (rnd < BackgroundManager.plantAProb) {
+            return PirateTile.PlantA;
+        } else {
+            rnd -= BackgroundManager.plantAProb;
+        }
+
+        if (rnd < BackgroundManager.plantBProb) {
+            return PirateTile.PlantB;
+        }
+
+        return PirateTile.None;
+    }
+
+    public getWaterTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.water;
+    }
+
+    public getIslandTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.island;
+    }
+
+    public getObjectsTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.objects;
     }
 }

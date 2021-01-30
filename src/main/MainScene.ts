@@ -21,8 +21,8 @@ export class Main extends Phaser.Scene {
      */
     public create(): void {
         new AudioManager(this);
-        new BackgroundManager(this);
-        this.interactiveManager = new InteractiveManager(this);
+        const backgroundManager = new BackgroundManager(this);
+        this.interactiveManager = new InteractiveManager(this, backgroundManager);
         this.scene.run("UI");
         // this.scene.start("Credits");
         this.scale.on("resize", this.resize);
