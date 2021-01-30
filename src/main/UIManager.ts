@@ -93,6 +93,7 @@ export class PuzzleHUD {
     public y: number;
     public rects: Phaser.GameObjects.Rectangle[][];
     public backgroundRect: Phaser.GameObjects.Rectangle;
+    public playerPosRect: Phaser.GameObjects.Rectangle;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.x = x;
@@ -112,6 +113,8 @@ export class PuzzleHUD {
                 this.rects[i][j] = build_rect(scene, this.x + i * w, this.y + j * h, w, h, colors[ci]);
             }
         }
+
+        this.playerPosRect = scene.add.rectangle(this.x + 32, this.y + 32, 8, 8, 0xff0000);
     }
 
     public hide(): void {
@@ -122,6 +125,7 @@ export class PuzzleHUD {
         }
 
         this.backgroundRect.visible = false;
+        this.playerPosRect.visible = false;
     }
 
     public show(pieces: PuzzlePieces): void {
@@ -134,6 +138,7 @@ export class PuzzleHUD {
         }
 
         this.backgroundRect.visible = true;
+        this.playerPosRect.visible = true;
     }
 }
 
@@ -158,6 +163,8 @@ export class UIManager {
 
         MainEventsManager.on("foundPuzzle", this.foundPuzzle, this);
 
+        MainEventsManager.on("playerXY", this.playerXY, this);
+
         this.scoreTextWASD = new ScoreText(scene, 30, 30);
         this.scoreTextWASD.update(0);
         this.scoreTextWASD.hide();
@@ -181,6 +188,10 @@ export class UIManager {
      */
     private handleScoreChange(amount: number): void {
         this.scoreTextWASD.update(amount);
+    }
+
+    public playerXY(control: KeyControls, x: number, y: number): void {
+        console.log(x, y);
     }
 
     public foundPuzzle(control: KeyControls, x: number, y: number): void {

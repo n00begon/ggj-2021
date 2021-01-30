@@ -9,7 +9,7 @@ import { MainEventsManager } from "../MainEventsManager";
  */
 export class Pirate {
     private static readonly MOVE_SPEED = 300;
-    private pirate: Phaser.Physics.Arcade.Sprite;
+    public pirate: Phaser.Physics.Arcade.Sprite;
     private scene: Phaser.Scene;
     private currentSpeedX = 0;
     private leftMove = false;
@@ -35,12 +35,12 @@ export class Pirate {
         this.pirate.play("pirateWalk");
         this.pirate.setBounce(0.1);
         // scene.physics.add.collider(this.pirate, tilemap);
-        if (controls === KeyControls.Arrows) {
+        if (controls === KeyControls.WASD) {
             MainEventsManager.on("leftMove2", this.handleLeftMove, this);
             MainEventsManager.on("rightMove2", this.handleRightMove, this);
             MainEventsManager.on("upMove2", this.handleUpMove, this);
             MainEventsManager.on("downMove2", this.handleDownMove, this);
-        } else if (controls == KeyControls.WASD) {
+        } else if (controls == KeyControls.Arrows) {
             MainEventsManager.on("leftMove", this.handleLeftMove, this);
             MainEventsManager.on("rightMove", this.handleRightMove, this);
             MainEventsManager.on("upMove", this.handleUpMove, this);
