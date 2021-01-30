@@ -52,6 +52,7 @@ export class Preloader extends Phaser.Scene {
     private loadImages(): void {
         this.load.setPath(`${Preloader.ASSET_DIRECTORY}/rawimages/`);
         this.load.image("barrel", "barrel.png");
+        this.load.image("face", "Faceonly.png");
     }
 
     /**

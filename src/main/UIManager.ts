@@ -94,7 +94,7 @@ export class PuzzleHUD {
     public y: number;
     public rects: Phaser.GameObjects.Rectangle[][];
     public backgroundRect: Phaser.GameObjects.Rectangle;
-    public playerPosRect: Phaser.GameObjects.Rectangle;
+    public playerPosRect: Phaser.GameObjects.Image;
     public treasurePosRect: Phaser.GameObjects.Rectangle;
     static readonly TILE_WIDTH = 32;
     static readonly TILE_HEIGHT = 32;
@@ -102,7 +102,8 @@ export class PuzzleHUD {
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.x = x;
         this.y = y;
-        const colors = [0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00];
+        const c = 0x908e7e;
+        const colors = [c, c, c, c, c, c, c, c, c];
 
         this.backgroundRect = build_rect(
             scene,
@@ -129,7 +130,8 @@ export class PuzzleHUD {
             }
         }
 
-        this.playerPosRect = scene.add.rectangle(this.x + 32, this.y + 32, 8, 8, 0xff0000);
+        this.playerPosRect = scene.add.image(this.x + 32, this.y + 32, "face");
+        this.playerPosRect.scale = 0.2;
         this.treasurePosRect = scene.add.rectangle(this.x + 32, this.y + 32, 8, 8, 0x00ff00);
     }
 
