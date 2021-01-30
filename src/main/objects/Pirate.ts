@@ -2,6 +2,7 @@ import { GameSettings } from "../../utilities/GameSettings";
 import { PirateTile } from "../BackgroundManager";
 import { KeyControls } from "../KeyControls";
 import { MainEventsManager } from "../MainEventsManager";
+import { Barrel } from "./Barrel";
 
 /**
  * Pirate is the character that the player controls.
@@ -81,6 +82,10 @@ export class Pirate {
 
     public getSprite(): Phaser.Physics.Arcade.Sprite {
         return this.pirate;
+    }
+
+    public receivedBarrel(barrel: Barrel) {
+        console.log(barrel);
     }
 
     /**

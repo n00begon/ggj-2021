@@ -9,20 +9,17 @@ export class Barrel {
         this.scene = scene;
         this.barrel = scene.physics.add.sprite(x, y, "sprites", "Barrel-01");
         this.barrel.depth = this.barrel.getBottomCenter().y;
-        scene.physics.add.collider(this.barrel, pirateA.getSprite(), () => {
-            if (!this.broken) {
-                console.log("YUM", pirateA);
-                this.barrel.setVisible(false);
-                this.barrel.setActive(false);
-                this.broken = true;
-            }
-        });
+        this.barrel.setImmovable(true);
+        this.addCollider(scene, pirateA);
+        this.addCollider(scene, pirateB);
+    }
 
-        scene.physics.add.collider(this.barrel, pirateB.getSprite(), () => {
+    private addCollider(scene: Phaser.Scene, pirate: Pirate) {
+        scene.physics.add.collider(this.barrel, pirate.getSprite(), () => {
             if (!this.broken) {
-                console.log("YUM", pirateB);
-                this.barrel.setVisible(false);
-                this.barrel.setActive(false);
+                pirate.receivedBarrel(this);
+                this.broken = true;
+                this.barrel.playAfterDelay("barrelExplode", 200);
             }
         });
     }
