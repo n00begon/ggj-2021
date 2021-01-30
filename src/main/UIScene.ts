@@ -5,27 +5,39 @@ import { MainEventsManager } from "./MainEventsManager";
  * UI is a scene overlayed on the main scene to hold all the user interface components
  */
 export class UI extends Phaser.Scene {
+    private uiMan!: UIManager;
     /**
      * The constructor sets the scene ID
      */
     public constructor() {
         super("UI");
-        MainEventsManager.on("showPuzzle", this.handleShowPuzzle, this);
-        MainEventsManager.on("dontShowPuzzle", this.handleDontShowPuzzle, this);
+        MainEventsManager.on("showPuzzleWASD", this.handleShowPuzzleWASD, this);
+        MainEventsManager.on("dontShowPuzzleWASD", this.handleDontShowPuzzleWASD, this);
+
+        MainEventsManager.on("showPuzzleArrows", this.handleShowPuzzleArrows, this);
+        MainEventsManager.on("dontShowPuzzleArrows", this.handleDontShowPuzzleArrows, this);
     }
 
     /**
      * Create is called when the scene is loaded
      */
     public create(): void {
-        new UIManager(this);
+        this.uiMan = new UIManager(this);
     }
 
-    private handleShowPuzzle(): void {
-        this.scene.setVisible(true);
+    private handleShowPuzzleWASD(): void {
+        this.uiMan.showPuzzleForWASD();
     }
 
-    private handleDontShowPuzzle(): void {
-        this.scene.setVisible(false);
+    private handleDontShowPuzzleWASD(): void {
+        this.uiMan.hidePuzzleForWASD();
+    }
+
+    private handleShowPuzzleArrows(): void {
+        this.uiMan.showPuzzleForArrows();
+    }
+
+    private handleDontShowPuzzleArrows(): void {
+        this.uiMan.hidePuzzleForArrows();
     }
 }

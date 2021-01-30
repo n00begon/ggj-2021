@@ -81,9 +81,9 @@ export class ControlManager {
         // so now emitting a dont show puzzle event as well.
         // i dunno
         if (this.showPuzzleKey.isDown) {
-            MainEventsManager.emit("showPuzzle");
+            MainEventsManager.emit("showPuzzleWASD");
         } else {
-            MainEventsManager.emit("dontShowPuzzle");
+            MainEventsManager.emit("dontShowPuzzleWASD");
         }
 
         if (this.leftKey2.isDown) {
@@ -103,7 +103,9 @@ export class ControlManager {
         }
 
         if (this.showPuzzleKey2.isDown) {
-            MainEventsManager.emit("showPuzzle2");
+            MainEventsManager.emit("showPuzzleArrows");
+        } else {
+            MainEventsManager.emit("dontShowPuzzleArrows");
         }
     }
 

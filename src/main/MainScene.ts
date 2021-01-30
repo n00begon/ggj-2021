@@ -33,9 +33,6 @@ export class Main extends Phaser.Scene {
      */
     public update(): void {
         this.interactiveManager.update();
-
-        //const uiScene = this.scene.get("UI");
-        //uiScene.scene.setVisible(false);
     }
 
     /**

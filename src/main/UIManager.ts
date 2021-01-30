@@ -5,7 +5,8 @@ import { MainEventsManager } from "./MainEventsManager";
  * UIManager controls the user interface elements displayed to the user
  */
 export class UIManager {
-    private scoreText: ScoreText;
+    private scoreTextWASD: ScoreText;
+    private scoreTextArrows: ScoreText;
 
     /**
      * Adds the interactive objects to the scene
@@ -13,8 +14,11 @@ export class UIManager {
     constructor(scene: Phaser.Scene) {
         MainEventsManager.on("scoreChange", this.handleScoreChange, this);
 
-        this.scoreText = new ScoreText(scene, 30, 30);
-        this.scoreText.update(0);
+        this.scoreTextWASD = new ScoreText(scene, 30, 30);
+        this.scoreTextWASD.update(0);
+
+        this.scoreTextArrows = new ScoreText(scene, 30, 120);
+        this.scoreTextArrows.update(0);
     }
 
     /**
@@ -22,6 +26,22 @@ export class UIManager {
      * @param amount - the amount the score is now
      */
     private handleScoreChange(amount: number): void {
-        this.scoreText.update(amount);
+        this.scoreTextWASD.update(amount);
     }
+
+    public showPuzzleForArrows(): void {
+        this.scoreTextArrows.update(200);
+    };
+
+    public hidePuzzleForArrows(): void {
+        this.scoreTextArrows.update(0);
+    };
+
+    public showPuzzleForWASD(): void {
+        this.scoreTextWASD.update(100);
+    };
+
+    public hidePuzzleForWASD(): void {
+        this.scoreTextWASD.update(0);
+    };
 }
