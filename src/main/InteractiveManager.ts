@@ -64,8 +64,11 @@ export class InteractiveManager {
         this.pirateC.update();
 
         // NOTE(Leon) I dunno how else to pass coordinates to the HUD system?
-        const xy = this.pirateA.pirate.getCenter();
-        MainEventsManager.emit("playerXY", KeyControls.WASD, xy.x, xy.y);
+        const xyWASD = this.pirateA.pirate.getCenter();
+        MainEventsManager.emit("playerXY", KeyControls.WASD, xyWASD.x, xyWASD.y);
+
+        const xyArrows = this.pirateB.pirate.getCenter();
+        MainEventsManager.emit("playerXY", KeyControls.Arrows, xyArrows.x, xyArrows.y);
 
         this.controlManager.update();
     }

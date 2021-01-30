@@ -118,6 +118,16 @@ export class PuzzleHUD {
         this.playerPosRect = scene.add.rectangle(this.x + 32, this.y + 32, 8, 8, 0xff0000);
     }
 
+    public updatePlayerPos(wx: number, wy: number) {
+        let ux = wx / GameSettings.MAP_WIDTH;
+        let uy = wy / GameSettings.MAP_HEIGHT;
+        ux *= 3 * 32;
+        uy *= 3 * 32;
+        ux += this.x;
+        uy += this.y;
+        this.playerPosRect.setPosition(ux, uy);
+    }
+
     public hide(): void {
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
@@ -193,15 +203,9 @@ export class UIManager {
 
     public playerXY(control: KeyControls, x: number, y: number): void {
         if (control === KeyControls.WASD) {
-            console.log("map xy", x, y);
-            let ux = x / GameSettings.MAP_WIDTH;
-            let uy = y / GameSettings.MAP_HEIGHT;
-            ux *= 3 * 32;
-            uy *= 3 * 32;
-            ux += this.puzzleHUDWASD.x;
-            uy += this.puzzleHUDWASD.y;
-            console.log("01 xy", ux, uy);
-            this.puzzleHUDWASD.playerPosRect.setPosition(ux, uy);
+            this.puzzleHUDWASD.updatePlayerPos(x, y);
+        } else {
+            this.puzzleHUDArrows.updatePlayerPos(x, y);
         }
     }
 
