@@ -95,23 +95,22 @@ export class PuzzleHUD {
     public rects: Phaser.GameObjects.Rectangle[][];
     public backgroundRect: Phaser.GameObjects.Rectangle;
     public playerPosRect: Phaser.GameObjects.Rectangle;
+    static readonly TILE_WIDTH = 32;
+    static readonly TILE_HEIGHT = 32;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.x = x;
         this.y = y;
         const colors = [0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00];
 
-        const w = 32;
-        const h = 32;
-
-        this.backgroundRect = build_rect(scene, this.x, this.y, w * 3, h * 3, 0x000000);
+        this.backgroundRect = build_rect(scene, this.x, this.y, PuzzleHUD.TILE_WIDTH * 3, PuzzleHUD.TILE_HEIGHT * 3, 0x000000);
 
         this.rects = [];
         for (let i = 0; i < 3; i++) {
             this.rects[i] = [];
             for (let j = 0; j < 3; j++) {
                 const ci = j * 3 + i;
-                this.rects[i][j] = build_rect(scene, this.x + i * w, this.y + j * h, w, h, colors[ci]);
+                this.rects[i][j] = build_rect(scene, this.x + i * PuzzleHUD.TILE_WIDTH, this.y + j * PuzzleHUD.TILE_HEIGHT, PuzzleHUD.TILE_WIDTH, PuzzleHUD.TILE_HEIGHT, colors[ci]);
             }
         }
 
@@ -121,8 +120,8 @@ export class PuzzleHUD {
     public updatePlayerPos(wx: number, wy: number): void {
         let ux = wx / GameSettings.MAP_WIDTH;
         let uy = wy / GameSettings.MAP_HEIGHT;
-        ux *= 3 * 32;
-        uy *= 3 * 32;
+        ux *= 3 * PuzzleHUD.TILE_WIDTH;
+        uy *= 3 * PuzzleHUD.TILE_HEIGHT;
         ux += this.x;
         uy += this.y;
         this.playerPosRect.setPosition(ux, uy);
