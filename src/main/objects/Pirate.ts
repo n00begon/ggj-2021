@@ -84,7 +84,7 @@ export class Pirate {
         return this.pirate;
     }
 
-    public receivedBarrel(barrel: Barrel) {
+    public receivedBarrel(barrel: Barrel): void {
         console.log(barrel);
     }
 
