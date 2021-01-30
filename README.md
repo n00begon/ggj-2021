@@ -2,6 +2,8 @@
 
 ![Dig](/assets/images/PirateBasicDig.png)
 
+A game by Griff, dedicated to all the pirates that were second to arrive at the treasure.
+
 
 
 ## Development
