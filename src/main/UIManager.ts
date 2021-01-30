@@ -219,9 +219,8 @@ export class UIManager {
         this.piecesArrows = new PuzzlePieces();
         this.puzzleHUDArrows = new PuzzleHUD(scene, 800, 64);
 
-        // HACK(Leon) : treasure pos hard coded for now
-        this.puzzleHUDArrows.updateTreasurePos(1850, 2000);
-        this.puzzleHUDWASD.updateTreasurePos(1850, 2000);
+        this.puzzleHUDArrows.updateTreasurePos(GameSettings.XmarksTheSpot.x, GameSettings.XmarksTheSpot.y);
+        this.puzzleHUDWASD.updateTreasurePos(GameSettings.XmarksTheSpot.x, GameSettings.XmarksTheSpot.y);
     }
 
     public playerXY(control: KeyControls, x: number, y: number): void {

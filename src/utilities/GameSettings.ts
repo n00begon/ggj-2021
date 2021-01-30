@@ -10,4 +10,5 @@ export class GameSettings {
     public static readonly DEBUG_SEED = 123;
     public static MAP_WIDTH: number;
     public static MAP_HEIGHT: number;
+    public static XmarksTheSpot: Phaser.Math.Vector2 = new Phaser.Math.Vector2(2000, 2000);
 }
