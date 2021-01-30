@@ -11,5 +11,5 @@ Based on the n00begon's [Phaser 3](https://phaser.io/) Jam Template with [TypeSc
 
 Check out the template here:
 
-![Toasty](https://github.com/n00begon/phaser-jam-template)
+[n00begon's template](https://github.com/n00begon/phaser-jam-template)
 
