@@ -43,6 +43,8 @@ export class Pirate {
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
         this.walkSound = scene.sound.get("walking1");
+        this.pirate.setBodySize(this.pirate.width, this.pirate.height);
+
         this.pirate.setBounce(0.1);
         scene.physics.add.collider(this.pirate, collisionLayer);
         collisionLayer.setCollision(PirateTile.Water);
@@ -130,6 +132,7 @@ export class Pirate {
         } else {
             this.debugText.setText("null");
         }
+        this.pirate.depth = this.pirate.y;
     }
 
     /**
