@@ -122,7 +122,10 @@ export class UIManager {
     private scoreTextArrows: ScoreText;
 
     private piecesWASD: PuzzlePieces;
-    private puzzleHUD: PuzzleHUD;
+    private puzzleHUDWASD: PuzzleHUD;
+
+    private piecesArrows: PuzzlePieces;
+    private puzzleHUDArrows: PuzzleHUD;
 
     /**
      * Adds the interactive objects to the scene
@@ -139,7 +142,12 @@ export class UIManager {
         this.scoreTextArrows.update(0);
 
         this.piecesWASD = new PuzzlePieces();
-        this.puzzleHUD = new PuzzleHUD(scene, 64, 64);
+        this.puzzleHUDWASD = new PuzzleHUD(scene, 64, 64);
+
+        this.piecesArrows = new PuzzlePieces();
+        this.puzzleHUDArrows = new PuzzleHUD(scene, 600, 64);
+
+        this.piecesArrows.set(1, 1);
     }
 
     /**
@@ -156,19 +164,21 @@ export class UIManager {
 
     public showPuzzleForArrows(): void {
         this.scoreTextArrows.update(200);
+        this.puzzleHUDArrows.show(this.piecesArrows);
     }
 
     public hidePuzzleForArrows(): void {
+        this.puzzleHUDArrows.hide();
         this.scoreTextArrows.hide();
     }
 
     public showPuzzleForWASD(): void {
         this.scoreTextWASD.update(100);
-        this.puzzleHUD.show(this.piecesWASD);
+        this.puzzleHUDWASD.show(this.piecesWASD);
     }
 
     public hidePuzzleForWASD(): void {
         this.scoreTextWASD.hide();
-        this.puzzleHUD.hide();
+        this.puzzleHUDWASD.hide();
     }
 }
