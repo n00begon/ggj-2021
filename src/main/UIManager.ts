@@ -130,9 +130,8 @@ export class PuzzleHUD {
             }
         }
 
-
-
-        this.treasurePosRect = scene.add.image(this.x + 32, this.y + 32, "sprites", "Treasure Chest"); this.treasurePosRect.scale = 0.1;
+        this.treasurePosRect = scene.add.image(this.x + 32, this.y + 32, "sprites", "Treasure Chest");
+        this.treasurePosRect.scale = 0.1;
         this.treasurePosRect.scale = 0.08;
 
         this.playerPosRect = scene.add.image(this.x + 32, this.y + 32, "sprites", "pirate_walk_1");
