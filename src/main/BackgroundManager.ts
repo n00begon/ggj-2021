@@ -1,3 +1,4 @@
+import { Pair } from "matter";
 import { GameSettings } from "../utilities/GameSettings";
 import { Perlin } from "../utilities/Perlin";
 
@@ -44,6 +45,7 @@ export class BackgroundManager {
     private island: Phaser.Tilemaps.TilemapLayer;
     private objects: Phaser.Tilemaps.TilemapLayer;
     private collision: Phaser.Tilemaps.TilemapLayer;
+    private barrels: Array<Phaser.Tilemaps.Tile>;
     /**
      * Adds the parallax background to the scene
      */
@@ -106,6 +108,23 @@ export class BackgroundManager {
                 }
             }
         }
+
+        this.barrels = new Array<Phaser.Tilemaps.Tile>();
+        for (let x = 0; x < mapWidth; x++) {
+            for (let y = 0; y < mapHeight; y++) {
+                if (this.island.hasTileAt(x, y)) {
+                    this.barrels.push(this.island.getTileAt(x, y));
+                }
+            }
+        }
+        for (let i = this.barrels.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = this.barrels[i];
+            this.barrels[i] = this.barrels[j];
+            this.barrels[j] = temp;
+        }
+        const barrelsCnt = 5 + 5 * Math.random();
+        while (this.barrels.length > barrelsCnt) this.barrels.pop();
 
         // Add borders
         const borders = map.createBlankLayer("borders", tileset);
@@ -309,5 +328,13 @@ export class BackgroundManager {
 
     public getCollisionTilemap(): Phaser.Tilemaps.TilemapLayer {
         return this.collision;
+    }
+
+    public getBarrels(): Array<Phaser.Tilemaps.Tile> {
+        return this.barrels;
+    }
+
+    private randInt(max: number) {
+        return Math.floor(Math.random() * Math.floor(max));
     }
 }

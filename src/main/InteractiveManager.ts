@@ -60,9 +60,10 @@ export class InteractiveManager {
             backgroundManager.getCollisionTilemap(),
         );
 
-        this.barrels = new Array<Barrel>(5 + this.randInt(5));
-        for (let i = 0; i < this.barrels.length; i++) {
-            this.barrels[i] = new Barrel(scene, Math.random() * this.screenWidth, Math.random() * this.screenHeight);
+        this.barrels = new Array<Barrel>();
+        const barrelsCoords = backgroundManager.getBarrels();
+        for (let i = 0; i < barrelsCoords.length; i++) {
+            this.barrels.push(new Barrel(scene, barrelsCoords[i].getCenterX(), barrelsCoords[i].getCenterY()));
         }
     }
     /**
@@ -89,9 +90,5 @@ export class InteractiveManager {
     private setupCamera(scene: Phaser.Scene): void {
         scene.cameras.main.setBackgroundColor(new Phaser.Display.Color(207, 239, 252).color);
         scene.cameras.main.setZoom(GameSettings.ZOOM_LEVEL);
-    }
-
-    private randInt(max: number) {
-        return Math.floor(Math.random() * Math.floor(max));
     }
 }
