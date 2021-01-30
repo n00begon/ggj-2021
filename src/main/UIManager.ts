@@ -1,4 +1,5 @@
 import { ScoreText } from "./ScoreText";
+import { KeyControls } from "./KeyControls";
 import { MainEventsManager } from "./MainEventsManager";
 
 export class PuzzlePieces {
@@ -158,8 +159,12 @@ export class UIManager {
         this.scoreTextWASD.update(amount);
     }
 
-    public foundPuzzle(x: number, y: number): void {
-        this.piecesWASD.set(y, x);
+    public foundPuzzle(control: KeyControls, x: number, y: number): void {
+        if (control === KeyControls.WASD) {
+            this.piecesWASD.set(y, x);
+        } else {
+            this.piecesArrows.set(y, x);
+        }
     }
 
     public showPuzzleForArrows(): void {

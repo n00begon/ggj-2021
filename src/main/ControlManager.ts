@@ -1,4 +1,5 @@
 import { Input } from "phaser";
+import { KeyControls } from "./KeyControls";
 import { MainEventsManager } from "./MainEventsManager";
 
 /**
@@ -150,12 +151,11 @@ export class ControlManager {
 
                 // NOTE(Leon) : I would like this to be shift but phaser / I suck so bad
                 // the shift key doesn't work??? so use W instead FML
+                const coords = this.DEBUGKeyCoords[i];
                 if (key.isDown && this.upKey2.isDown) {
-                    const xy = this.DEBUGKeyCoords[i];
-                    MainEventsManager.emit("foundPuzzle", xy.x, xy.y);
+                    MainEventsManager.emit("foundPuzzle", KeyControls.Arrows, coords.x, coords.y);
                 } else if (key.isDown) {
-                    const xy = this.DEBUGKeyCoords[i];
-                    MainEventsManager.emit("foundPuzzle", xy.x, xy.y);
+                    MainEventsManager.emit("foundPuzzle", KeyControls.WASD, coords.x, coords.y);
                 }
             }
         }
