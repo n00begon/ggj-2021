@@ -121,7 +121,7 @@ export class UIManager {
     }
 
     public foundPuzzle(x: number, y: number): void {
-        this.piecesWASD.set(x, y);
+        this.piecesWASD.set(y, x);
     }
 
     public showPuzzleForArrows(): void {

@@ -1,4 +1,5 @@
 import { MainEventsManager } from "./MainEventsManager";
+
 /**
  * ControlManager collects interactions with the player and emits them as events.
  * This lets things that need to end up as the same action be mapped to different keys
@@ -20,8 +21,9 @@ export class ControlManager {
     private downKey2: Phaser.Input.Keyboard.Key;
     private showPuzzleKey2: Phaser.Input.Keyboard.Key;
 
-    private DEBUGaddPuzzle00Key: Phaser.Input.Keyboard.Key;
-    private DEBUGaddPuzzle11Key: Phaser.Input.Keyboard.Key;
+    private DEBUGKeys: Phaser.Input.Keyboard.Key[];
+    private DEBUGKeyCoords: Phaser.Math.Vector2[];
+    private DEBUGPuzzle: boolean = false;
 
     private currentPointer!: Phaser.Input.Pointer | null;
 
@@ -44,8 +46,32 @@ export class ControlManager {
         this.downKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         this.showPuzzleKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.BACK_SLASH);
 
-        this.DEBUGaddPuzzle00Key = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SEVEN);
-        this.DEBUGaddPuzzle11Key = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FIVE);
+        this.DEBUGKeys = [
+            scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SEVEN),
+            scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_EIGHT),
+            scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_NINE),
+            scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FOUR),
+            scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FIVE),
+            scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SIX),
+            scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_ONE),
+            scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_TWO),
+            scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_THREE),
+
+        ];
+
+        this.DEBUGKeyCoords = [
+            new Phaser.Math.Vector2(0, 0),
+            new Phaser.Math.Vector2(1, 0),
+            new Phaser.Math.Vector2(2, 0),
+
+            new Phaser.Math.Vector2(0, 1),
+            new Phaser.Math.Vector2(1, 1),
+            new Phaser.Math.Vector2(2, 1),
+
+            new Phaser.Math.Vector2(0, 2),
+            new Phaser.Math.Vector2(1, 2),
+            new Phaser.Math.Vector2(2, 2),
+        ];
 
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
             this.currentPointer = pointer;
@@ -114,12 +140,14 @@ export class ControlManager {
             MainEventsManager.emit("dontShowPuzzleArrows");
         }
 
-        if (this.DEBUGaddPuzzle00Key.isDown) {
-            MainEventsManager.emit("foundPuzzle", 0, 0);
-        }
-
-        if (this.DEBUGaddPuzzle11Key.isDown) {
-            MainEventsManager.emit("foundPuzzle", 1, 1);
+        if (this.DEBUGPuzzle) {
+            for (let i = 0; i < this.DEBUGKeys.length; i++) {
+                const key = this.DEBUGKeys[i];
+                if (key.isDown) {
+                    const xy = this.DEBUGKeyCoords[i];
+                    MainEventsManager.emit("foundPuzzle", xy.x, xy.y);
+                }
+            }
         }
     }
 
