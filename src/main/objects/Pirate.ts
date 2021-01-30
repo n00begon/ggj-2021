@@ -112,7 +112,11 @@ export class Pirate {
         this.upMove = false;
         this.downMove = false;
         this.debugText.setPosition(this.pirate.x, this.pirate.y);
-        this.debugText.setText("" + currentTile.canCollide + " " + PirateTile[currentTile.index]);
+        if (currentTile) {
+            this.debugText.setText("" + currentTile.canCollide + " " + PirateTile[currentTile.index]);
+        } else {
+            this.debugText.setText("null");
+        }
     }
 
     /**
