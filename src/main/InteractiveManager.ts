@@ -60,7 +60,7 @@ export class InteractiveManager {
             backgroundManager.getCollisionTilemap(),
         );
 
-        this.barrels = new Array<Barrel>(10 + this.randInt(5));
+        this.barrels = new Array<Barrel>(5 + this.randInt(5));
         for (let i = 0; i < this.barrels.length; i++) {
             this.barrels[i] = new Barrel(scene, Math.random() * this.screenWidth, Math.random() * this.screenHeight);
         }
