@@ -103,6 +103,8 @@ export class Pirate {
      */
     public update(): void {
         //  const currentTile = this.island.getTileAtWorldXY(this.pirate.x, this.pirate.y);
+        const test = this.holes.getTileAtWorldXY(2000, 2000);
+
         const holeTile = this.holes.getTileAtWorldXY(this.pirate.getBottomCenter().x, this.pirate.getBottomCenter().y);
         this.pirate.setVelocityX(0);
 
@@ -122,6 +124,10 @@ export class Pirate {
                 this.rearDust.setVisible(false);
                 if (holeTile) {
                     holeTile.setVisible(true);
+                }
+
+                if (holeTile && test && holeTile.x === test.x && holeTile.y === test.y) {
+                    console.log("Won game");
                 }
             }
         } else {
