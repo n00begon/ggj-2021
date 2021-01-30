@@ -69,25 +69,13 @@ export class BackgroundManager {
         this.water.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
 
         this.island = map.createBlankLayer("island", tileset);
-        // eslint-disable-next-line no-constant-condition
-        while (true) {
-            let count = 0;
-            for (let x = 3; x < mapWidth - 4; x++) {
-                for (let y = 3; y < mapHeight - 4; y++) {
-                    const dist = this.distanceSquared(x, y, mapWidth, mapHeight);
-                    const noise = (Perlin.perlin2(x / mapWidth, y / mapHeight) + 1) / 2;
-                    if (noise > 0.3 + 0.4 * dist) {
-                        this.island.putTileAt(this.genSand(), x, y);
-                        count++;
-                    }
+        for (let x = 3; x < mapWidth - 4; x++) {
+            for (let y = 3; y < mapHeight - 4; y++) {
+                const dist = this.distanceSquared(x, y, mapWidth, mapHeight);
+                const noise = (Perlin.perlin2(x / mapWidth, y / mapHeight) + 1) / 2;
+                if (noise > 0.2 + 0.4 * dist) {
+                    this.island.putTileAt(this.genSand(), x, y);
                 }
-            }
-            if (count / (mapWidth * mapHeight) < 0.2) {
-                map.removeLayer(this.island);
-                this.island = map.createBlankLayer("island", tileset);
-                if (!GameSettings.DEBUG) Perlin.seed(Math.random());
-            } else {
-                break;
             }
         }
 
@@ -104,20 +92,44 @@ export class BackgroundManager {
         }
 
         // Add borders
-        // const borders = map.createBlankLayer("borders", tileset);
-        // for (let x = 1; x < mapWidth - 1; x++) {
-        //     for (let y = 1; y < mapHeight - 1; y++) {
-        //         if (this.island.hasTileAt(x, y)) continue;
+        const borders = map.createBlankLayer("borders", tileset);
+        for (let x = 1; x < mapWidth - 1; x++) {
+            for (let y = 1; y < mapHeight - 1; y++) {
+                if (this.island.hasTileAt(x, y)) continue;
 
-        //         if (
-        //             this.island.hasTileAt(x, y + 1) &&
-        //             !this.island.hasTileAt(x + 1, y) &&
-        //             !this.island.hasTileAt(x - 1, y)
-        //         ) {
-        //             borders.putTileAt(PirateTile.TopMiddleEdgeSand, x, y);
-        //         }
-        //     }
-        // }
+                if (
+                    this.island.hasTileAt(x, y + 1) &&
+                    !this.island.hasTileAt(x + 1, y) &&
+                    !this.island.hasTileAt(x - 1, y)
+                ) {
+                    borders.putTileAt(PirateTile.TopMiddleEdgeSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x, y - 1) &&
+                    !this.island.hasTileAt(x + 1, y) &&
+                    !this.island.hasTileAt(x - 1, y)
+                ) {
+                    borders.putTileAt(PirateTile.BottomMiddleEdgeSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x - 1, y) &&
+                    !this.island.hasTileAt(x, y - 1) &&
+                    !this.island.hasTileAt(x, y + 1)
+                ) {
+                    borders.putTileAt(PirateTile.SideRightEdgeSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x + 1, y) &&
+                    !this.island.hasTileAt(x, y - 1) &&
+                    !this.island.hasTileAt(x, y + 1)
+                ) {
+                    borders.putTileAt(PirateTile.SideLeftEdgeSand, x, y);
+                }
+            }
+        }
 
         const debugGraphics = scene.add.graphics();
 
