@@ -31,48 +31,6 @@
 					}
 				},
 				{
-					"filename": "Block1-05",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 534,
-						"h": 534
-					},
-					"spriteSourceSize": {
-						"x": 11,
-						"y": 64,
-						"w": 491,
-						"h": 423
-					},
-					"frame": {
-						"x": 1,
-						"y": 482,
-						"w": 491,
-						"h": 423
-					}
-				},
-				{
-					"filename": "Treasure Chest",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 369,
-						"h": 223
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 369,
-						"h": 223
-					},
-					"frame": {
-						"x": 1,
-						"y": 907,
-						"w": 369,
-						"h": 223
-					}
-				},
-				{
 					"filename": "Block1-03",
 					"rotated": false,
 					"trimmed": true,
@@ -112,27 +70,6 @@
 						"y": 325,
 						"w": 374,
 						"h": 315
-					}
-				},
-				{
-					"filename": "Block1-01",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 534,
-						"h": 534
-					},
-					"spriteSourceSize": {
-						"x": 112,
-						"y": 152,
-						"w": 312,
-						"h": 312
-					},
-					"frame": {
-						"x": 494,
-						"y": 642,
-						"w": 312,
-						"h": 312
 					}
 				},
 				{
@@ -178,45 +115,45 @@
 					}
 				},
 				{
-					"filename": "pirate_walk_2",
+					"filename": "Block1-05",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 114,
-						"h": 169
+						"w": 534,
+						"h": 534
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 114,
-						"h": 169
+						"x": 11,
+						"y": 64,
+						"w": 491,
+						"h": 423
 					},
 					"frame": {
-						"x": 372,
-						"y": 907,
-						"w": 114,
-						"h": 169
+						"x": 1,
+						"y": 482,
+						"w": 491,
+						"h": 423
 					}
 				},
 				{
-					"filename": "pirate_walk_4",
+					"filename": "Treasure Chest",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 114,
-						"h": 169
+						"w": 369,
+						"h": 223
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 114,
-						"h": 169
+						"w": 369,
+						"h": 223
 					},
 					"frame": {
-						"x": 372,
+						"x": 1,
 						"y": 907,
-						"w": 114,
-						"h": 169
+						"w": 369,
+						"h": 223
 					}
 				},
 				{
@@ -234,73 +171,10 @@
 						"h": 175
 					},
 					"frame": {
-						"x": 808,
-						"y": 674,
+						"x": 372,
+						"y": 907,
 						"w": 134,
 						"h": 175
-					}
-				},
-				{
-					"filename": "barrel",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 128,
-						"h": 128
-					},
-					"frame": {
-						"x": 488,
-						"y": 956,
-						"w": 128,
-						"h": 128
-					}
-				},
-				{
-					"filename": "PirateBasicDigA",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 127,
-						"h": 172
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 127,
-						"h": 172
-					},
-					"frame": {
-						"x": 618,
-						"y": 956,
-						"w": 127,
-						"h": 172
-					}
-				},
-				{
-					"filename": "PirateBasicDigB",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 114,
-						"h": 165
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 114,
-						"h": 165
-					},
-					"frame": {
-						"x": 747,
-						"y": 956,
-						"w": 114,
-						"h": 165
 					}
 				},
 				{
@@ -318,8 +192,8 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 808,
-						"y": 851,
+						"x": 372,
+						"y": 1084,
 						"w": 125,
 						"h": 43
 					}
@@ -339,10 +213,52 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 808,
-						"y": 896,
+						"x": 499,
+						"y": 1084,
 						"w": 121,
 						"h": 43
+					}
+				},
+				{
+					"filename": "Block1-01",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 534,
+						"h": 534
+					},
+					"spriteSourceSize": {
+						"x": 112,
+						"y": 152,
+						"w": 312,
+						"h": 312
+					},
+					"frame": {
+						"x": 508,
+						"y": 642,
+						"w": 312,
+						"h": 312
+					}
+				},
+				{
+					"filename": "PirateBasicDigA",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 127,
+						"h": 172
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 127,
+						"h": 172
+					},
+					"frame": {
+						"x": 622,
+						"y": 956,
+						"w": 127,
+						"h": 172
 					}
 				},
 				{
@@ -360,10 +276,52 @@
 						"h": 33
 					},
 					"frame": {
-						"x": 372,
-						"y": 1078,
+						"x": 508,
+						"y": 956,
 						"w": 111,
 						"h": 33
+					}
+				},
+				{
+					"filename": "pirate_walk_2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 169
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 169
+					},
+					"frame": {
+						"x": 751,
+						"y": 956,
+						"w": 114,
+						"h": 169
+					}
+				},
+				{
+					"filename": "pirate_walk_4",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 169
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 169
+					},
+					"frame": {
+						"x": 751,
+						"y": 956,
+						"w": 114,
+						"h": 169
 					}
 				},
 				{
@@ -381,10 +339,52 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 485,
-						"y": 1086,
+						"x": 867,
+						"y": 674,
 						"w": 118,
 						"h": 43
+					}
+				},
+				{
+					"filename": "PirateBasicDigB",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 165
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 165
+					},
+					"frame": {
+						"x": 867,
+						"y": 719,
+						"w": 114,
+						"h": 165
+					}
+				},
+				{
+					"filename": "Faceonly",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 109
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 109
+					},
+					"frame": {
+						"x": 867,
+						"y": 886,
+						"w": 114,
+						"h": 109
 					}
 				},
 				{
@@ -402,10 +402,31 @@
 						"h": 30
 					},
 					"frame": {
-						"x": 863,
-						"y": 941,
+						"x": 508,
+						"y": 991,
 						"w": 97,
 						"h": 30
+					}
+				},
+				{
+					"filename": "barrel",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 7,
+						"w": 96,
+						"h": 115
+					},
+					"frame": {
+						"x": 867,
+						"y": 997,
+						"w": 96,
+						"h": 115
 					}
 				},
 				{
@@ -423,8 +444,8 @@
 						"h": 29
 					},
 					"frame": {
-						"x": 863,
-						"y": 973,
+						"x": 508,
+						"y": 1023,
 						"w": 88,
 						"h": 29
 					}
@@ -444,8 +465,8 @@
 						"h": 28
 					},
 					"frame": {
-						"x": 863,
-						"y": 1004,
+						"x": 508,
+						"y": 1054,
 						"w": 79,
 						"h": 28
 					}
@@ -456,6 +477,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:5550b7247d4a576544a8e1f4872fd725:048392612014761c31cd9900ec1f5bf6:1eabdf11f75e3a4fe3147baf7b5be24b$"
+		"smartupdate": "$TexturePacker:SmartUpdate:33d7f838cef0cdd5e9f819de733a409a:8b4b1663c7a9a0d2181cef20b535c47b:1eabdf11f75e3a4fe3147baf7b5be24b$"
 	}
 }
