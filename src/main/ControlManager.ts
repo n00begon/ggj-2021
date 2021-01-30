@@ -20,8 +20,8 @@ export class ControlManager {
     private downKey2: Phaser.Input.Keyboard.Key;
     private showPuzzleKey2: Phaser.Input.Keyboard.Key;
 
-    private DEBUGaddPuzzleLeftTopKey: Phaser.Input.Keyboard.Key;
-    private DEBUGaddPuzzleLeftCenterKey: Phaser.Input.Keyboard.Key;
+    private DEBUGaddPuzzle00Key: Phaser.Input.Keyboard.Key;
+    private DEBUGaddPuzzle11Key: Phaser.Input.Keyboard.Key;
 
     private currentPointer!: Phaser.Input.Pointer | null;
 
@@ -44,8 +44,8 @@ export class ControlManager {
         this.downKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         this.showPuzzleKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.BACK_SLASH);
 
-        this.DEBUGaddPuzzleLeftTopKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SEVEN);
-        this.DEBUGaddPuzzleLeftCenterKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FIVE);
+        this.DEBUGaddPuzzle00Key = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SEVEN);
+        this.DEBUGaddPuzzle11Key = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FIVE);
 
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
             this.currentPointer = pointer;
@@ -114,12 +114,12 @@ export class ControlManager {
             MainEventsManager.emit("dontShowPuzzleArrows");
         }
 
-        if (this.DEBUGaddPuzzleLeftTopKey.isDown) {
-            MainEventsManager.emit("foundPuzzleLT");
+        if (this.DEBUGaddPuzzle00Key.isDown) {
+            MainEventsManager.emit("foundPuzzle00");
         }
 
-        if (this.DEBUGaddPuzzleLeftCenterKey.isDown) {
-            MainEventsManager.emit("foundPuzzleLC");
+        if (this.DEBUGaddPuzzle11Key.isDown) {
+            MainEventsManager.emit("foundPuzzle11");
         }
     }
 

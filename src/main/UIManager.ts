@@ -2,48 +2,48 @@ import { ScoreText } from "./ScoreText";
 import { MainEventsManager } from "./MainEventsManager";
 
 export class PuzzlePieces {
-    public leftTop: boolean;
-    public centerTop: boolean;
-    public rightTop: boolean;
-    public leftCenter: boolean;
-    public center: boolean;
-    public rightCenter: boolean;
-    public leftBottom: boolean;
-    public centerBottom: boolean;
-    public rightBottom: boolean;
+    public piece00: boolean;
+    public piece10: boolean;
+    public piece20: boolean;
+    public piece01: boolean;
+    public piece11: boolean;
+    public piece21: boolean;
+    public piece02: boolean;
+    public piece12: boolean;
+    public piece22: boolean;
 
     constructor() {
-        this.leftTop = false;
-        this.centerTop = false;
-        this.rightTop = false;
-        this.leftCenter = false;
-        this.center = false;
-        this.rightCenter = false;
-        this.leftBottom = false;
-        this.centerBottom = false;
-        this.rightBottom = false;
+        this.piece00 = false;
+        this.piece10 = false;
+        this.piece20 = false;
+        this.piece01 = false;
+        this.piece11 = false;
+        this.piece21 = false;
+        this.piece02 = false;
+        this.piece12 = false;
+        this.piece22 = false;
     }
 
     public havePiece(i: number, j: number): boolean {
         // HACK(Leon) : this sucks
         if (i == 0 && j == 0) {
-            return this.leftTop;
+            return this.piece00;
         } else if (i == 1 && j == 0) {
-            return this.centerTop;
+            return this.piece10;
         } else if (i == 2 && j == 0) {
-            return this.rightTop;
+            return this.piece20;
         } else if (i == 0 && j == 1) {
-            return this.leftCenter;
+            return this.piece01;
         } else if (i == 1 && j == 1) {
-            return this.center;
+            return this.piece11;
         } else if (i == 2 && j == 1) {
-            return this.rightCenter;
+            return this.piece21;
         } else if (i == 0 && j == 2) {
-            return this.leftBottom;
+            return this.piece02;
         } else if (i == 1 && j == 2) {
-            return this.centerBottom;
+            return this.piece12;
         } else if (i == 2 && j == 2) {
-            return this.rightBottom;
+            return this.piece22;
         }
 
         return false;
@@ -65,8 +65,8 @@ export class UIManager {
      */
     constructor(scene: Phaser.Scene) {
         MainEventsManager.on("scoreChange", this.handleScoreChange, this);
-        MainEventsManager.on("foundPuzzleLT", this.foundPuzzleLT, this);
-        MainEventsManager.on("foundPuzzleLC", this.foundPuzzleLC, this);
+        MainEventsManager.on("foundPuzzle00", this.foundPuzzle00, this);
+        MainEventsManager.on("foundPuzzle11", this.foundPuzzle11, this);
 
         this.scoreTextWASD = new ScoreText(scene, 30, 30);
         this.scoreTextWASD.update(0);
@@ -97,12 +97,12 @@ export class UIManager {
         this.scoreTextWASD.update(amount);
     }
 
-    private foundPuzzleLT(): void {
-        this.piecesWASD.leftTop = true;
+    private foundPuzzle00(): void {
+        this.piecesWASD.piece00 = true;
     }
 
-    private foundPuzzleLC(): void {
-        this.piecesWASD.center = true;
+    private foundPuzzle11(): void {
+        this.piecesWASD.piece11 = true;
     }
 
     public showPuzzleForArrows(): void {
