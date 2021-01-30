@@ -133,7 +133,6 @@ export class PuzzleHUD {
         }
 
         this.treasurePosRect = scene.add.image(0, 0, "sprites", "Treasure Chest");
-        this.treasurePosRect.scale = 0.1;
         this.treasurePosRect.scale = 0.08;
 
         this.playerPosRect = scene.add.image(0, 0, "sprites", "Faceonly");
@@ -185,11 +184,11 @@ export class PuzzleHUD {
         this.playerPosRect.visible = true;
 
         // ONLY IF you have that puzzle piece
-        const dx = GameSettings.MAP_WIDTH / PuzzleHUD.DIM_X;
-        const dy = GameSettings.MAP_HEIGHT / PuzzleHUD.DIM_Y;
+        const dx = PuzzleHUD.TILE_WIDTH;
+        const dy = PuzzleHUD.TILE_HEIGHT;
         const cxy = this.treasurePosRect.getCenter();
-        const ax = Math.floor(cxy.x / dx);
-        const ay = Math.floor(cxy.y / dy);
+        const ax = Math.floor(cxy.x / dx) - 1;
+        const ay = Math.floor(cxy.y / dy) - 1;
 
         if (pieces.havePiece(ax, ay)) {
             this.treasurePosRect.visible = true;
@@ -221,8 +220,8 @@ export class UIManager {
         this.puzzleHUDArrows = new PuzzleHUD(scene, 800, 64);
 
         // HACK(Leon) : treasure pos hard coded for now
-        this.puzzleHUDArrows.updateTreasurePos(3000, 2000);
-        this.puzzleHUDWASD.updateTreasurePos(3000, 2000);
+        this.puzzleHUDArrows.updateTreasurePos(1850, 2000);
+        this.puzzleHUDWASD.updateTreasurePos(1850, 2000);
     }
 
     public playerXY(control: KeyControls, x: number, y: number): void {
