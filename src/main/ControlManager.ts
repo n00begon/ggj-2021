@@ -1,4 +1,3 @@
-import { Input } from "phaser";
 import { KeyControls } from "./KeyControls";
 import { MainEventsManager } from "./MainEventsManager";
 

@@ -134,7 +134,7 @@ export class Pirate {
         } else {
             this.debugText.setText("null");
         }
-        this.pirate.depth = this.pirate.y;
+        this.pirate.depth = this.pirate.getBottomCenter().y;
         MainEventsManager.emit("playerXY", this.controls, this.pirate.getCenter().x, this.pirate.getCenter().y);
     }
 
