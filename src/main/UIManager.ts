@@ -138,24 +138,24 @@ export class PuzzleHUD {
         this.playerPosRect.scale = 0.4;
     }
 
-    public updateTreasurePos(wx: number, wy: number): void {
+    public world_space_to_HUD_space(wx: number, wy: number): Phaser.Math.Vector2 {
         const x01 = wx / GameSettings.MAP_WIDTH;
         const y01 = wy / GameSettings.MAP_HEIGHT;
         let ux = x01 * 3 * PuzzleHUD.TILE_WIDTH;
         let uy = y01 * 3 * PuzzleHUD.TILE_HEIGHT;
         ux += this.x;
         uy += this.y;
-        this.treasurePosRect.setPosition(ux, uy);
+        return new Phaser.Math.Vector2(ux, uy);
+    }
+
+    public updateTreasurePos(wx: number, wy: number): void {
+        const xy = this.world_space_to_HUD_space(wx, wy);
+        this.treasurePosRect.setPosition(xy.x, xy.y);
     }
 
     public updatePlayerPos(wx: number, wy: number): void {
-        const x01 = wx / GameSettings.MAP_WIDTH;
-        const y01 = wy / GameSettings.MAP_HEIGHT;
-        let ux = x01 * 3 * PuzzleHUD.TILE_WIDTH;
-        let uy = y01 * 3 * PuzzleHUD.TILE_HEIGHT;
-        ux += this.x;
-        uy += this.y;
-        this.playerPosRect.setPosition(ux, uy);
+        const xy = this.world_space_to_HUD_space(wx, wy);
+        this.playerPosRect.setPosition(xy.x, xy.y);
     }
 
     public hide(): void {
@@ -185,8 +185,9 @@ export class PuzzleHUD {
         // ONLY IF you have that puzzle piece
         const dx = GameSettings.MAP_WIDTH / 3;
         const dy = GameSettings.MAP_HEIGHT / 3;
-        const ax = Math.floor(this.treasurePosRect.x / dx);
-        const ay = Math.floor(this.treasurePosRect.y / dy);
+        const cxy = this.treasurePosRect.getCenter();
+        const ax = Math.floor(cxy.x / dx);
+        const ay = Math.floor(cxy.y / dy);
 
         if (pieces.havePiece(ax, ay)) {
             this.treasurePosRect.visible = true;
@@ -229,7 +230,7 @@ export class UIManager {
         this.puzzleHUDWASD = new PuzzleHUD(scene, 64, 64);
 
         this.piecesArrows = new PuzzlePieces();
-        this.puzzleHUDArrows = new PuzzleHUD(scene, 1920, 64);
+        this.puzzleHUDArrows = new PuzzleHUD(scene, 800, 64);
 
         // HACK(Leon) : treasure pos hard coded for now
         this.puzzleHUDArrows.updateTreasurePos(3000, 2000);
