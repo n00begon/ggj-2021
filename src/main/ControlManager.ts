@@ -153,7 +153,7 @@ export class ControlManager {
                 if (key.isDown && this.upKey2.isDown) {
                     const xy = this.DEBUGKeyCoords[i];
                     MainEventsManager.emit("foundPuzzle", xy.x, xy.y);
-                } else {
+                } else if (key.isDown) {
                     const xy = this.DEBUGKeyCoords[i];
                     MainEventsManager.emit("foundPuzzle", xy.x, xy.y);
                 }

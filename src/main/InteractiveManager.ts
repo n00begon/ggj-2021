@@ -1,4 +1,5 @@
-import { Pirate, KeyControls } from "./objects/Pirate";
+import { Pirate } from "./objects/Pirate";
+import { KeyControls } from "./KeyControls";
 import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
