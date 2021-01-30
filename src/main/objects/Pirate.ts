@@ -132,6 +132,7 @@ export class Pirate {
         } else {
             this.debugText.setText("null");
         }
+        this.pirate.depth = this.pirate.y;
     }
 
     /**

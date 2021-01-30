@@ -8,6 +8,7 @@ export class Barrel {
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.scene = scene;
         this.barrel = scene.physics.add.staticImage(x, y, "sprites", "barrel");
+        this.barrel.depth = this.barrel.y;
 
         // scene.physics.add.collider(this.barrel, collisionLayer);
         // collisionLayer.setCollision(PirateTile.Water);
