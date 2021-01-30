@@ -82,8 +82,8 @@ export class BackgroundManager {
                     }
                 }
             }
-            if (count / (mapWidth * mapHeight) < 0.5) {
-                map.removeLayer("island");
+            if (count / (mapWidth * mapHeight) < 0.2) {
+                map.removeLayer(this.island);
                 this.island = map.createBlankLayer("island", tileset);
                 if (!GameSettings.DEBUG) Perlin.seed(Math.random());
             } else {
@@ -102,6 +102,23 @@ export class BackgroundManager {
                 }
             }
         }
+
+        // Add borders
+        // const borders = map.createBlankLayer("borders", tileset);
+        // for (let x = 1; x < mapWidth - 1; x++) {
+        //     for (let y = 1; y < mapHeight - 1; y++) {
+        //         if (this.island.hasTileAt(x, y)) continue;
+
+        //         if (
+        //             this.island.hasTileAt(x, y + 1) &&
+        //             !this.island.hasTileAt(x + 1, y) &&
+        //             !this.island.hasTileAt(x - 1, y)
+        //         ) {
+        //             borders.putTileAt(PirateTile.TopMiddleEdgeSand, x, y);
+        //         }
+        //     }
+        // }
+
         const debugGraphics = scene.add.graphics();
 
         this.objects.setCollisionByProperty({ collides: true });
@@ -113,6 +130,16 @@ export class BackgroundManager {
 
         // temp
         scene.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    }
+
+    private nearbyIslandTiles(x: number, y: number): number {
+        let count = 0;
+        for (let dx = -1; dx <= 1; dx++) {
+            for (let dy = -1; dy <= 1; dy++) {
+                if (this.island.hasTileAt(x + dx, y + dy)) count++;
+            }
+        }
+        return count;
     }
 
     private distanceSquared(x: number, y: number, width: number, height: number): number {
