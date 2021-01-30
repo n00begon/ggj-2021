@@ -1,10 +1,6 @@
 # Lost and Found: In search of tresure!
 
-<div align="center">
-!["Dig"](assets/images/PirateBasicDig.png)
-</div>
-
-
+![Dig](/assets/images/PirateBasicDig.png)
 
 
 
