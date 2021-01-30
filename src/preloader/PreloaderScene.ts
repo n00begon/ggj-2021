@@ -23,6 +23,7 @@ export class Preloader extends Phaser.Scene {
         new LoadingBar(this);
 
         this.loadSpriteSheets();
+        this.loadImages();
         this.loadAudio();
         this.loadJSON();
         this.loadFonts();
@@ -46,6 +47,12 @@ export class Preloader extends Phaser.Scene {
         for (const sheet of spritesheets) {
             this.load.atlas(sheet, `${sheet}.png`, `${sheet}.json`);
         }
+    }
+
+    private loadImages(): void {
+        this.load.setPath(`${Preloader.ASSET_DIRECTORY}/rawimages/`);
+        this.load.image("barrel", "barrel.png");
+        this.load.image("face", "Faceonly.png");
     }
 
     /**

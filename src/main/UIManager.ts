@@ -94,15 +94,16 @@ export class PuzzleHUD {
     public y: number;
     public rects: Phaser.GameObjects.Rectangle[][];
     public backgroundRect: Phaser.GameObjects.Rectangle;
-    public playerPosRect: Phaser.GameObjects.Rectangle;
-    public treasurePosRect: Phaser.GameObjects.Rectangle;
-    static readonly TILE_WIDTH = 32;
-    static readonly TILE_HEIGHT = 32;
+    public playerPosRect: Phaser.GameObjects.Image;
+    public treasurePosRect: Phaser.GameObjects.Image;
+    static readonly TILE_WIDTH = 64;
+    static readonly TILE_HEIGHT = 64;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.x = x;
         this.y = y;
-        const colors = [0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00];
+        const c = 0x908e7e;
+        const colors = [c, c, c, c, c, c, c, c, c];
 
         this.backgroundRect = build_rect(
             scene,
@@ -129,8 +130,12 @@ export class PuzzleHUD {
             }
         }
 
-        this.playerPosRect = scene.add.rectangle(this.x + 32, this.y + 32, 8, 8, 0xff0000);
-        this.treasurePosRect = scene.add.rectangle(this.x + 32, this.y + 32, 8, 8, 0x00ff00);
+        this.treasurePosRect = scene.add.image(this.x + 32, this.y + 32, "sprites", "Treasure Chest");
+        this.treasurePosRect.scale = 0.1;
+        this.treasurePosRect.scale = 0.08;
+
+        this.playerPosRect = scene.add.image(this.x + 32, this.y + 32, "sprites", "pirate_walk_1");
+        this.playerPosRect.scale = 0.2;
     }
 
     public updateTreasurePos(wx: number, wy: number): void {
