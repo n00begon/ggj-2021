@@ -23,6 +23,7 @@ export class Pirate {
     private currentSpeedY = 0;
     private holes: Phaser.Tilemaps.TilemapLayer;
     private walkSound: Phaser.Sound.BaseSound;
+    private digSound: Phaser.Sound.BaseSound;
     private controls: KeyControls;
     private digwait = 0;
     private digtime = 0;
@@ -57,6 +58,7 @@ export class Pirate {
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
         this.walkSound = scene.sound.get("walking1");
+        this.digSound = scene.sound.get("dig");
         this.pirate.setBodySize(this.pirate.width, this.pirate.height - 50);
         this.holes = holeLayer;
         this.pirate.setBounce(0.1);
@@ -113,6 +115,10 @@ export class Pirate {
             this.frontDust.play("frontDust", true);
             this.rearDust.setVisible(true);
             this.rearDust.play("rearDust", true);
+
+            if (!this.digSound.isPlaying) {
+                this.digSound.play();
+            }
 
             if (this.digtime++ >= Pirate.DIGTIME) {
                 this.digging = false;

@@ -8,6 +8,8 @@ export class AudioManager {
     constructor(scene: Phaser.Scene) {
         scene.sound.stopAll();
         scene.sound.add("walking1");
+        scene.sound.add("explode"); // https://soundbible.com/1467-Grenade-Explosion.html
+        scene.sound.add("dig"); // https://www.soundeffectsplus.com/product/shovel-digging-dirt-01/
         const backgroundMusic = scene.sound.add("the-buccaneers-haul");
         backgroundMusic.play({
             loop: true,
