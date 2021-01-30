@@ -111,7 +111,7 @@ export class BackgroundManager {
         this.barrels = new Array<Phaser.Tilemaps.Tile>();
         for (let x = 0; x < mapWidth; x++) {
             for (let y = 0; y < mapHeight; y++) {
-                if (this.island.hasTileAt(x, y)) {
+                if (this.island.hasTileAt(x, y) && !this.objects.hasTileAt(x, y)) {
                     this.barrels.push(this.island.getTileAt(x, y));
                 }
             }
