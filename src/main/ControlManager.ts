@@ -23,7 +23,7 @@ export class ControlManager {
 
     private DEBUGKeys: Phaser.Input.Keyboard.Key[];
     private DEBUGKeyCoords: Phaser.Math.Vector2[];
-    private DEBUGPuzzle = false;
+    private DEBUGPuzzle = true;
 
     private currentPointer!: Phaser.Input.Pointer | null;
 

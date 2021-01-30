@@ -73,6 +73,43 @@ export class PuzzlePieces {
     }
 }
 
+export class PuzzleHUD {
+    public rects: Phaser.GameObjects.Rectangle[][];
+
+    constructor(scene: Phaser.Scene) {
+        const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffffff, 0x000000, 0xff0000, 0xffff00, 0x00ffff, 0xff00ff];
+
+        this.rects = [];
+        for (let i = 0; i < 3; i++) {
+            this.rects[i] = [];
+            for (let j = 0; j < 3; j++) {
+                const w = 32;
+                const h = 32;
+                const ci = j * 3 + i;
+                this.rects[i][j] = scene.add.rectangle(i * w, j * h, w, h, colors[ci]);
+            }
+        }
+    }
+
+    public hide(): void {
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                this.rects[j][i].visible = false;
+            }
+        }
+    }
+
+    public show(pieces: PuzzlePieces): void {
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (pieces.havePiece(i, j)) {
+                    this.rects[j][i].visible = true;
+                }
+            }
+        }
+    }
+}
+
 /**
  * UIManager controls the user interface elements displayed to the user
  */
@@ -81,7 +118,7 @@ export class UIManager {
     private scoreTextArrows: ScoreText;
 
     private piecesWASD: PuzzlePieces;
-    private rects: Phaser.GameObjects.Rectangle[][];
+    private puzzleHUD: PuzzleHUD;
 
     /**
      * Adds the interactive objects to the scene
@@ -98,18 +135,7 @@ export class UIManager {
         this.scoreTextArrows.update(0);
 
         this.piecesWASD = new PuzzlePieces();
-
-        const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffffff, 0x000000, 0xff0000, 0x00ff00, 0x0000ff, 0xffffff];
-
-        this.rects = [];
-        for (let i = 0; i < 3; i++) {
-            this.rects[i] = [];
-            for (let j = 0; j < 3; j++) {
-                const w = 32;
-                const h = 32;
-                this.rects[i][j] = scene.add.rectangle(i * w, j * h, w, h, colors[i]);
-            }
-        }
+        this.puzzleHUD = new PuzzleHUD(scene);
     }
 
     /**
@@ -134,21 +160,11 @@ export class UIManager {
 
     public showPuzzleForWASD(): void {
         this.scoreTextWASD.update(100);
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                if (this.piecesWASD.havePiece(i, j)) {
-                    this.rects[j][i].visible = true;
-                }
-            }
-        }
+        this.puzzleHUD.show(this.piecesWASD);
     }
 
     public hidePuzzleForWASD(): void {
         this.scoreTextWASD.hide();
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                this.rects[j][i].visible = false;
-            }
-        }
+        this.puzzleHUD.hide();
     }
 }
