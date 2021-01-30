@@ -1,6 +1,3 @@
-import { ScoreText } from "./ScoreText";
-import { KeyControls } from "./KeyControls";
-import { MainEventsManager } from "./MainEventsManager";
 import { GameSettings } from "../utilities/GameSettings";
 import { PuzzleMap } from "./PuzzleMap";
 

@@ -102,7 +102,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -169,7 +169,7 @@
             <key>trimMargin</key>
             <uint>2</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -190,9 +190,17 @@
             <key type="filename">../rawimages/center_center_plain_sand.png</key>
             <key type="filename">../rawimages/centre_centre_dots_sand.png</key>
             <key type="filename">../rawimages/hole.png</key>
+            <key type="filename">../rawimages/object_grass_1.png</key>
+            <key type="filename">../rawimages/object_grass_2.png</key>
             <key type="filename">../rawimages/object_rock_1.png</key>
+            <key type="filename">../rawimages/object_rock_2.png</key>
+            <key type="filename">../rawimages/object_rock_3.png</key>
+            <key type="filename">../rawimages/object_rock_4.png</key>
+            <key type="filename">../rawimages/object_rock_5.png</key>
+            <key type="filename">../rawimages/object_rock_6.png</key>
             <key type="filename">../rawimages/object_tree_1.png</key>
             <key type="filename">../rawimages/object_tree_2.png</key>
+            <key type="filename">../rawimages/object_tree_3.png</key>
             <key type="filename">../rawimages/side_left_edge_sand.png</key>
             <key type="filename">../rawimages/side_right_edge_sand.png</key>
             <key type="filename">../rawimages/top_left_corner_sand.png</key>
@@ -238,6 +246,14 @@
             <filename>../rawimages/top_right_corner_sand.png</filename>
             <filename>../rawimages/top_right_edge_sand.png</filename>
             <filename>../rawimages/water.png</filename>
+            <filename>../rawimages/object_grass_1.png</filename>
+            <filename>../rawimages/object_grass_2.png</filename>
+            <filename>../rawimages/object_rock_2.png</filename>
+            <filename>../rawimages/object_rock_3.png</filename>
+            <filename>../rawimages/object_rock_4.png</filename>
+            <filename>../rawimages/object_rock_5.png</filename>
+            <filename>../rawimages/object_rock_6.png</filename>
+            <filename>../rawimages/object_tree_3.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
