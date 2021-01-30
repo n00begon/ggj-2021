@@ -92,7 +92,7 @@ export class Pirate {
     }
 
     public receivedBarrel(barrel: Barrel): void {
-        if(barrel.isPuzzlePiece) {
+        if (barrel.isPuzzlePiece) {
             MainEventsManager.emit("foundPuzzle", KeyControls.WASD, barrel.puzzleX, barrel.puzzleY);
         }
         console.log(barrel);
