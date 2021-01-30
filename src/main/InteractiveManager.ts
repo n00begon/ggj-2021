@@ -2,6 +2,7 @@ import { Pirate, KeyControls } from "./objects/Pirate";
 import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
+import { BackgroundManager } from "./BackgroundManager";
 
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
@@ -18,33 +19,31 @@ export class InteractiveManager {
     private static readonly WORLDHEIGHT = InteractiveManager.BOTTOMBOUNDS - InteractiveManager.TOPBOUNDS;
     private scene: Phaser.Scene;
     private controlManager: ControlManager;
-    private maxScore: number;
-    private currentScore: number;
+
     private pirateA: Pirate;
     private pirateB: Pirate;
     /**
      * Adds the interactive objects to the scene
      */
-    constructor(scene: Phaser.Scene) {
+    constructor(scene: Phaser.Scene, backgroundManager: BackgroundManager) {
         this.scene = scene;
         new AnimationManager(scene);
         this.controlManager = new ControlManager(scene);
         this.setupCamera(scene);
-        this.maxScore = 0;
-        this.currentScore = 0;
-        MainEventsManager.on("maxscore", this.handleMaxScore, this);
-        MainEventsManager.on("collection", this.handleCollection, this);
+
         this.pirateA = new Pirate(
             scene,
             KeyControls.WASD,
             InteractiveManager.WORLDWIDTH / 2,
             InteractiveManager.BOTTOMBOUNDS - 500,
+            backgroundManager.getIslandTilemap(),
         );
         this.pirateB = new Pirate(
             scene,
             KeyControls.Arrows,
             InteractiveManager.WORLDWIDTH / 2,
             InteractiveManager.BOTTOMBOUNDS - 300,
+            backgroundManager.getIslandTilemap(),
         );
     }
     /**
@@ -55,34 +54,13 @@ export class InteractiveManager {
         this.pirateB.update();
         this.controlManager.update();
     }
-    /**
-     * Keeps track of the maximum score
-     *
-     * @param amount - the change in maximum score
-     */
-    private handleMaxScore(amount: number): void {
-        this.maxScore += amount;
-    }
-    /**
-     * Keeps track of score changes. Ends the game when the current score
-     * reaches the maximum score.
-     *
-     * @param amount - the amount of score collected
-     */
-    private handleCollection(amount: number): void {
-        this.currentScore += amount;
-        if (this.currentScore >= this.maxScore) {
-            MainEventsManager.removeAllListeners();
-            this.scene.scene.start(InteractiveManager.NEXT_SCENE);
-        }
-        MainEventsManager.emit("scoreChange", this.currentScore);
-    }
+
     /**
      * Setups the camera
      */
     private setupCamera(scene: Phaser.Scene): void {
         scene.cameras.main.setBackgroundColor(new Phaser.Display.Color(207, 239, 252).color);
-        scene.cameras.main.setZoom(0.8);
+        scene.cameras.main.setZoom(0.6);
         scene.cameras.main.setBounds(
             InteractiveManager.LEFTBOUNDS,
             InteractiveManager.TOPBOUNDS,

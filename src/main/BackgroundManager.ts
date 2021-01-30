@@ -13,6 +13,9 @@ export enum PirateTile {
 }
 
 export class BackgroundManager {
+    private water: Phaser.Tilemaps.TilemapLayer;
+    private island: Phaser.Tilemaps.TilemapLayer;
+    private objects: Phaser.Tilemaps.TilemapLayer;
     /**
      * Adds the parallax background to the scene
      */
@@ -21,9 +24,9 @@ export class BackgroundManager {
         const mapSize = 10;
         const map = scene.make.tilemap({ tileWidth: tileSize, tileHeight: tileSize, width: mapSize, height: mapSize });
         const tileset = map.addTilesetImage("background", "background", tileSize, tileSize, 0, 4, 1);
-        const water = map.createBlankLayer("water", tileset);
-        const island = map.createBlankLayer("island", tileset);
-        const objects = map.createBlankLayer("objects", tileset);
+        this.water = map.createBlankLayer("water", tileset);
+        this.island = map.createBlankLayer("island", tileset);
+        this.objects = map.createBlankLayer("objects", tileset);
 
         const islandData = [
             0,
@@ -231,15 +234,35 @@ export class BackgroundManager {
             0,
         ];
 
-        water.fill(19, 0, 0, mapSize, mapSize);
+        this.water.fill(19, 0, 0, mapSize, mapSize);
         for (let i = 0; i < islandData.length; i++) {
-            island.putTileAt(islandData[i], Math.floor(i / mapSize), i % mapSize);
+            this.island.putTileAt(islandData[i], Math.floor(i / mapSize), i % mapSize);
         }
         for (let i = 0; i < objectData.length; i++) {
-            objects.putTileAt(objectData[i], Math.floor(i / mapSize), i % mapSize);
+            this.objects.putTileAt(objectData[i], Math.floor(i / mapSize), i % mapSize);
         }
+        const debugGraphics = scene.add.graphics();
+
+        this.objects.setCollisionByProperty({ collides: true });
+        this.objects.renderDebug(debugGraphics, {
+            tileColor: new Phaser.Display.Color(5, 5, 5, 100), // Non-colliding tiles
+            collidingTileColor: new Phaser.Display.Color(211, 36, 255, 100), // Colliding tiles
+            faceColor: new Phaser.Display.Color(211, 36, 255, 255), // Colliding face edges
+        });
 
         // temp
         scene.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    }
+
+    public getWaterTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.water;
+    }
+
+    public getIslandTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.island;
+    }
+
+    public getObjectsTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.objects;
     }
 }
