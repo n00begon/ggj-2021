@@ -17,7 +17,7 @@ export class UIManager {
         this.scoreTextWASD = new ScoreText(scene, 30, 30);
         this.scoreTextWASD.update(0);
 
-        this.scoreTextArrows = new ScoreText(scene, 30, 120);
+        this.scoreTextArrows = new ScoreText(scene, 800, 30);
         this.scoreTextArrows.update(0);
     }
 
@@ -31,17 +31,17 @@ export class UIManager {
 
     public showPuzzleForArrows(): void {
         this.scoreTextArrows.update(200);
-    };
+    }
 
     public hidePuzzleForArrows(): void {
-        this.scoreTextArrows.update(0);
-    };
+        this.scoreTextArrows.hide();
+    }
 
     public showPuzzleForWASD(): void {
         this.scoreTextWASD.update(100);
-    };
+    }
 
     public hidePuzzleForWASD(): void {
-        this.scoreTextWASD.update(0);
-    };
+        this.scoreTextWASD.hide();
+    }
 }

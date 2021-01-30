@@ -38,6 +38,10 @@ export class ScoreText {
      * @param score - the new score to show
      */
     public update(score: number): void {
-        this.text.setText(`Score: ${score}`);
+        this.text.setText(`Puzzle Pieces: ${score}`);
+    }
+
+    public hide(): void {
+        this.text.setText("");
     }
 }
