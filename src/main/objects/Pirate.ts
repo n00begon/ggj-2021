@@ -22,6 +22,7 @@ export class Pirate {
     private downMove = false;
     private currentSpeedY = 0;
     private island: Phaser.Tilemaps.TilemapLayer;
+    private holes: Phaser.Tilemaps.TilemapLayer;
     private walkSound: Phaser.Sound.BaseSound;
     private controls: KeyControls;
     private digwait = 0;
@@ -44,6 +45,7 @@ export class Pirate {
         y: number,
         layer: Phaser.Tilemaps.TilemapLayer,
         collisionLayer: Phaser.Tilemaps.TilemapLayer,
+        holeLayer: Phaser.Tilemaps.TilemapLayer,
     ) {
         this.scene = scene;
         this.controls = controls;
@@ -59,7 +61,7 @@ export class Pirate {
         this.pirate.play("pirateWalk");
         this.walkSound = scene.sound.get("walking1");
         this.pirate.setBodySize(this.pirate.width, this.pirate.height - 50);
-
+        this.holes = holeLayer;
         this.pirate.setBounce(0.1);
         scene.physics.add.collider(this.pirate, collisionLayer);
         collisionLayer.setCollision(PirateTile.Water);
@@ -101,7 +103,7 @@ export class Pirate {
      */
     public update(): void {
         const currentTile = this.island.getTileAtWorldXY(this.pirate.x, this.pirate.y);
-
+        const holeTile = this.holes.getTileAtWorldXY(this.pirate.x, this.pirate.y);
         this.pirate.setVelocityX(0);
 
         if (this.digging) {
@@ -118,6 +120,9 @@ export class Pirate {
                 this.pirate.play("pirateWalk", true);
                 this.frontDust.setVisible(false);
                 this.rearDust.setVisible(false);
+                if (holeTile) {
+                    holeTile.setVisible(true);
+                }
             }
         } else {
             if (this.leftMove) this.pirate.flipX = true;
@@ -130,7 +135,7 @@ export class Pirate {
                 }
                 this.digwait = 0;
             } else {
-                if (this.digwait++ >= Pirate.DIGWAIT) {
+                if (holeTile && !holeTile.visible && this.digwait++ >= Pirate.DIGWAIT) {
                     this.digging = true;
                 }
 

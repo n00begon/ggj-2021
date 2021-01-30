@@ -42,6 +42,7 @@ export class InteractiveManager {
             this.screenHeight / 2,
             backgroundManager.getIslandTilemap(),
             backgroundManager.getCollisionTilemap(),
+            backgroundManager.getHoleTilemap(),
         );
         this.pirateB = new Pirate(
             scene,
@@ -50,6 +51,7 @@ export class InteractiveManager {
             this.screenHeight / 2 - 300,
             backgroundManager.getIslandTilemap(),
             backgroundManager.getCollisionTilemap(),
+            backgroundManager.getHoleTilemap(),
         );
 
         this.barrels = new Array<Barrel>();

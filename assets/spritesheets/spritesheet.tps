@@ -356,6 +356,7 @@
             <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-03.png</key>
             <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-04.png</key>
             <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-05.png</key>
+            <key type="filename">../rawimages/hole.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -444,6 +445,7 @@
             <filename>../rawimages/Dust Hole DiggingBack/DustBack1.png</filename>
             <filename>../rawimages/Dust Hole DiggingBack/DustBack2.png</filename>
             <filename>../rawimages/Dust Hole DiggingBack/DustBack3.png</filename>
+            <filename>../rawimages/hole.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

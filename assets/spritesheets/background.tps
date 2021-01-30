@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>5.4.0</string>
+        <string>5.5.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -70,7 +70,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>20</uint>
+        <uint>0</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -84,7 +84,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>11</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -132,7 +132,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>background.json</filename>
+                <filename>../background.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -163,13 +163,13 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>10</uint>
+            <uint>0</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
-            <uint>4</uint>
+            <uint>2</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">None</enum>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -181,7 +181,26 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../images/backgroundHill.png</key>
+            <key type="filename">../rawimages/bottom_left_corner_sand.png</key>
+            <key type="filename">../rawimages/bottom_left_edge_sand.png</key>
+            <key type="filename">../rawimages/bottom_middle_edge_sand.png</key>
+            <key type="filename">../rawimages/bottom_right_corner_sand.png</key>
+            <key type="filename">../rawimages/bottom_right_edge_sand.png</key>
+            <key type="filename">../rawimages/center_center_gravel_sand.png</key>
+            <key type="filename">../rawimages/center_center_plain_sand.png</key>
+            <key type="filename">../rawimages/centre_centre_dots_sand.png</key>
+            <key type="filename">../rawimages/hole.png</key>
+            <key type="filename">../rawimages/object_rock_1.png</key>
+            <key type="filename">../rawimages/object_tree_1.png</key>
+            <key type="filename">../rawimages/object_tree_2.png</key>
+            <key type="filename">../rawimages/side_left_edge_sand.png</key>
+            <key type="filename">../rawimages/side_right_edge_sand.png</key>
+            <key type="filename">../rawimages/top_left_corner_sand.png</key>
+            <key type="filename">../rawimages/top_left_edge_sand.png</key>
+            <key type="filename">../rawimages/top_middle_edge_sand.png</key>
+            <key type="filename">../rawimages/top_right_corner_sand.png</key>
+            <key type="filename">../rawimages/top_right_edge_sand.png</key>
+            <key type="filename">../rawimages/water.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -190,32 +209,35 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>256,100,512,200</rect>
+                <rect>32,32,64,64</rect>
                 <key>scale9Paddings</key>
-                <rect>256,100,512,200</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../images/sky.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>256,256,512,512</rect>
-                <key>scale9Paddings</key>
-                <rect>256,256,512,512</rect>
+                <rect>32,32,64,64</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>../images/backgroundHill.png</filename>
-            <filename>../images/sky.png</filename>
+            <filename>../rawimages/bottom_left_corner_sand.png</filename>
+            <filename>../rawimages/bottom_left_edge_sand.png</filename>
+            <filename>../rawimages/bottom_middle_edge_sand.png</filename>
+            <filename>../rawimages/bottom_right_corner_sand.png</filename>
+            <filename>../rawimages/bottom_right_edge_sand.png</filename>
+            <filename>../rawimages/center_center_gravel_sand.png</filename>
+            <filename>../rawimages/center_center_plain_sand.png</filename>
+            <filename>../rawimages/centre_centre_dots_sand.png</filename>
+            <filename>../rawimages/hole.png</filename>
+            <filename>../rawimages/object_rock_1.png</filename>
+            <filename>../rawimages/object_tree_1.png</filename>
+            <filename>../rawimages/object_tree_2.png</filename>
+            <filename>../rawimages/side_left_edge_sand.png</filename>
+            <filename>../rawimages/side_right_edge_sand.png</filename>
+            <filename>../rawimages/top_left_corner_sand.png</filename>
+            <filename>../rawimages/top_left_edge_sand.png</filename>
+            <filename>../rawimages/top_middle_edge_sand.png</filename>
+            <filename>../rawimages/top_right_corner_sand.png</filename>
+            <filename>../rawimages/top_right_edge_sand.png</filename>
+            <filename>../rawimages/water.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -31,6 +31,7 @@ export enum PirateTile {
     TopRightSideSand = 18,
 
     Water = 19,
+    Hole = 11,
 }
 
 export class BackgroundManager {
@@ -44,6 +45,8 @@ export class BackgroundManager {
     private island: Phaser.Tilemaps.TilemapLayer;
     private objects: Phaser.Tilemaps.TilemapLayer;
     private collision: Phaser.Tilemaps.TilemapLayer;
+    private holes: Phaser.Tilemaps.TilemapLayer;
+
     private barrels: Array<Phaser.Tilemaps.Tile>;
     /**
      * Adds the parallax background to the scene
@@ -72,15 +75,19 @@ export class BackgroundManager {
         }
 
         this.water = map.createBlankLayer("water", tileset);
+
         this.water.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
 
         this.island = map.createBlankLayer("island", tileset);
+        this.holes = map.createBlankLayer("holes", tileset);
+
         for (let x = 3; x < mapWidth - 4; x++) {
             for (let y = 3; y < mapHeight - 4; y++) {
                 const dist = this.distanceSquared(x, y, mapWidth, mapHeight);
                 const noise = (Perlin.perlin2((x / mapWidth) * 2 - 1, (y / mapHeight) * 2 - 1) + 1) / 2;
                 if (noise * dist < 0.2) {
                     this.island.putTileAt(this.genSand(), x, y);
+                    this.holes.putTileAt(PirateTile.Hole, x, y).setVisible(false);
                 }
             }
         }
@@ -92,6 +99,7 @@ export class BackgroundManager {
             for (let y = 1; y < mapHeight - 1; y++) {
                 if (!this.island.hasTileAt(x, y) && this.adjacentIslandTiles(x, y) >= 3) {
                     this.island.putTileAt(this.genSand(), x, y);
+                    this.holes.putTileAt(PirateTile.Hole, x, y).setVisible(false);
                 }
             }
         }
@@ -103,6 +111,7 @@ export class BackgroundManager {
                     const object = this.genObject();
                     if (object != PirateTile.None) {
                         this.objects.putTileAt(object, x, y);
+                        this.holes.removeTileAt(x, y);
                     }
                 }
             }
@@ -246,14 +255,14 @@ export class BackgroundManager {
             }
         }
 
-        const debugGraphics = scene.add.graphics();
+        // const debugGraphics = scene.add.graphics();
 
-        this.objects.setCollisionByProperty({ collides: true });
-        this.objects.renderDebug(debugGraphics, {
-            tileColor: new Phaser.Display.Color(5, 5, 5, 100), // Non-colliding tiles
-            collidingTileColor: new Phaser.Display.Color(211, 36, 255, 100), // Colliding tiles
-            faceColor: new Phaser.Display.Color(211, 36, 255, 255), // Colliding face edges
-        });
+        // this.objects.setCollisionByProperty({ collides: true });
+        // this.objects.renderDebug(debugGraphics, {
+        //     tileColor: new Phaser.Display.Color(5, 5, 5, 100), // Non-colliding tiles
+        //     collidingTileColor: new Phaser.Display.Color(211, 36, 255, 100), // Colliding tiles
+        //     faceColor: new Phaser.Display.Color(211, 36, 255, 255), // Colliding face edges
+        // });
 
         // temp
         scene.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -306,9 +315,9 @@ export class BackgroundManager {
             rnd -= BackgroundManager.plantAProb;
         }
 
-        if (rnd < BackgroundManager.plantBProb) {
-            return PirateTile.PlantB;
-        }
+        // if (rnd < BackgroundManager.plantBProb) {
+        //     return PirateTile.PlantB;
+        // }
 
         return PirateTile.None;
     }
@@ -323,6 +332,10 @@ export class BackgroundManager {
 
     public getObjectsTilemap(): Phaser.Tilemaps.TilemapLayer {
         return this.objects;
+    }
+
+    public getHoleTilemap(): Phaser.Tilemaps.TilemapLayer {
+        return this.holes;
     }
 
     public getCollisionTilemap(): Phaser.Tilemaps.TilemapLayer {
