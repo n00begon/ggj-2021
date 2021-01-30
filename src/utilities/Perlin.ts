@@ -529,9 +529,9 @@ export class Perlin {
         x = x - X;
         y = y - Y;
         //     console.log("relative X " + x);
-        // Wrap the integer cells at 255 (smaller integer period can be introduced here)
-        X = X & 255;
-        Y = Y & 255;
+        // Wrap the integer cells at 64 (smaller integer period can be introduced here)
+        X = X & 64;
+        Y = Y & 64;
         //    console.log("relative X " + x);
         //  console.log("calc " + calc);
         //  console.log("dot2 " + calc.dot2(x,y));

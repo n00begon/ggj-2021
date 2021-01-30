@@ -72,8 +72,19 @@ export class BackgroundManager {
         for (let x = 3; x < mapWidth - 4; x++) {
             for (let y = 3; y < mapHeight - 4; y++) {
                 const dist = this.distanceSquared(x, y, mapWidth, mapHeight);
-                const noise = (Perlin.perlin2(x / mapWidth, y / mapHeight) + 1) / 2;
-                if (noise > 0.2 + 0.4 * dist) {
+                const noise = (Perlin.perlin2((x / mapWidth) * 2 - 1, (y / mapHeight) * 2 - 1) + 1) / 2;
+                if (noise * dist < 0.2) {
+                    this.island.putTileAt(this.genSand(), x, y);
+                }
+            }
+        }
+
+        // Fix cases when we're unable to generate proper borders, e.g.
+        // x x
+        // xxx
+        for (let x = 1; x < mapWidth - 1; x++) {
+            for (let y = 1; y < mapHeight - 1; y++) {
+                if (!this.island.hasTileAt(x, y) && this.adjacentIslandTiles(x, y) >= 3) {
                     this.island.putTileAt(this.genSand(), x, y);
                 }
             }
@@ -195,6 +206,14 @@ export class BackgroundManager {
             }
         }
 
+        for (let x = 1; x < mapWidth - 1; x++) {
+            for (let y = 1; y < mapHeight - 1; y++) {
+                if (borders.hasTileAt(x, y)) {
+                    this.island.putTileAt(borders.getTileAt(x, y), x, y);
+                }
+            }
+        }
+
         const debugGraphics = scene.add.graphics();
 
         this.objects.setCollisionByProperty({ collides: true });
@@ -208,12 +227,12 @@ export class BackgroundManager {
         scene.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     }
 
-    private nearbyIslandTiles(x: number, y: number): number {
+    private adjacentIslandTiles(x: number, y: number): number {
         let count = 0;
-        for (let dx = -1; dx <= 1; dx++) {
-            for (let dy = -1; dy <= 1; dy++) {
-                if (this.island.hasTileAt(x + dx, y + dy)) count++;
-            }
+        const dx = [-1, 1, 0, 0];
+        const dy = [0, 0, -1, 1];
+        for (let i = 0; i < dx.length; i++) {
+            if (this.island.hasTileAt(x + dx[i], y + dy[i])) count++;
         }
         return count;
     }
