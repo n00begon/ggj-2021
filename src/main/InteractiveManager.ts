@@ -19,7 +19,6 @@ export class InteractiveManager {
 
     private pirateA: Pirate;
     private pirateB: Pirate;
-    private pirateC: Pirate;
     private screenWidth: number;
     private screenHeight: number;
     private barrels: Array<Barrel>;
@@ -51,14 +50,6 @@ export class InteractiveManager {
             backgroundManager.getIslandTilemap(),
             backgroundManager.getCollisionTilemap(),
         );
-        this.pirateC = new Pirate(
-            scene,
-            KeyControls.Mouse,
-            this.screenWidth / 2 - 500,
-            this.screenHeight / 2 - 300,
-            backgroundManager.getIslandTilemap(),
-            backgroundManager.getCollisionTilemap(),
-        );
 
         this.barrels = new Array<Barrel>();
         const barrelsCoords = backgroundManager.getBarrels();
@@ -72,7 +63,6 @@ export class InteractiveManager {
     public update(): void {
         this.pirateA.update();
         this.pirateB.update();
-        this.pirateC.update();
 
         // NOTE(Leon) I dunno how else to pass coordinates to the HUD system?
         const xyWASD = this.pirateA.pirate.getCenter();

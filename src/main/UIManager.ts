@@ -134,8 +134,8 @@ export class PuzzleHUD {
         this.treasurePosRect.scale = 0.1;
         this.treasurePosRect.scale = 0.08;
 
-        this.playerPosRect = scene.add.image(this.x + 32, this.y + 32, "sprites", "pirate_walk_1");
-        this.playerPosRect.scale = 0.2;
+        this.playerPosRect = scene.add.image(this.x + 32, this.y + 32, "sprites", "Faceonly");
+        this.playerPosRect.scale = 0.4;
     }
 
     public updateTreasurePos(wx: number, wy: number): void {
