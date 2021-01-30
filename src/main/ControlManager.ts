@@ -77,8 +77,14 @@ export class ControlManager {
             MainEventsManager.emit("downMove");
         }
 
+        // NOTE(Leon) : doing this the straight forward way of setting scene to insivisle
+        // at end of each frame and then turning on if puzzle key pressed didn't work
+        // so now emitting a dont show puzzle event as well.
+        // i dunno
         if (this.showPuzzleKey.isDown) {
             MainEventsManager.emit("showPuzzle");
+        } else {
+            MainEventsManager.emit("dontShowPuzzle");
         }
 
         if (this.leftKey2.isDown) {

@@ -23,7 +23,7 @@ export class Main extends Phaser.Scene {
         new AudioManager(this);
         new BackgroundManager(this);
         this.interactiveManager = new InteractiveManager(this);
-        // this.scene.run("UI");
+        this.scene.run("UI");
         // this.scene.start("Credits");
         this.scale.on("resize", this.resize);
     }
@@ -33,6 +33,9 @@ export class Main extends Phaser.Scene {
      */
     public update(): void {
         this.interactiveManager.update();
+
+        //const uiScene = this.scene.get("UI");
+        //uiScene.scene.setVisible(false);
     }
 
     /**
