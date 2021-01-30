@@ -181,25 +181,6 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../rawimages/Crate Exploding/Block1-01.png</key>
-            <key type="filename">../rawimages/Crate Exploding/Block1-02.png</key>
-            <key type="filename">../rawimages/Crate Exploding/Block1-03.png</key>
-            <key type="filename">../rawimages/Crate Exploding/Block1-04.png</key>
-            <key type="filename">../rawimages/Crate Exploding/Block1-05.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>134,134,267,267</rect>
-                <key>scale9Paddings</key>
-                <rect>134,134,267,267</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">../rawimages/Dust Hole DiggingBack/DustBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -468,11 +449,6 @@
             <filename>../rawimages/Dust Hole DiggingBack/DustBack.png</filename>
             <filename>../rawimages/Dust Hole DiggingBack/DustBack1.png</filename>
             <filename>../rawimages/Dust Hole DiggingBack/DustBack2.png</filename>
-            <filename>../rawimages/Crate Exploding/Block1-01.png</filename>
-            <filename>../rawimages/Crate Exploding/Block1-02.png</filename>
-            <filename>../rawimages/Crate Exploding/Block1-03.png</filename>
-            <filename>../rawimages/Crate Exploding/Block1-04.png</filename>
-            <filename>../rawimages/Crate Exploding/Block1-05.png</filename>
             <filename>../rawimages/Treasure Chest.png</filename>
             <filename>../rawimages/barrel.png</filename>
             <filename>../rawimages/Faceonly.png</filename>

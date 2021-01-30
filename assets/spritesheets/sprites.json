@@ -4,95 +4,11 @@
 			"image": "sprites.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 942,
-				"h": 1305
+				"w": 788,
+				"h": 510
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "Block1-04",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 534,
-						"h": 534
-					},
-					"spriteSourceSize": {
-						"x": 28,
-						"y": 23,
-						"w": 492,
-						"h": 479
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 492,
-						"h": 479
-					}
-				},
-				{
-					"filename": "Block1-05",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 534,
-						"h": 534
-					},
-					"spriteSourceSize": {
-						"x": 11,
-						"y": 64,
-						"w": 491,
-						"h": 423
-					},
-					"frame": {
-						"x": 1,
-						"y": 482,
-						"w": 491,
-						"h": 423
-					}
-				},
-				{
-					"filename": "Block1-03",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 534,
-						"h": 534
-					},
-					"spriteSourceSize": {
-						"x": 46,
-						"y": 107,
-						"w": 438,
-						"h": 322
-					},
-					"frame": {
-						"x": 495,
-						"y": 1,
-						"w": 438,
-						"h": 322
-					}
-				},
-				{
-					"filename": "Block1-02",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 534,
-						"h": 534
-					},
-					"spriteSourceSize": {
-						"x": 90,
-						"y": 122,
-						"w": 374,
-						"h": 315
-					},
-					"frame": {
-						"x": 1,
-						"y": 907,
-						"w": 374,
-						"h": 315
-					}
-				},
 				{
 					"filename": "Treasure Chest",
 					"rotated": false,
@@ -108,31 +24,10 @@
 						"h": 223
 					},
 					"frame": {
-						"x": 495,
-						"y": 325,
+						"x": 1,
+						"y": 1,
 						"w": 369,
 						"h": 223
-					}
-				},
-				{
-					"filename": "Block1-01",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 534,
-						"h": 534
-					},
-					"spriteSourceSize": {
-						"x": 112,
-						"y": 152,
-						"w": 312,
-						"h": 312
-					},
-					"frame": {
-						"x": 494,
-						"y": 550,
-						"w": 312,
-						"h": 312
 					}
 				},
 				{
@@ -150,31 +45,52 @@
 						"h": 175
 					},
 					"frame": {
-						"x": 377,
-						"y": 907,
+						"x": 1,
+						"y": 226,
 						"w": 134,
 						"h": 175
 					}
 				},
 				{
-					"filename": "PirateBasicDigA",
+					"filename": "Barrel-05",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 127,
-						"h": 172
+						"w": 128,
+						"h": 128
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 127,
-						"h": 172
+						"x": 4,
+						"y": 12,
+						"w": 120,
+						"h": 104
 					},
 					"frame": {
-						"x": 377,
-						"y": 1084,
-						"w": 127,
-						"h": 172
+						"x": 1,
+						"y": 403,
+						"w": 120,
+						"h": 104
+					}
+				},
+				{
+					"filename": "Crate Exploding Artboards-05",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 14,
+						"w": 120,
+						"h": 104
+					},
+					"frame": {
+						"x": 123,
+						"y": 403,
+						"w": 120,
+						"h": 104
 					}
 				},
 				{
@@ -192,10 +108,73 @@
 						"h": 174
 					},
 					"frame": {
-						"x": 513,
-						"y": 864,
+						"x": 137,
+						"y": 226,
 						"w": 114,
 						"h": 174
+					}
+				},
+				{
+					"filename": "Barrel-02",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 16,
+						"w": 92,
+						"h": 103
+					},
+					"frame": {
+						"x": 245,
+						"y": 402,
+						"w": 92,
+						"h": 103
+					}
+				},
+				{
+					"filename": "PirateBasicDigA",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 127,
+						"h": 172
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 127,
+						"h": 172
+					},
+					"frame": {
+						"x": 253,
+						"y": 226,
+						"w": 127,
+						"h": 172
+					}
+				},
+				{
+					"filename": "Faceonly",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 114,
+						"h": 109
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 114,
+						"h": 109
+					},
+					"frame": {
+						"x": 339,
+						"y": 400,
+						"w": 114,
+						"h": 109
 					}
 				},
 				{
@@ -213,10 +192,31 @@
 						"h": 171
 					},
 					"frame": {
-						"x": 629,
-						"y": 864,
+						"x": 372,
+						"y": 1,
 						"w": 114,
 						"h": 171
+					}
+				},
+				{
+					"filename": "DustBack2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 43
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 43
+					},
+					"frame": {
+						"x": 372,
+						"y": 174,
+						"w": 125,
+						"h": 43
 					}
 				},
 				{
@@ -234,8 +234,8 @@
 						"h": 169
 					},
 					"frame": {
-						"x": 745,
-						"y": 864,
+						"x": 488,
+						"y": 1,
 						"w": 114,
 						"h": 169
 					}
@@ -255,8 +255,8 @@
 						"h": 169
 					},
 					"frame": {
-						"x": 745,
-						"y": 864,
+						"x": 488,
+						"y": 1,
 						"w": 114,
 						"h": 169
 					}
@@ -276,10 +276,31 @@
 						"h": 165
 					},
 					"frame": {
-						"x": 808,
-						"y": 550,
+						"x": 382,
+						"y": 219,
 						"w": 114,
 						"h": 165
+					}
+				},
+				{
+					"filename": "Crate Exploding Artboards-04",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 4,
+						"w": 121,
+						"h": 117
+					},
+					"frame": {
+						"x": 455,
+						"y": 386,
+						"w": 121,
+						"h": 117
 					}
 				},
 				{
@@ -297,10 +318,94 @@
 						"h": 117
 					},
 					"frame": {
-						"x": 808,
-						"y": 717,
+						"x": 498,
+						"y": 219,
 						"w": 120,
 						"h": 117
+					}
+				},
+				{
+					"filename": "DustBack1",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 121,
+						"h": 43
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 121,
+						"h": 43
+					},
+					"frame": {
+						"x": 499,
+						"y": 172,
+						"w": 121,
+						"h": 43
+					}
+				},
+				{
+					"filename": "DustBack",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 118,
+						"h": 43
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 118,
+						"h": 43
+					},
+					"frame": {
+						"x": 498,
+						"y": 338,
+						"w": 118,
+						"h": 43
+					}
+				},
+				{
+					"filename": "barrel",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 7,
+						"w": 96,
+						"h": 115
+					},
+					"frame": {
+						"x": 578,
+						"y": 383,
+						"w": 96,
+						"h": 115
+					}
+				},
+				{
+					"filename": "Dust3",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 111,
+						"h": 33
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 111,
+						"h": 33
+					},
+					"frame": {
+						"x": 676,
+						"y": 1,
+						"w": 111,
+						"h": 33
 					}
 				},
 				{
@@ -318,10 +423,52 @@
 						"h": 80
 					},
 					"frame": {
-						"x": 1,
-						"y": 1224,
+						"x": 676,
+						"y": 36,
 						"w": 107,
 						"h": 80
+					}
+				},
+				{
+					"filename": "Barrel-03",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 14,
+						"w": 106,
+						"h": 102
+					},
+					"frame": {
+						"x": 676,
+						"y": 118,
+						"w": 106,
+						"h": 102
+					}
+				},
+				{
+					"filename": "Dust2",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 97,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 97,
+						"h": 30
+					},
+					"frame": {
+						"x": 618,
+						"y": 338,
+						"w": 97,
+						"h": 30
 					}
 				},
 				{
@@ -339,8 +486,8 @@
 						"h": 103
 					},
 					"frame": {
-						"x": 866,
-						"y": 325,
+						"x": 620,
+						"y": 222,
 						"w": 72,
 						"h": 103
 					}
@@ -360,304 +507,10 @@
 						"h": 78
 					},
 					"frame": {
-						"x": 110,
-						"y": 1224,
+						"x": 694,
+						"y": 222,
 						"w": 92,
 						"h": 78
-					}
-				},
-				{
-					"filename": "DustBack2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 125,
-						"h": 43
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 43
-					},
-					"frame": {
-						"x": 204,
-						"y": 1224,
-						"w": 125,
-						"h": 43
-					}
-				},
-				{
-					"filename": "Barrel-05",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 12,
-						"w": 120,
-						"h": 104
-					},
-					"frame": {
-						"x": 513,
-						"y": 1040,
-						"w": 120,
-						"h": 104
-					}
-				},
-				{
-					"filename": "Crate Exploding Artboards-04",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 5,
-						"y": 4,
-						"w": 121,
-						"h": 117
-					},
-					"frame": {
-						"x": 506,
-						"y": 1146,
-						"w": 121,
-						"h": 117
-					}
-				},
-				{
-					"filename": "Faceonly",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 114,
-						"h": 109
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 114,
-						"h": 109
-					},
-					"frame": {
-						"x": 635,
-						"y": 1037,
-						"w": 114,
-						"h": 109
-					}
-				},
-				{
-					"filename": "Crate Exploding Artboards-05",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 14,
-						"w": 120,
-						"h": 104
-					},
-					"frame": {
-						"x": 629,
-						"y": 1148,
-						"w": 120,
-						"h": 104
-					}
-				},
-				{
-					"filename": "barrel",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 7,
-						"w": 96,
-						"h": 115
-					},
-					"frame": {
-						"x": 751,
-						"y": 1035,
-						"w": 96,
-						"h": 115
-					}
-				},
-				{
-					"filename": "Barrel-02",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 18,
-						"y": 16,
-						"w": 92,
-						"h": 103
-					},
-					"frame": {
-						"x": 849,
-						"y": 1035,
-						"w": 92,
-						"h": 103
-					}
-				},
-				{
-					"filename": "Barrel-03",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 13,
-						"y": 14,
-						"w": 106,
-						"h": 102
-					},
-					"frame": {
-						"x": 751,
-						"y": 1152,
-						"w": 106,
-						"h": 102
-					}
-				},
-				{
-					"filename": "Dust3",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 111,
-						"h": 33
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 111,
-						"h": 33
-					},
-					"frame": {
-						"x": 204,
-						"y": 1269,
-						"w": 111,
-						"h": 33
-					}
-				},
-				{
-					"filename": "Crate Exploding Artboards-01",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 26,
-						"y": 35,
-						"w": 77,
-						"h": 77
-					},
-					"frame": {
-						"x": 859,
-						"y": 1140,
-						"w": 77,
-						"h": 77
-					}
-				},
-				{
-					"filename": "DustBack",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 118,
-						"h": 43
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 118,
-						"h": 43
-					},
-					"frame": {
-						"x": 629,
-						"y": 1254,
-						"w": 118,
-						"h": 43
-					}
-				},
-				{
-					"filename": "DustBack1",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 121,
-						"h": 43
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 121,
-						"h": 43
-					},
-					"frame": {
-						"x": 749,
-						"y": 1256,
-						"w": 121,
-						"h": 43
-					}
-				},
-				{
-					"filename": "Dust",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 79,
-						"h": 28
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 79,
-						"h": 28
-					},
-					"frame": {
-						"x": 859,
-						"y": 1219,
-						"w": 79,
-						"h": 28
-					}
-				},
-				{
-					"filename": "Dust2",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 97,
-						"h": 30
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 97,
-						"h": 30
-					},
-					"frame": {
-						"x": 331,
-						"y": 1258,
-						"w": 97,
-						"h": 30
 					}
 				},
 				{
@@ -675,10 +528,52 @@
 						"h": 29
 					},
 					"frame": {
-						"x": 430,
-						"y": 1265,
+						"x": 694,
+						"y": 302,
 						"w": 88,
 						"h": 29
+					}
+				},
+				{
+					"filename": "Dust",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 79,
+						"h": 28
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 79,
+						"h": 28
+					},
+					"frame": {
+						"x": 676,
+						"y": 370,
+						"w": 79,
+						"h": 28
+					}
+				},
+				{
+					"filename": "Crate Exploding Artboards-01",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 35,
+						"w": 77,
+						"h": 77
+					},
+					"frame": {
+						"x": 676,
+						"y": 400,
+						"w": 77,
+						"h": 77
 					}
 				}
 			]
@@ -687,6 +582,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:831ad68886434b99b2bdf652d2c46543:a80792f22001819f6e213f1bb75976b1:1eabdf11f75e3a4fe3147baf7b5be24b$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1150cc3a582977277f9672b16dc20438:2df937b31939cff542bd194edcc5a2c4:1eabdf11f75e3a4fe3147baf7b5be24b$"
 	}
 }
