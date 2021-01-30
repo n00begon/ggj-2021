@@ -19,6 +19,8 @@ export class Pirate {
     private downMove = false;
     private currentSpeedY = 0;
     private island: Phaser.Tilemaps.TilemapLayer;
+    private walkSound: Phaser.Sound.BaseSound;
+
     /**
      * Creates the pirate object
      *
@@ -40,6 +42,7 @@ export class Pirate {
         this.pirate.setFriction(0);
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
+        this.walkSound = scene.sound.get("walking1");
         this.pirate.setBounce(0.1);
         scene.physics.add.collider(this.pirate, collisionLayer);
         collisionLayer.setCollision(PirateTile.Water);
@@ -77,8 +80,12 @@ export class Pirate {
 
         if (this.leftMove || this.rightMove || this.upMove || this.downMove) {
             this.pirate.play("pirateWalk", true);
+            if (!this.walkSound.isPlaying) {
+                this.walkSound.play();
+            }
         } else {
             this.pirate.anims.stop();
+            //this.walkSound.stop();
         }
 
         let x_dir = 0;
