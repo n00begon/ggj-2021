@@ -145,7 +145,7 @@ export class UIManager {
         this.puzzleHUDWASD = new PuzzleHUD(scene, 64, 64);
 
         this.piecesArrows = new PuzzlePieces();
-        this.puzzleHUDArrows = new PuzzleHUD(scene, 600, 64);
+        this.puzzleHUDArrows = new PuzzleHUD(scene, 800, 64);
 
         this.piecesArrows.set(1, 1);
     }

@@ -1,3 +1,4 @@
+import { Input } from "phaser";
 import { MainEventsManager } from "./MainEventsManager";
 
 /**
@@ -20,6 +21,8 @@ export class ControlManager {
     private upKey2: Phaser.Input.Keyboard.Key;
     private downKey2: Phaser.Input.Keyboard.Key;
     private showPuzzleKey2: Phaser.Input.Keyboard.Key;
+
+    private shiftKey: Phaser.Input.Keyboard.Key;
 
     private DEBUGKeys: Phaser.Input.Keyboard.Key[];
     private DEBUGKeyCoords: Phaser.Math.Vector2[];
@@ -45,6 +48,8 @@ export class ControlManager {
         this.upKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         this.downKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         this.showPuzzleKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.BACK_SLASH);
+
+        this.shiftKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
 
         this.DEBUGKeys = [
             scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SEVEN),
@@ -142,7 +147,13 @@ export class ControlManager {
         if (this.DEBUGPuzzle) {
             for (let i = 0; i < this.DEBUGKeys.length; i++) {
                 const key = this.DEBUGKeys[i];
-                if (key.isDown) {
+
+                // NOTE(Leon) : I would like this to be shift but phaser / I suck so bad
+                // the shift key doesn't work??? so use W instead FML
+                if (key.isDown && this.upKey2.isDown) {
+                    const xy = this.DEBUGKeyCoords[i];
+                    MainEventsManager.emit("foundPuzzle", xy.x, xy.y);
+                } else {
                     const xy = this.DEBUGKeyCoords[i];
                     MainEventsManager.emit("foundPuzzle", xy.x, xy.y);
                 }
