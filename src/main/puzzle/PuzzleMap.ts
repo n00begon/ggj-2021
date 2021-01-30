@@ -1,7 +1,7 @@
-import { GameSettings } from "../utilities/GameSettings";
-import { MainEventsManager } from "./MainEventsManager";
-import { PuzzlePieces, PuzzleHUD } from "./UIManager";
-
+import { GameSettings } from "../../utilities/GameSettings";
+import { MainEventsManager } from "../MainEventsManager";
+import { PuzzleHUD } from "./PuzzleHUD";
+import { PuzzlePieces } from "./PuzzlePieces";
 export class PuzzleMap {
     private static readonly SHOWTIME = 20;
     private pieces: PuzzlePieces;
