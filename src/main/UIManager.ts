@@ -118,7 +118,7 @@ export class PuzzleHUD {
         this.playerPosRect = scene.add.rectangle(this.x + 32, this.y + 32, 8, 8, 0xff0000);
     }
 
-    public updatePlayerPos(wx: number, wy: number) {
+    public updatePlayerPos(wx: number, wy: number): void {
         let ux = wx / GameSettings.MAP_WIDTH;
         let uy = wy / GameSettings.MAP_HEIGHT;
         ux *= 3 * 32;
