@@ -5,4 +5,5 @@ export class GameSettings {
     public static readonly LARGE_FONT_SIZE = 120;
     public static readonly MEDIUM_FONT_SIZE = 60;
     public static readonly SMALL_FONT_SIZE = 40;
+    public static readonly ZOOM_LEVEL = 0.5;
 }

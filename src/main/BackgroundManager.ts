@@ -1,3 +1,5 @@
+import { GameSettings } from "../utilities/GameSettings";
+
 /**
  * Background manager controls the non interactive background objects
  */
@@ -34,8 +36,8 @@ export class BackgroundManager {
      */
     constructor(scene: Phaser.Scene) {
         const tileSize = 128;
-        const mapWidth = 20;
-        const mapHeight = 10;
+        const mapWidth = Math.floor(scene.game.canvas.width /* / GameSettings.ZOOM_LEVEL*/ / tileSize);
+        const mapHeight = Math.floor(scene.game.canvas.height /* / GameSettings.ZOOM_LEVEL*/ / tileSize);
         const map = scene.make.tilemap({
             tileWidth: tileSize,
             tileHeight: tileSize,
@@ -151,7 +153,7 @@ export class BackgroundManager {
         ];
 
         const objectData = [
-            PirateTile.Rock,
+            0,
             0,
             0,
             0,
