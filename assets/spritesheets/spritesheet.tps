@@ -380,6 +380,16 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Barrel-01.png</key>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Barrel-02.png</key>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Barrel-03.png</key>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Barrel-04.png</key>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Barrel-05.png</key>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-01.png</key>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-02.png</key>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-03.png</key>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-04.png</key>
+            <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-05.png</key>
             <key type="filename">../rawimages/barrel.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -466,6 +476,16 @@
             <filename>../rawimages/Treasure Chest.png</filename>
             <filename>../rawimages/barrel.png</filename>
             <filename>../rawimages/Faceonly.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Barrel-01.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Barrel-02.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Barrel-03.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Barrel-04.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Barrel-05.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-01.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-02.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-03.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-04.png</filename>
+            <filename>../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-05.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
