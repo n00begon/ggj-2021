@@ -1,7 +1,6 @@
 import { Pirate } from "./objects/Pirate";
 import { Barrel } from "./objects/Barrel";
 import { KeyControls } from "./KeyControls";
-import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
 import { BackgroundManager } from "./BackgroundManager";

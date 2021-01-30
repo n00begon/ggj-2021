@@ -5,7 +5,7 @@ export class Barrel {
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.scene = scene;
         this.barrel = scene.physics.add.sprite(x, y, "sprites", "Barrel-01");
-        this.barrel.depth = this.barrel.y;
+        this.barrel.depth = this.barrel.getBottomCenter().y;
         this.setupCollisions(scene);
     }
 
