@@ -5,6 +5,7 @@ import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
 import { BackgroundManager } from "./BackgroundManager";
 import { GameSettings } from "../utilities/GameSettings";
+import { MainEventsManager } from "./MainEventsManager";
 
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
@@ -52,26 +53,36 @@ export class InteractiveManager {
             backgroundManager.getHoleTilemap(),
         );
 
+        // NOTE(Leon) : sprinkle our barrels with puzzle pieces!
+        let validPuzzleCoords = [
+            new Phaser.Math.Vector2(0, 0),
+            new Phaser.Math.Vector2(1, 0),
+            new Phaser.Math.Vector2(2, 0),
+            new Phaser.Math.Vector2(0, 1),
+            new Phaser.Math.Vector2(1, 1),
+            new Phaser.Math.Vector2(2, 1),
+            new Phaser.Math.Vector2(0, 2),
+            new Phaser.Math.Vector2(1, 2),
+            new Phaser.Math.Vector2(2, 2),
+        ];
+
         this.barrels = new Array<Barrel>();
         const barrelsCoords = backgroundManager.getBarrels();
         for (let i = 0; i < barrelsCoords.length; i++) {
-            this.barrels.push(
-                new Barrel(
-                    scene,
-                    barrelsCoords[i].getCenterX(),
-                    barrelsCoords[i].getCenterY(),
-                    this.pirateA,
-                    this.pirateB,
-                ),
-            );
-        }
+            let barrel = new Barrel(scene, barrelsCoords[i].getCenterX(), barrelsCoords[i].getCenterY(), this.pirateA, this.pirateB);
+            if (validPuzzleCoords.length > 0) {
+                const puzzle_index = Phaser.Math.RND.integerInRange(0, validPuzzleCoords.length - 1);
+                const puzzleCoord = validPuzzleCoords[puzzle_index];
+                validPuzzleCoords.splice(puzzle_index, 1);
+                if (puzzleCoord !== undefined) {
+                    barrel.isPuzzlePiece = true;
+                    barrel.puzzleX = puzzleCoord.x;
+                    barrel.puzzleY = puzzleCoord.y;
+                }
+            }
 
-        // test puzzle piece barrel
-        const puzzleBarrel = new Barrel(scene, 1500, 1500, this.pirateA, this.pirateB);
-        puzzleBarrel.isPuzzlePiece = true;
-        puzzleBarrel.puzzleX = 1;
-        puzzleBarrel.puzzleX = 2;
-        this.barrels.push(puzzleBarrel);
+            this.barrels.push(barrel);
+        }
     }
     /**
      * The main update loop for the scene.
