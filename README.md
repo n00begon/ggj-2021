@@ -143,7 +143,7 @@ Toasty created for this project by [Jaclyn Kim](https://www.fiverr.com/jaclynkim
 
 ## Music
 
-Arpent from [freepd.com](https://freepd.com/electronic.php) by [Kevin MacLeod](https://incompetech.com/)
+the-buccaneers-haul from [Silverman Sound](https://www.silvermansound.com/free-music/the-buccaneers-haul) by Shane Invers.
 
 ## Inspired by
 

@@ -8,7 +8,7 @@ export class AudioManager {
     constructor(scene: Phaser.Scene) {
         scene.sound.stopAll();
         scene.sound.add("powerUp4");
-        const backgroundMusic = scene.sound.add("Arpent");
+        const backgroundMusic = scene.sound.add("the-buccaneers-haul");
         backgroundMusic.play({
             loop: true,
             volume: 0.3,
