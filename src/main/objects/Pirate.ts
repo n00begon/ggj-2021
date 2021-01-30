@@ -29,6 +29,7 @@ export class Pirate {
     private digging = false;
     private frontDust: Phaser.GameObjects.Sprite;
     private rearDust: Phaser.GameObjects.Sprite;
+    private XmarksTheSpot: Phaser.Math.Vector2;
 
     /**
      * Creates the pirate object
@@ -44,6 +45,7 @@ export class Pirate {
         y: number,
         collisionLayer: Phaser.Tilemaps.TilemapLayer,
         holeLayer: Phaser.Tilemaps.TilemapLayer,
+        XmarksTheSpot: Phaser.Math.Vector2
     ) {
         this.scene = scene;
         this.controls = controls;
@@ -52,6 +54,8 @@ export class Pirate {
         this.frontDust.setVisible(false);
         this.rearDust = scene.add.sprite(x, y, "sprites", "DustBack1");
         this.rearDust.setVisible(false);
+
+        this.XmarksTheSpot = XmarksTheSpot;
 
         this.pirate.setFriction(0);
         this.scene.cameras.main.startFollow(this.pirate);
@@ -103,7 +107,7 @@ export class Pirate {
      */
     public update(): void {
         //  const currentTile = this.island.getTileAtWorldXY(this.pirate.x, this.pirate.y);
-        const test = this.holes.getTileAtWorldXY(2000, 2000);
+        const treasure_tile = this.holes.getTileAtWorldXY(this.XmarksTheSpot.x, this.XmarksTheSpot.y);
 
         const holeTile = this.holes.getTileAtWorldXY(this.pirate.getBottomCenter().x, this.pirate.getBottomCenter().y);
         this.pirate.setVelocityX(0);
@@ -126,7 +130,8 @@ export class Pirate {
                     holeTile.setVisible(true);
                 }
 
-                if (holeTile && test && holeTile.x === test.x && holeTile.y === test.y) {
+                if (holeTile && treasure_tile && holeTile.x === treasure_tile.x && holeTile.y === treasure_tile.y) {
+                    MainEventsManager.emit("GameWon");
                     console.log("Won game");
                 }
             }
