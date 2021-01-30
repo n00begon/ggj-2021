@@ -1,4 +1,4 @@
-import { UIManager } from "./UIManager";
+import { UIManager } from "./puzzle/UIManager";
 
 /**
  * UI is a scene overlayed on the main scene to hold all the user interface components

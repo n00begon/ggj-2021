@@ -1,4 +1,4 @@
-import { GameSettings } from "../utilities/GameSettings";
+import { GameSettings } from "../../utilities/GameSettings";
 import { PuzzleMap } from "./PuzzleMap";
 
 export class PuzzlePieces {
