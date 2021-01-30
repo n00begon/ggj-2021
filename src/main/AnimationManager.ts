@@ -9,6 +9,8 @@ export class AnimationManager {
         this.createWalkAnimation(scene);
         this.createDigAnimation(scene);
         this.createBarrelAnimation(scene);
+        this.createFrontDustAnimation(scene);
+        this.createRearDustAnimation(scene);
     }
 
     private createWalkAnimation(scene: Phaser.Scene): void {
@@ -59,6 +61,32 @@ export class AnimationManager {
                 prefix: "Barrel-0",
             }),
             key: "barrelExplode",
+        });
+    }
+
+    private createFrontDustAnimation(scene: Phaser.Scene): void {
+        scene.anims.create({
+            frameRate: 6,
+            frames: scene.anims.generateFrameNames("sprites", {
+                start: 1,
+                end: 3,
+                prefix: "Dust",
+            }),
+            key: "frontDust",
+            repeat: -1,
+        });
+    }
+
+    private createRearDustAnimation(scene: Phaser.Scene): void {
+        scene.anims.create({
+            frameRate: 6,
+            frames: scene.anims.generateFrameNames("sprites", {
+                start: 1,
+                end: 3,
+                prefix: "DustBack",
+            }),
+            key: "rearDust",
+            repeat: -1,
         });
     }
 }

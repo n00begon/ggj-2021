@@ -27,6 +27,9 @@ export class Pirate {
     private digwait = 0;
     private digtime = 0;
     private digging = false;
+    private frontDust: Phaser.GameObjects.Sprite;
+    private rearDust: Phaser.GameObjects.Sprite;
+
     /**
      * Creates the pirate object
      *
@@ -45,12 +48,17 @@ export class Pirate {
         this.scene = scene;
         this.controls = controls;
         this.pirate = scene.physics.add.sprite(x, y, "sprites", "pirate");
+        this.frontDust = scene.add.sprite(x, y, "sprites", "Dust1");
+        this.frontDust.setVisible(false);
+        this.rearDust = scene.add.sprite(x, y, "sprites", "DustBack1");
+        this.rearDust.setVisible(false);
+
         this.island = layer;
         this.pirate.setFriction(0);
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
         this.walkSound = scene.sound.get("walking1");
-        this.pirate.setBodySize(this.pirate.width, this.pirate.height);
+        this.pirate.setBodySize(this.pirate.width, this.pirate.height - 50);
 
         this.pirate.setBounce(0.1);
         scene.physics.add.collider(this.pirate, collisionLayer);
@@ -99,10 +107,17 @@ export class Pirate {
         if (this.digging) {
             this.pirate.play("pirateDig", true);
             this.digwait = 0;
+            this.frontDust.setVisible(true);
+            this.frontDust.play("frontDust", true);
+            this.rearDust.setVisible(true);
+            this.rearDust.play("rearDust", true);
+
             if (this.digtime++ >= Pirate.DIGTIME) {
                 this.digging = false;
                 this.digtime = 0;
                 this.pirate.play("pirateWalk", true);
+                this.frontDust.setVisible(false);
+                this.rearDust.setVisible(false);
             }
         } else {
             if (this.leftMove) this.pirate.flipX = true;
@@ -162,6 +177,10 @@ export class Pirate {
                 this.debugText.setText("null");
             }
             this.pirate.depth = this.pirate.getBottomCenter().y;
+            this.frontDust.setPosition(this.pirate.x, this.pirate.y + 70);
+            this.frontDust.depth = this.pirate.depth + 1;
+            this.rearDust.setPosition(this.pirate.x, this.pirate.y + 50);
+            this.rearDust.depth = this.pirate.depth - 1;
         }
         MainEventsManager.emit("playerXY", this.controls, this.pirate.getCenter().x, this.pirate.getCenter().y);
     }

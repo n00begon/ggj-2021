@@ -181,21 +181,6 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../rawimages/Dust Hole DiggingBack/DustBack.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>30,11,59,21</rect>
-                <key>scale9Paddings</key>
-                <rect>30,11,59,21</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">../rawimages/Dust Hole DiggingBack/DustBack1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -205,9 +190,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>30,11,61,21</rect>
+                <rect>30,11,59,21</rect>
                 <key>scale9Paddings</key>
-                <rect>30,11,61,21</rect>
+                <rect>30,11,59,21</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -220,13 +205,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>31,11,63,21</rect>
+                <rect>30,11,61,21</rect>
                 <key>scale9Paddings</key>
-                <rect>31,11,63,21</rect>
+                <rect>30,11,61,21</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../rawimages/Dust Hole DiggingFront/Dust.png</key>
+            <key type="filename">../rawimages/Dust Hole DiggingBack/DustBack3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -235,9 +220,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>20,7,39,14</rect>
+                <rect>31,11,63,21</rect>
                 <key>scale9Paddings</key>
-                <rect>20,7,39,14</rect>
+                <rect>31,11,63,21</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -371,7 +356,6 @@
             <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-03.png</key>
             <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-04.png</key>
             <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-05.png</key>
-            <key type="filename">../rawimages/barrel.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -439,15 +423,10 @@
             <filename>../rawimages/pirate_walk_2.png</filename>
             <filename>../rawimages/pirate_walk_3.png</filename>
             <filename>../rawimages/pirate_walk_4.png</filename>
-            <filename>../rawimages/Dust Hole DiggingFront/Dust.png</filename>
             <filename>../rawimages/Dust Hole DiggingFront/Dust1.png</filename>
             <filename>../rawimages/Dust Hole DiggingFront/Dust2.png</filename>
             <filename>../rawimages/Dust Hole DiggingFront/Dust3.png</filename>
-            <filename>../rawimages/Dust Hole DiggingBack/DustBack.png</filename>
-            <filename>../rawimages/Dust Hole DiggingBack/DustBack1.png</filename>
-            <filename>../rawimages/Dust Hole DiggingBack/DustBack2.png</filename>
             <filename>../rawimages/Treasure Chest.png</filename>
-            <filename>../rawimages/barrel.png</filename>
             <filename>../rawimages/Faceonly.png</filename>
             <filename>../rawimages/Updated Barrel and Crate/Barrel-01.png</filename>
             <filename>../rawimages/Updated Barrel and Crate/Barrel-02.png</filename>
@@ -462,6 +441,9 @@
             <filename>../rawimages/PirateBasicDig1.png</filename>
             <filename>../rawimages/PirateBasicDig2.png</filename>
             <filename>../rawimages/PirateBasicDig3.png</filename>
+            <filename>../rawimages/Dust Hole DiggingBack/DustBack1.png</filename>
+            <filename>../rawimages/Dust Hole DiggingBack/DustBack2.png</filename>
+            <filename>../rawimages/Dust Hole DiggingBack/DustBack3.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
