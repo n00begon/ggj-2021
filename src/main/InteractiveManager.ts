@@ -35,6 +35,8 @@ export class InteractiveManager {
         this.controlManager = new ControlManager(scene);
         this.setupCamera(scene);
 
+        // scene.matter.world.setBounds(0, 0, this.screenWidth, this.screenHeight);
+
         this.pirateA = new Pirate(
             scene,
             KeyControls.WASD,
