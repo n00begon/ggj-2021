@@ -1,4 +1,3 @@
-import { GameSettings } from "../../utilities/GameSettings";
 import { PirateTile } from "../BackgroundManager";
 import { KeyControls } from "../KeyControls";
 import { MainEventsManager } from "../MainEventsManager";
