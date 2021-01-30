@@ -41,13 +41,13 @@ export class ControlManager {
         this.rightKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         this.upKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         this.downKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-        this.showPuzzleKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
+        this.showPuzzleKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         this.leftKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.rightKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
         this.upKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         this.downKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-        this.showPuzzleKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.BACK_SLASH);
+        this.showPuzzleKey2 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
         this.shiftKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
 
@@ -97,29 +97,23 @@ export class ControlManager {
 
     private keyboardInput() {
         if (this.leftKey.isDown) {
-            MainEventsManager.emit("leftMove");
+            MainEventsManager.emit("leftMove1");
         }
 
         if (this.rightKey.isDown) {
-            MainEventsManager.emit("rightMove");
+            MainEventsManager.emit("rightMove1");
         }
 
         if (this.upKey.isDown) {
-            MainEventsManager.emit("upMove");
+            MainEventsManager.emit("upMove1");
         }
 
         if (this.downKey.isDown) {
-            MainEventsManager.emit("downMove");
+            MainEventsManager.emit("downMove1");
         }
 
-        // NOTE(Leon) : doing this the straight forward way of setting scene to insivisle
-        // at end of each frame and then turning on if puzzle key pressed didn't work
-        // so now emitting a dont show puzzle event as well.
-        // i dunno
         if (this.showPuzzleKey.isDown) {
-            MainEventsManager.emit("showPuzzleWASD");
-        } else {
-            MainEventsManager.emit("dontShowPuzzleWASD");
+            MainEventsManager.emit("puzzle1");
         }
 
         if (this.leftKey2.isDown) {
@@ -139,9 +133,7 @@ export class ControlManager {
         }
 
         if (this.showPuzzleKey2.isDown) {
-            MainEventsManager.emit("showPuzzleArrows");
-        } else {
-            MainEventsManager.emit("dontShowPuzzleArrows");
+            MainEventsManager.emit("puzzle2");
         }
 
         if (this.DEBUGPuzzle) {
@@ -152,9 +144,9 @@ export class ControlManager {
                 // the shift key doesn't work??? so use W instead FML
                 const coords = this.DEBUGKeyCoords[i];
                 if (key.isDown && this.upKey2.isDown) {
-                    MainEventsManager.emit("foundPuzzle", KeyControls.Arrows, coords.x, coords.y);
+                    MainEventsManager.emit("foundPuzzle1", coords.x, coords.y);
                 } else if (key.isDown) {
-                    MainEventsManager.emit("foundPuzzle", KeyControls.WASD, coords.x, coords.y);
+                    MainEventsManager.emit("foundPuzzle2", coords.x, coords.y);
                 }
             }
         }

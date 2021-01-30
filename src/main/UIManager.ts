@@ -2,6 +2,7 @@ import { ScoreText } from "./ScoreText";
 import { KeyControls } from "./KeyControls";
 import { MainEventsManager } from "./MainEventsManager";
 import { GameSettings } from "../utilities/GameSettings";
+import { PuzzleMap } from "./PuzzleMap";
 
 export class PuzzlePieces {
     public piece00: boolean;
@@ -200,58 +201,12 @@ export class PuzzleHUD {
  * UIManager controls the user interface elements displayed to the user
  */
 export class UIManager {
-    private piecesWASD: PuzzlePieces;
-    private puzzleHUDWASD: PuzzleHUD;
-
-    private piecesArrows: PuzzlePieces;
-    private puzzleHUDArrows: PuzzleHUD;
-
+    private maps: Array<PuzzleMap> = new Array<PuzzleMap>(2);
     /**
      * Adds the interactive objects to the scene
      */
     constructor(scene: Phaser.Scene) {
-        MainEventsManager.on("foundPuzzle", this.foundPuzzle, this);
-        MainEventsManager.on("playerXY", this.playerXY, this);
-
-        this.piecesWASD = new PuzzlePieces();
-        this.puzzleHUDWASD = new PuzzleHUD(scene, 64, 64);
-
-        this.piecesArrows = new PuzzlePieces();
-        this.puzzleHUDArrows = new PuzzleHUD(scene, 800, 64);
-
-        this.puzzleHUDArrows.updateTreasurePos(GameSettings.XmarksTheSpot.x, GameSettings.XmarksTheSpot.y);
-        this.puzzleHUDWASD.updateTreasurePos(GameSettings.XmarksTheSpot.x, GameSettings.XmarksTheSpot.y);
-    }
-
-    public playerXY(control: KeyControls, x: number, y: number): void {
-        if (control === KeyControls.WASD) {
-            this.puzzleHUDWASD.updatePlayerPos(x, y);
-        } else {
-            this.puzzleHUDArrows.updatePlayerPos(x, y);
-        }
-    }
-
-    public foundPuzzle(control: KeyControls, x: number, y: number): void {
-        if (control === KeyControls.WASD) {
-            this.piecesWASD.set(y, x);
-        } else {
-            this.piecesArrows.set(y, x);
-        }
-    }
-
-    public showPuzzleForArrows(): void {
-        this.puzzleHUDArrows.show(this.piecesArrows);
-    }
-
-    public hidePuzzleForArrows(): void {
-        this.puzzleHUDArrows.hide();
-    }
-
-    public showPuzzleForWASD(): void {
-        this.puzzleHUDWASD.show(this.piecesWASD);
-    }
-
-    public hidePuzzleForWASD(): void {
-        this.puzzleHUDWASD.hide();
+        this.maps.push(new PuzzleMap(scene, 64, 64, 1));
+        this.maps.push(new PuzzleMap(scene, 800, 64, 2));
     }
 }

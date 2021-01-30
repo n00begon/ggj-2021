@@ -38,7 +38,7 @@ export class InteractiveManager {
         MainEventsManager.on("GameWon", this.handleGameWon, this);
         this.pirateA = new Pirate(
             scene,
-            KeyControls.WASD,
+            1,
             this.screenWidth / 2,
             this.screenHeight / 2,
             backgroundManager.getCollisionTilemap(),
@@ -48,7 +48,7 @@ export class InteractiveManager {
 
         this.pirateB = new Pirate(
             scene,
-            KeyControls.Arrows,
+            2,
             this.screenWidth / 2,
             this.screenHeight / 2 - 300,
             backgroundManager.getCollisionTilemap(),

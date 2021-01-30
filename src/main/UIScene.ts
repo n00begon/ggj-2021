@@ -11,11 +11,6 @@ export class UI extends Phaser.Scene {
      */
     public constructor() {
         super("UI");
-        MainEventsManager.on("showPuzzleWASD", this.handleShowPuzzleWASD, this);
-        MainEventsManager.on("dontShowPuzzleWASD", this.handleDontShowPuzzleWASD, this);
-
-        MainEventsManager.on("showPuzzleArrows", this.handleShowPuzzleArrows, this);
-        MainEventsManager.on("dontShowPuzzleArrows", this.handleDontShowPuzzleArrows, this);
     }
 
     /**
@@ -23,21 +18,5 @@ export class UI extends Phaser.Scene {
      */
     public create(): void {
         this.uiMan = new UIManager(this);
-    }
-
-    private handleShowPuzzleWASD(): void {
-        this.uiMan.showPuzzleForWASD();
-    }
-
-    private handleDontShowPuzzleWASD(): void {
-        this.uiMan.hidePuzzleForWASD();
-    }
-
-    private handleShowPuzzleArrows(): void {
-        this.uiMan.showPuzzleForArrows();
-    }
-
-    private handleDontShowPuzzleArrows(): void {
-        this.uiMan.hidePuzzleForArrows();
     }
 }

@@ -1,5 +1,6 @@
 export enum KeyControls {
-    WASD,
-    Arrows,
-    Mouse,
+    Player1,
+    Player2,
+    Player3,
+    Player4,
 }

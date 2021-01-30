@@ -23,14 +23,13 @@ export class Pirate {
     private holes: Phaser.Tilemaps.TilemapLayer;
     private walkSound: Phaser.Sound.BaseSound;
     private digSound: Phaser.Sound.BaseSound;
-    private controls: KeyControls;
     private digwait = 0;
     private digtime = 0;
     private digging = false;
     private frontDust: Phaser.GameObjects.Sprite;
     private rearDust: Phaser.GameObjects.Sprite;
     private XmarksTheSpot: Phaser.Math.Vector2;
-
+    private player: number;
     /**
      * Creates the pirate object
      *
@@ -40,7 +39,7 @@ export class Pirate {
      */
     constructor(
         scene: Phaser.Scene,
-        controls: KeyControls,
+        player: number,
         x: number,
         y: number,
         collisionLayer: Phaser.Tilemaps.TilemapLayer,
@@ -48,7 +47,7 @@ export class Pirate {
         XmarksTheSpot: Phaser.Math.Vector2,
     ) {
         this.scene = scene;
-        this.controls = controls;
+        this.player = player;
         this.pirate = scene.physics.add.sprite(x, y, "sprites", "pirate");
         this.frontDust = scene.add.sprite(x, y, "sprites", "Dust1");
         this.frontDust.setVisible(false);
@@ -67,29 +66,11 @@ export class Pirate {
         this.pirate.setBounce(0.1);
         scene.physics.add.collider(this.pirate, collisionLayer);
         collisionLayer.setCollision(PirateTile.Water);
-        if (controls === KeyControls.WASD) {
-            MainEventsManager.on("leftMove2", this.handleLeftMove, this);
-            MainEventsManager.on("rightMove2", this.handleRightMove, this);
-            MainEventsManager.on("upMove2", this.handleUpMove, this);
-            MainEventsManager.on("downMove2", this.handleDownMove, this);
-        } else if (controls == KeyControls.Arrows) {
-            MainEventsManager.on("leftMove", this.handleLeftMove, this);
-            MainEventsManager.on("rightMove", this.handleRightMove, this);
-            MainEventsManager.on("upMove", this.handleUpMove, this);
-            MainEventsManager.on("downMove", this.handleDownMove, this);
-        } else if (controls == KeyControls.Mouse) {
-            MainEventsManager.on("leftMove3", this.handleLeftMove, this);
-            MainEventsManager.on("rightMove3", this.handleRightMove, this);
-            MainEventsManager.on("upMove3", this.handleUpMove, this);
-            MainEventsManager.on("downMove3", this.handleDownMove, this);
-        }
 
-        // this.debugText = scene.add.text(x, y, "Yo Ho", {
-        //     fontFamily: GameSettings.DISPLAY_FONT,
-        //     color: GameSettings.FONT_COLOUR,
-        // // });
-
-        // this.debugText.setFontSize(50);
+        MainEventsManager.on("leftMove" + player, this.handleLeftMove, this);
+        MainEventsManager.on("rightMove" + player, this.handleRightMove, this);
+        MainEventsManager.on("upMove" + player, this.handleUpMove, this);
+        MainEventsManager.on("downMove" + player, this.handleDownMove, this);
     }
 
     public getSprite(): Phaser.Physics.Arcade.Sprite {
@@ -98,9 +79,8 @@ export class Pirate {
 
     public receivedBarrel(barrel: Barrel): void {
         if (barrel.isPuzzlePiece) {
-            MainEventsManager.emit("foundPuzzle", KeyControls.WASD, barrel.puzzleX, barrel.puzzleY);
+            MainEventsManager.emit("foundPuzzle", this.player, barrel.puzzleX, barrel.puzzleY);
         }
-        console.log(barrel);
     }
 
     /**
@@ -203,7 +183,7 @@ export class Pirate {
             this.rearDust.setPosition(this.pirate.x, this.pirate.y + 50);
             this.rearDust.depth = this.pirate.depth - 1;
         }
-        MainEventsManager.emit("playerXY", this.controls, this.pirate.getCenter().x, this.pirate.getCenter().y);
+        MainEventsManager.emit("playerXY" + this.player, this.pirate.getCenter().x, this.pirate.getCenter().y);
     }
 
     /**
