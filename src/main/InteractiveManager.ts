@@ -22,6 +22,7 @@ export class InteractiveManager {
     private currentScore: number;
     private pirateA: Pirate;
     private pirateB: Pirate;
+    private pirateC: Pirate;
     /**
      * Adds the interactive objects to the scene
      */
@@ -46,6 +47,13 @@ export class InteractiveManager {
             InteractiveManager.WORLDWIDTH / 2,
             InteractiveManager.BOTTOMBOUNDS - 300,
         );
+
+        this.pirateC = new Pirate(
+            scene,
+            KeyControls.Mouse,
+            InteractiveManager.WORLDWIDTH / 2 - 500,
+            InteractiveManager.BOTTOMBOUNDS - 300,
+        );
     }
     /**
      * The main update loop for the scene.
@@ -53,6 +61,7 @@ export class InteractiveManager {
     public update(): void {
         this.pirateA.update();
         this.pirateB.update();
+        this.pirateC.update();
         this.controlManager.update();
     }
     /**

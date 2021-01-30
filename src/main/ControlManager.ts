@@ -92,13 +92,15 @@ export class ControlManager {
     private mouseInput() {
         if (this.currentPointer?.isDown) {
             if (this.currentPointer.x < this.scene.cameras.main.displayWidth / 2) {
-                MainEventsManager.emit("leftMove");
+                MainEventsManager.emit("leftMove3");
             } else {
-                MainEventsManager.emit("rightMove");
+                MainEventsManager.emit("rightMove3");
             }
 
             if (this.currentPointer.y < this.scene.cameras.main.displayHeight / 2) {
-                MainEventsManager.emit("jumpMove");
+                MainEventsManager.emit("upMove3");
+            } else {
+                MainEventsManager.emit("downMove3");
             }
         }
     }
