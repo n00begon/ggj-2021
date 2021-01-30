@@ -26,5 +26,17 @@ export class AnimationManager {
             key: "pirateWalk",
             repeat: -1,
         });
+
+        scene.anims.create({
+            frameRate: 6,
+            frames: scene.anims.generateFrameNames("sprites", {
+                start: 1,
+                end: 5,
+                prefix: "Barrel-0",
+            }),
+
+            key: "barrel-explosion",
+            repeat: 0,
+        });
     }
 }

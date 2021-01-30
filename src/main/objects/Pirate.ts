@@ -1,5 +1,4 @@
 import { GameSettings } from "../../utilities/GameSettings";
-import { PlainText } from "../../utilities/text/PlainText";
 import { PirateTile } from "../BackgroundManager";
 import { KeyControls } from "../KeyControls";
 import { MainEventsManager } from "../MainEventsManager";
