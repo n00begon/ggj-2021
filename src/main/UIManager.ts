@@ -1,6 +1,7 @@
 import { ScoreText } from "./ScoreText";
 import { KeyControls } from "./KeyControls";
 import { MainEventsManager } from "./MainEventsManager";
+import { GameSettings } from "../utilities/GameSettings";
 
 export class PuzzlePieces {
     public piece00: boolean;
@@ -191,7 +192,17 @@ export class UIManager {
     }
 
     public playerXY(control: KeyControls, x: number, y: number): void {
-        console.log(x, y);
+        if (control === KeyControls.WASD) {
+            console.log("map xy", x, y);
+            let ux = x / GameSettings.MAP_WIDTH;
+            let uy = y / GameSettings.MAP_HEIGHT;
+            ux *= 3 * 32;
+            uy *= 3 * 32;
+            ux += this.puzzleHUDWASD.x;
+            uy += this.puzzleHUDWASD.y;
+            console.log("01 xy", ux, uy);
+            this.puzzleHUDWASD.playerPosRect.setPosition(ux, uy);
+        }
     }
 
     public foundPuzzle(control: KeyControls, x: number, y: number): void {
