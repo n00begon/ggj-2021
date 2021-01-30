@@ -47,7 +47,6 @@ export class ControlManager {
         this.DEBUGaddPuzzleLeftTopKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SEVEN);
         this.DEBUGaddPuzzleLeftCenterKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FIVE);
 
-
         scene.input.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
             this.currentPointer = pointer;
         });
