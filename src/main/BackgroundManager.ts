@@ -48,6 +48,7 @@ export class BackgroundManager {
     private holes: Phaser.Tilemaps.TilemapLayer;
 
     private barrels: Array<Phaser.Tilemaps.Tile>;
+
     /**
      * Adds the parallax background to the scene
      */
@@ -131,6 +132,14 @@ export class BackgroundManager {
             this.barrels[i] = this.barrels[j];
             this.barrels[j] = temp;
         }
+
+        // Not actually a barrel location but just an easy way to randomly choose a tile without other objects :)
+        const treasureLocation = this.barrels[this.barrels.length - 1];
+        GameSettings.XmarksTheSpot = new Phaser.Math.Vector2(
+            treasureLocation.getCenterX(),
+            treasureLocation.getCenterY(),
+        );
+
         const barrelsCnt = 5 + 5 * Math.random();
         while (this.barrels.length > barrelsCnt) this.barrels.pop();
 
