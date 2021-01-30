@@ -35,7 +35,7 @@ export class InteractiveManager {
         this.setupCamera(scene);
 
         // scene.matter.world.setBounds(0, 0, this.screenWidth, this.screenHeight);
-
+        MainEventsManager.on("GameWon", this.handleGameWon, this);
         this.pirateA = new Pirate(
             scene,
             KeyControls.WASD,
@@ -111,5 +111,10 @@ export class InteractiveManager {
     private setupCamera(scene: Phaser.Scene): void {
         scene.cameras.main.setBackgroundColor(new Phaser.Display.Color(207, 239, 252).color);
         scene.cameras.main.setZoom(GameSettings.ZOOM_LEVEL);
+    }
+
+    private handleGameWon(): void {
+        MainEventsManager.removeAllListeners();
+        this.scene.scene.start(InteractiveManager.NEXT_SCENE);
     }
 }

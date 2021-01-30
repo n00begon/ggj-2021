@@ -311,9 +311,10 @@ export class BackgroundManager {
 
         if (rnd < BackgroundManager.plantAProb) {
             return PirateTile.PlantA;
-        } else {
-            rnd -= BackgroundManager.plantAProb;
         }
+        // } else {
+        //     rnd -= BackgroundManager.plantAProb;
+        // }
 
         // if (rnd < BackgroundManager.plantBProb) {
         //     return PirateTile.PlantB;
