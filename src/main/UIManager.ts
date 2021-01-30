@@ -74,7 +74,14 @@ export class PuzzlePieces {
     }
 }
 
-function build_rect(scene: Phaser.Scene, x: number, y: number, w: number, h: number, color: number) : Phaser.GameObjects.Rectangle {
+function build_rect(
+    scene: Phaser.Scene,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    color: number,
+): Phaser.GameObjects.Rectangle {
     const cx = x + w / 2.0;
     const cy = y + h / 2.0;
 
@@ -90,14 +97,11 @@ export class PuzzleHUD {
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.x = x;
         this.y = y;
-        const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffffff, 0x000000, 0xff0000, 0xffff00, 0x00ffff, 0xff00ff];
+        const colors = [0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00];
 
         const w = 32;
         const h = 32;
 
-        //const cx = this.x - 16 + ((w * 3) / 2);
-        //const cy = this.y - 16 + ((w * 3) / 2);
-        //this.backgroundRect = scene.add.rectangle(cx, cy, w * 3, h * 3, 0x000000);
         this.backgroundRect = build_rect(scene, this.x, this.y, w * 3, h * 3, 0x000000);
 
         this.rects = [];
