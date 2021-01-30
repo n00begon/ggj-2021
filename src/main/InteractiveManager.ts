@@ -3,6 +3,7 @@ import { MainEventsManager } from "./MainEventsManager";
 import { ControlManager } from "./ControlManager";
 import { AnimationManager } from "./AnimationManager";
 import { BackgroundManager } from "./BackgroundManager";
+import { GameSettings } from "../utilities/GameSettings";
 
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
@@ -17,16 +18,23 @@ export class InteractiveManager {
     private static readonly BOTTOMBOUNDS = 800;
     private static readonly WORLDWIDTH = InteractiveManager.RIGHTBOUNDS - InteractiveManager.LEFTBOUNDS;
     private static readonly WORLDHEIGHT = InteractiveManager.BOTTOMBOUNDS - InteractiveManager.TOPBOUNDS;
+
     private scene: Phaser.Scene;
     private controlManager: ControlManager;
 
     private pirateA: Pirate;
     private pirateB: Pirate;
+    private pirateC: Pirate;
+    private screenWidth: number;
+    private screenHeight: number;
+
     /**
      * Adds the interactive objects to the scene
      */
     constructor(scene: Phaser.Scene, backgroundManager: BackgroundManager) {
         this.scene = scene;
+        this.screenWidth = scene.game.canvas.width / GameSettings.ZOOM_LEVEL;
+        this.screenHeight = scene.game.canvas.height / GameSettings.ZOOM_LEVEL;
         new AnimationManager(scene);
         this.controlManager = new ControlManager(scene);
         this.setupCamera(scene);
@@ -45,6 +53,14 @@ export class InteractiveManager {
             InteractiveManager.BOTTOMBOUNDS - 300,
             backgroundManager.getIslandTilemap(),
         );
+
+        this.pirateC = new Pirate(
+            scene,
+            KeyControls.Mouse,
+            InteractiveManager.WORLDWIDTH / 2 - 500,
+            InteractiveManager.BOTTOMBOUNDS - 300,
+            backgroundManager.getIslandTilemap(),
+        );
     }
     /**
      * The main update loop for the scene.
@@ -52,6 +68,7 @@ export class InteractiveManager {
     public update(): void {
         this.pirateA.update();
         this.pirateB.update();
+        this.pirateC.update();
         this.controlManager.update();
     }
 
@@ -60,7 +77,7 @@ export class InteractiveManager {
      */
     private setupCamera(scene: Phaser.Scene): void {
         scene.cameras.main.setBackgroundColor(new Phaser.Display.Color(207, 239, 252).color);
-        scene.cameras.main.setZoom(0.6);
+        scene.cameras.main.setZoom(GameSettings.ZOOM_LEVEL);
         scene.cameras.main.setBounds(
             InteractiveManager.LEFTBOUNDS,
             InteractiveManager.TOPBOUNDS,

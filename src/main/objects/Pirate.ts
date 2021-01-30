@@ -6,6 +6,7 @@ import { MainEventsManager } from "../MainEventsManager";
 export enum KeyControls {
     WASD,
     Arrows,
+    Mouse,
 }
 
 /**
@@ -49,6 +50,11 @@ export class Pirate {
             MainEventsManager.on("rightMove", this.handleRightMove, this);
             MainEventsManager.on("upMove", this.handleUpMove, this);
             MainEventsManager.on("downMove", this.handleDownMove, this);
+        } else if (controls == KeyControls.Mouse) {
+            MainEventsManager.on("leftMove3", this.handleLeftMove, this);
+            MainEventsManager.on("rightMove3", this.handleRightMove, this);
+            MainEventsManager.on("upMove3", this.handleUpMove, this);
+            MainEventsManager.on("downMove3", this.handleDownMove, this);
         }
 
         this.debugText = scene.add.text(x, y, "Yo Ho", {

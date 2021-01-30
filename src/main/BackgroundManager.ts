@@ -1,15 +1,33 @@
+import { GameSettings } from "../utilities/GameSettings";
+
 /**
  * Background manager controls the non interactive background objects
  */
 
 export enum PirateTile {
-    IslandA = 6,
-    DarkIsland = 7,
-    LightIsland = 8,
+    BottomLeftCornerSand = 1,
+    BottomLeftEdgeSand = 2,
+    BottomMiddleEdgeSand = 3,
+    BottomRightCornerSand = 4,
+    BottomRightEdgeSand = 5,
+
+    CenterCenterGravelSand = 6,
+    CenterCenterPlainSand = 7,
+    CenterCenterDotsSand = 8,
 
     Rock = 9,
     PlantA = 10,
     PlantB = 11,
+
+    SideLeftEdgeSand = 12,
+    SideRightEdgeSand = 13,
+    TopLeftCornerSand = 14,
+    TopLeftSideSand = 15,
+    TopMiddleEdgeSand = 16,
+    TopRightCornerSand = 17,
+    TopRightSideSand = 18,
+
+    Water = 19,
 }
 
 export class BackgroundManager {
@@ -21,8 +39,14 @@ export class BackgroundManager {
      */
     constructor(scene: Phaser.Scene) {
         const tileSize = 128;
-        const mapSize = 10;
-        const map = scene.make.tilemap({ tileWidth: tileSize, tileHeight: tileSize, width: mapSize, height: mapSize });
+        const mapWidth = Math.floor(scene.game.canvas.width /* / GameSettings.ZOOM_LEVEL*/ / tileSize);
+        const mapHeight = Math.floor(scene.game.canvas.height /* / GameSettings.ZOOM_LEVEL*/ / tileSize);
+        const map = scene.make.tilemap({
+            tileWidth: tileSize,
+            tileHeight: tileSize,
+            width: mapWidth,
+            height: mapHeight,
+        });
         const tileset = map.addTilesetImage("background", "background", tileSize, tileSize, 0, 4, 1);
         this.water = map.createBlankLayer("water", tileset);
         this.island = map.createBlankLayer("island", tileset);
@@ -42,7 +66,7 @@ export class BackgroundManager {
             0,
             0,
             0,
-            PirateTile.LightIsland,
+            PirateTile.CenterCenterDotsSand,
             0,
             0,
             0,
@@ -51,71 +75,71 @@ export class BackgroundManager {
             0,
             0,
             0,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
             0,
             0,
             0,
             0,
             0,
-            PirateTile.LightIsland,
-            PirateTile.DarkIsland,
-            PirateTile.IslandA,
-            PirateTile.LightIsland,
-            PirateTile.IslandA,
-            PirateTile.LightIsland,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterPlainSand,
+            PirateTile.CenterCenterGravelSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterGravelSand,
+            PirateTile.CenterCenterDotsSand,
             0,
             0,
             0,
             0,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.DarkIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterPlainSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
             0,
             0,
             0,
             0,
-            PirateTile.LightIsland,
-            PirateTile.IslandA,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterGravelSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
             0,
             0,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.DarkIsland,
-            PirateTile.LightIsland,
-            PirateTile.IslandA,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterPlainSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterGravelSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
             0,
             0,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.IslandA,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterGravelSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
             0,
             0,
             0,
             0,
             0,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.LightIsland,
-            PirateTile.IslandA,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterDotsSand,
+            PirateTile.CenterCenterGravelSand,
             0,
             0,
             0,
@@ -132,7 +156,7 @@ export class BackgroundManager {
         ];
 
         const objectData = [
-            PirateTile.Rock,
+            0,
             0,
             0,
             0,
@@ -234,12 +258,12 @@ export class BackgroundManager {
             0,
         ];
 
-        this.water.fill(19, 0, 0, mapSize, mapSize);
+        this.water.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
         for (let i = 0; i < islandData.length; i++) {
-            this.island.putTileAt(islandData[i], Math.floor(i / mapSize), i % mapSize);
+            this.island.putTileAt(islandData[i], Math.floor(i / mapHeight), i % mapHeight);
         }
         for (let i = 0; i < objectData.length; i++) {
-            this.objects.putTileAt(objectData[i], Math.floor(i / mapSize), i % mapSize);
+            this.objects.putTileAt(objectData[i], Math.floor(i / mapHeight), i % mapHeight);
         }
         const debugGraphics = scene.add.graphics();
 
