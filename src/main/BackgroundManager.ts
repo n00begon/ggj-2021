@@ -128,6 +128,70 @@ export class BackgroundManager {
                 ) {
                     borders.putTileAt(PirateTile.SideLeftEdgeSand, x, y);
                 }
+
+                if (
+                    this.island.hasTileAt(x + 1, y + 1) &&
+                    !this.island.hasTileAt(x + 1, y) &&
+                    !this.island.hasTileAt(x, y + 1)
+                ) {
+                    borders.putTileAt(PirateTile.TopLeftSideSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x - 1, y + 1) &&
+                    !this.island.hasTileAt(x - 1, y) &&
+                    !this.island.hasTileAt(x, y + 1)
+                ) {
+                    borders.putTileAt(PirateTile.TopRightSideSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x - 1, y - 1) &&
+                    !this.island.hasTileAt(x - 1, y) &&
+                    !this.island.hasTileAt(x, y - 1)
+                ) {
+                    borders.putTileAt(PirateTile.BottomRightEdgeSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x + 1, y - 1) &&
+                    !this.island.hasTileAt(x + 1, y) &&
+                    !this.island.hasTileAt(x, y - 1)
+                ) {
+                    borders.putTileAt(PirateTile.BottomLeftEdgeSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x + 1, y + 1) &&
+                    this.island.hasTileAt(x + 1, y) &&
+                    this.island.hasTileAt(x, y + 1)
+                ) {
+                    borders.putTileAt(PirateTile.TopLeftCornerSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x - 1, y + 1) &&
+                    this.island.hasTileAt(x - 1, y) &&
+                    this.island.hasTileAt(x, y + 1)
+                ) {
+                    borders.putTileAt(PirateTile.TopRightCornerSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x - 1, y - 1) &&
+                    this.island.hasTileAt(x - 1, y) &&
+                    this.island.hasTileAt(x, y - 1)
+                ) {
+                    borders.putTileAt(PirateTile.BottomRightCornerSand, x, y);
+                }
+
+                if (
+                    this.island.hasTileAt(x + 1, y - 1) &&
+                    this.island.hasTileAt(x + 1, y) &&
+                    this.island.hasTileAt(x, y - 1)
+                ) {
+                    borders.putTileAt(PirateTile.BottomLeftCornerSand, x, y);
+                }
             }
         }
 
