@@ -103,14 +103,28 @@ export class PuzzleHUD {
         this.y = y;
         const colors = [0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00, 0xffff00];
 
-        this.backgroundRect = build_rect(scene, this.x, this.y, PuzzleHUD.TILE_WIDTH * 3, PuzzleHUD.TILE_HEIGHT * 3, 0x000000);
+        this.backgroundRect = build_rect(
+            scene,
+            this.x,
+            this.y,
+            PuzzleHUD.TILE_WIDTH * 3,
+            PuzzleHUD.TILE_HEIGHT * 3,
+            0x000000,
+        );
 
         this.rects = [];
         for (let i = 0; i < 3; i++) {
             this.rects[i] = [];
             for (let j = 0; j < 3; j++) {
                 const ci = j * 3 + i;
-                this.rects[i][j] = build_rect(scene, this.x + i * PuzzleHUD.TILE_WIDTH, this.y + j * PuzzleHUD.TILE_HEIGHT, PuzzleHUD.TILE_WIDTH, PuzzleHUD.TILE_HEIGHT, colors[ci]);
+                this.rects[i][j] = build_rect(
+                    scene,
+                    this.x + i * PuzzleHUD.TILE_WIDTH,
+                    this.y + j * PuzzleHUD.TILE_HEIGHT,
+                    PuzzleHUD.TILE_WIDTH,
+                    PuzzleHUD.TILE_HEIGHT,
+                    colors[ci],
+                );
             }
         }
 
