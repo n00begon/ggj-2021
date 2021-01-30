@@ -132,10 +132,10 @@ export class PuzzleHUD {
     }
 
     public updatePlayerPos(wx: number, wy: number): void {
-        let ux = wx / GameSettings.MAP_WIDTH;
-        let uy = wy / GameSettings.MAP_HEIGHT;
-        ux *= 3 * PuzzleHUD.TILE_WIDTH;
-        uy *= 3 * PuzzleHUD.TILE_HEIGHT;
+        const x01 = wx / GameSettings.MAP_WIDTH;
+        const y01 = wy / GameSettings.MAP_HEIGHT;
+        let ux = x01 * 3 * PuzzleHUD.TILE_WIDTH;
+        let uy = y01 * 3 * PuzzleHUD.TILE_HEIGHT;
         ux += this.x;
         uy += this.y;
         this.playerPosRect.setPosition(ux, uy);
