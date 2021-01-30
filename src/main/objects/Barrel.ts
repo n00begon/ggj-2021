@@ -4,10 +4,17 @@ export class Barrel {
     public barrel: Phaser.Physics.Arcade.Sprite;
     private scene: Phaser.Scene;
     private broken = false;
+    private isCrate = false;
 
     constructor(scene: Phaser.Scene, x: number, y: number, pirateA: Pirate, pirateB: Pirate) {
         this.scene = scene;
-        this.barrel = scene.physics.add.sprite(x, y, "sprites", "Barrel-01");
+        this.isCrate = Math.random() < 0.5;
+        this.barrel = scene.physics.add.sprite(
+            x,
+            y,
+            "sprites",
+            this.isCrate ? "Crate Exploding Artboards-01" : "Barrel-01",
+        );
         this.barrel.depth = this.barrel.getBottomCenter().y;
         this.barrel.setImmovable(true);
         this.addCollider(scene, pirateA);
@@ -20,7 +27,7 @@ export class Barrel {
                 pirate.receivedBarrel(this);
                 this.broken = true;
                 this.barrel.disableBody();
-                this.barrel.playAfterDelay("barrelExplode", 200);
+                this.barrel.playAfterDelay(this.isCrate ? "crateExplode" : "barrelExplode", 200);
                 this.barrel.once("animationcomplete", () => {
                     this.barrel.setVisible(false);
                     this.barrel.setActive(false);

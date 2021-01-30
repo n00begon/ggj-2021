@@ -50,6 +50,16 @@ export class AnimationManager {
             }),
             key: "barrelExplode",
         });
+
+        scene.anims.create({
+            frameRate: 6,
+            frames: scene.anims.generateFrameNames("sprites", {
+                start: 1,
+                end: 5,
+                prefix: "Crate Exploding Artboards-0",
+            }),
+            key: "crateExplode",
+        });
     }
 
     private createFrontDustAnimation(scene: Phaser.Scene): void {
