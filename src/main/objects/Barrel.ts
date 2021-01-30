@@ -19,7 +19,12 @@ export class Barrel {
             if (!this.broken) {
                 pirate.receivedBarrel(this);
                 this.broken = true;
+                this.barrel.disableBody();
                 this.barrel.playAfterDelay("barrelExplode", 200);
+                this.barrel.once("animationcomplete", () => {
+                    this.barrel.setVisible(false);
+                    this.barrel.setActive(false);
+                });
             }
         });
     }
