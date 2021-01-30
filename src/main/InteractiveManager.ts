@@ -34,8 +34,8 @@ export class InteractiveManager {
         this.currentScore = 0;
         MainEventsManager.on("maxscore", this.handleMaxScore, this);
         MainEventsManager.on("collection", this.handleCollection, this);
-        this.pirateA = new Pirate(scene, KeyControls.WASD, this.screenWidth / 4 - 200, this.screenHeight / 4);
-        this.pirateB = new Pirate(scene, KeyControls.Arrows, this.screenWidth / 4 - 200, this.screenHeight / 4 + 200);
+        this.pirateA = new Pirate(scene, KeyControls.WASD, this.screenWidth / 2 - 200, this.screenHeight / 2);
+        this.pirateB = new Pirate(scene, KeyControls.Arrows, this.screenWidth / 2 - 200, this.screenHeight / 2 + 200);
     }
     /**
      * The main update loop for the scene.
