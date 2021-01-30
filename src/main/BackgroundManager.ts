@@ -51,6 +51,10 @@ export class BackgroundManager {
         const tileSize = 128;
         const mapWidth = Math.floor(scene.game.canvas.width / GameSettings.ZOOM_LEVEL / tileSize);
         const mapHeight = Math.floor(scene.game.canvas.height / GameSettings.ZOOM_LEVEL / tileSize);
+
+        GameSettings.MAP_WIDTH = mapWidth * tileSize;
+        GameSettings.MAP_HEIGHT = mapHeight * tileSize;
+
         const map = scene.make.tilemap({
             tileWidth: tileSize,
             tileHeight: tileSize,
