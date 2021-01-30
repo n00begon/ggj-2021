@@ -74,9 +74,13 @@ export class PuzzlePieces {
 }
 
 export class PuzzleHUD {
+    public x: number;
+    public y: number;
     public rects: Phaser.GameObjects.Rectangle[][];
 
-    constructor(scene: Phaser.Scene) {
+    constructor(scene: Phaser.Scene, x: number, y: number) {
+        this.x = x;
+        this.y = y;
         const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffffff, 0x000000, 0xff0000, 0xffff00, 0x00ffff, 0xff00ff];
 
         this.rects = [];
@@ -86,7 +90,7 @@ export class PuzzleHUD {
                 const w = 32;
                 const h = 32;
                 const ci = j * 3 + i;
-                this.rects[i][j] = scene.add.rectangle(i * w, j * h, w, h, colors[ci]);
+                this.rects[i][j] = scene.add.rectangle(this.x + i * w, this.y + j * h, w, h, colors[ci]);
             }
         }
     }
@@ -135,7 +139,7 @@ export class UIManager {
         this.scoreTextArrows.update(0);
 
         this.piecesWASD = new PuzzlePieces();
-        this.puzzleHUD = new PuzzleHUD(scene);
+        this.puzzleHUD = new PuzzleHUD(scene, 64, 64);
     }
 
     /**
