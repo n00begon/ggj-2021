@@ -74,24 +74,38 @@ export class PuzzlePieces {
     }
 }
 
+function build_rect(scene: Phaser.Scene, x: number, y: number, w: number, h: number, color: number) : Phaser.GameObjects.Rectangle {
+    const cx = x + w / 2.0;
+    const cy = y + h / 2.0;
+
+    return scene.add.rectangle(cx, cy, w, h, color);
+}
+
 export class PuzzleHUD {
     public x: number;
     public y: number;
     public rects: Phaser.GameObjects.Rectangle[][];
+    public backgroundRect: Phaser.GameObjects.Rectangle;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         this.x = x;
         this.y = y;
         const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffffff, 0x000000, 0xff0000, 0xffff00, 0x00ffff, 0xff00ff];
 
+        const w = 32;
+        const h = 32;
+
+        //const cx = this.x - 16 + ((w * 3) / 2);
+        //const cy = this.y - 16 + ((w * 3) / 2);
+        //this.backgroundRect = scene.add.rectangle(cx, cy, w * 3, h * 3, 0x000000);
+        this.backgroundRect = build_rect(scene, this.x, this.y, w * 3, h * 3, 0x000000);
+
         this.rects = [];
         for (let i = 0; i < 3; i++) {
             this.rects[i] = [];
             for (let j = 0; j < 3; j++) {
-                const w = 32;
-                const h = 32;
                 const ci = j * 3 + i;
-                this.rects[i][j] = scene.add.rectangle(this.x + i * w, this.y + j * h, w, h, colors[ci]);
+                this.rects[i][j] = build_rect(scene, this.x + i * w, this.y + j * h, w, h, colors[ci]);
             }
         }
     }
@@ -102,6 +116,8 @@ export class PuzzleHUD {
                 this.rects[j][i].visible = false;
             }
         }
+
+        this.backgroundRect.visible = false;
     }
 
     public show(pieces: PuzzlePieces): void {
@@ -112,6 +128,8 @@ export class PuzzleHUD {
                 }
             }
         }
+
+        this.backgroundRect.visible = true;
     }
 }
 
@@ -138,9 +156,11 @@ export class UIManager {
 
         this.scoreTextWASD = new ScoreText(scene, 30, 30);
         this.scoreTextWASD.update(0);
+        this.scoreTextWASD.hide();
 
         this.scoreTextArrows = new ScoreText(scene, 800, 30);
         this.scoreTextArrows.update(0);
+        this.scoreTextArrows.hide();
 
         this.piecesWASD = new PuzzlePieces();
         this.puzzleHUDWASD = new PuzzleHUD(scene, 64, 64);
@@ -168,22 +188,22 @@ export class UIManager {
     }
 
     public showPuzzleForArrows(): void {
-        this.scoreTextArrows.update(200);
+        //this.scoreTextArrows.update(200);
         this.puzzleHUDArrows.show(this.piecesArrows);
     }
 
     public hidePuzzleForArrows(): void {
         this.puzzleHUDArrows.hide();
-        this.scoreTextArrows.hide();
+        //this.scoreTextArrows.hide();
     }
 
     public showPuzzleForWASD(): void {
-        this.scoreTextWASD.update(100);
+        //this.scoreTextWASD.update(100);
         this.puzzleHUDWASD.show(this.piecesWASD);
     }
 
     public hidePuzzleForWASD(): void {
-        this.scoreTextWASD.hide();
+        //this.scoreTextWASD.hide();
         this.puzzleHUDWASD.hide();
     }
 }
