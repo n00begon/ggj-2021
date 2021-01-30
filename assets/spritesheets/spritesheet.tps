@@ -181,6 +181,205 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">../rawimages/Crate Exploding/Block1-01.png</key>
+            <key type="filename">../rawimages/Crate Exploding/Block1-02.png</key>
+            <key type="filename">../rawimages/Crate Exploding/Block1-03.png</key>
+            <key type="filename">../rawimages/Crate Exploding/Block1-04.png</key>
+            <key type="filename">../rawimages/Crate Exploding/Block1-05.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>134,134,267,267</rect>
+                <key>scale9Paddings</key>
+                <rect>134,134,267,267</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/Dust Hole DiggingBack/DustBack.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>30,11,59,21</rect>
+                <key>scale9Paddings</key>
+                <rect>30,11,59,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/Dust Hole DiggingBack/DustBack1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>30,11,61,21</rect>
+                <key>scale9Paddings</key>
+                <rect>30,11,61,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/Dust Hole DiggingBack/DustBack2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>31,11,63,21</rect>
+                <key>scale9Paddings</key>
+                <rect>31,11,63,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/Dust Hole DiggingFront/Dust.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,7,39,14</rect>
+                <key>scale9Paddings</key>
+                <rect>20,7,39,14</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/Dust Hole DiggingFront/Dust1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>22,7,44,15</rect>
+                <key>scale9Paddings</key>
+                <rect>22,7,44,15</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/Dust Hole DiggingFront/Dust2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>24,8,49,15</rect>
+                <key>scale9Paddings</key>
+                <rect>24,8,49,15</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/Dust Hole DiggingFront/Dust3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,8,55,17</rect>
+                <key>scale9Paddings</key>
+                <rect>28,8,55,17</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/PirateBasicDigA.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>32,43,63,86</rect>
+                <key>scale9Paddings</key>
+                <rect>32,43,63,86</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/PirateBasicDigB.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,41,57,83</rect>
+                <key>scale9Paddings</key>
+                <rect>29,41,57,83</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/PirateBasicDigC.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>34,44,67,87</rect>
+                <key>scale9Paddings</key>
+                <rect>34,44,67,87</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/Treasure Chest.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>92,56,185,111</rect>
+                <key>scale9Paddings</key>
+                <rect>92,56,185,111</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../rawimages/barrel.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>32,32,64,64</rect>
+                <key>scale9Paddings</key>
+                <rect>32,32,64,64</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../rawimages/pirate_walk_1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -234,6 +433,23 @@
             <filename>../rawimages/pirate_walk_2.png</filename>
             <filename>../rawimages/pirate_walk_3.png</filename>
             <filename>../rawimages/pirate_walk_4.png</filename>
+            <filename>../rawimages/PirateBasicDigA.png</filename>
+            <filename>../rawimages/PirateBasicDigB.png</filename>
+            <filename>../rawimages/PirateBasicDigC.png</filename>
+            <filename>../rawimages/Dust Hole DiggingFront/Dust.png</filename>
+            <filename>../rawimages/Dust Hole DiggingFront/Dust1.png</filename>
+            <filename>../rawimages/Dust Hole DiggingFront/Dust2.png</filename>
+            <filename>../rawimages/Dust Hole DiggingFront/Dust3.png</filename>
+            <filename>../rawimages/Dust Hole DiggingBack/DustBack.png</filename>
+            <filename>../rawimages/Dust Hole DiggingBack/DustBack1.png</filename>
+            <filename>../rawimages/Dust Hole DiggingBack/DustBack2.png</filename>
+            <filename>../rawimages/Crate Exploding/Block1-01.png</filename>
+            <filename>../rawimages/Crate Exploding/Block1-02.png</filename>
+            <filename>../rawimages/Crate Exploding/Block1-03.png</filename>
+            <filename>../rawimages/Crate Exploding/Block1-04.png</filename>
+            <filename>../rawimages/Crate Exploding/Block1-05.png</filename>
+            <filename>../rawimages/Treasure Chest.png</filename>
+            <filename>../rawimages/barrel.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
