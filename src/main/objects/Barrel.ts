@@ -11,7 +11,6 @@ export class Barrel {
 
     private explodeSound: Phaser.Sound.BaseSound;
 
-
     constructor(scene: Phaser.Scene, x: number, y: number, pirateA: Pirate, pirateB: Pirate) {
         this.scene = scene;
         this.isCrate = Math.random() < 0.5;

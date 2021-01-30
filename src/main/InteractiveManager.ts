@@ -54,7 +54,7 @@ export class InteractiveManager {
         );
 
         // NOTE(Leon) : sprinkle our barrels with puzzle pieces!
-        let validPuzzleCoords = [
+        const validPuzzleCoords = [
             new Phaser.Math.Vector2(0, 0),
             new Phaser.Math.Vector2(1, 0),
             new Phaser.Math.Vector2(2, 0),
@@ -69,7 +69,13 @@ export class InteractiveManager {
         this.barrels = new Array<Barrel>();
         const barrelsCoords = backgroundManager.getBarrels();
         for (let i = 0; i < barrelsCoords.length; i++) {
-            let barrel = new Barrel(scene, barrelsCoords[i].getCenterX(), barrelsCoords[i].getCenterY(), this.pirateA, this.pirateB);
+            const barrel = new Barrel(
+                scene,
+                barrelsCoords[i].getCenterX(),
+                barrelsCoords[i].getCenterY(),
+                this.pirateA,
+                this.pirateB,
+            );
             if (validPuzzleCoords.length > 0) {
                 const puzzle_index = Phaser.Math.RND.integerInRange(0, validPuzzleCoords.length - 1);
                 const puzzleCoord = validPuzzleCoords[puzzle_index];
