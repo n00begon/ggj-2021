@@ -5,7 +5,7 @@ import { CreditsText } from "./CreditsText";
  * Credits is the final scene where the showing credits about the game
  */
 export class Credits extends Phaser.Scene {
-    private static readonly NEXT_SCENE = "Licence";
+    private static readonly NEXT_SCENE = "Main";
     private creditsText!: CreditsText;
 
     /**
@@ -30,7 +30,7 @@ export class Credits extends Phaser.Scene {
         this.creditsText = new CreditsText(this);
 
         this.input.on("pointerdown", () => {
-            // this.scene.start(Credits.NEXT_SCENE);
+            this.scene.start(Credits.NEXT_SCENE);
         });
     }
 
