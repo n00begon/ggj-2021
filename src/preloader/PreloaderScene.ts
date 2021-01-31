@@ -95,6 +95,6 @@ export class Preloader extends Phaser.Scene {
     private loadMap(): void {
         this.load.setPath(`${Preloader.ASSET_DIRECTORY}/map/`);
 
-        this.load.image("background", "background.png");
+        this.load.image("newbackground", "newbackground.png");
     }
 }

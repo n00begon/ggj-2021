@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>phaser</string>
         <key>textureFileName</key>
-        <filename>newbackground.png</filename>
+        <filename>../map/newbackground.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -70,7 +70,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>10</uint>
+        <uint>4</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -84,7 +84,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>10</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -200,6 +200,18 @@
             <key type="filename">../rawimages/top_right_corner_sand.png</key>
             <key type="filename">../rawimages/top_right_edge_sand.png</key>
             <key type="filename">../rawimages/water.png</key>
+            <key type="filename">../rawimages/zHole-01.png</key>
+            <key type="filename">../rawimages/zHole-02.png</key>
+            <key type="filename">../rawimages/zHole-03.png</key>
+            <key type="filename">../rawimages/zHole-04.png</key>
+            <key type="filename">../rawimages/zobject_grass_1.png</key>
+            <key type="filename">../rawimages/zobject_grass_2.png</key>
+            <key type="filename">../rawimages/zobject_rock_2.png</key>
+            <key type="filename">../rawimages/zobject_rock_3.png</key>
+            <key type="filename">../rawimages/zobject_rock_4.png</key>
+            <key type="filename">../rawimages/zobject_rock_5.png</key>
+            <key type="filename">../rawimages/zobject_rock_6.png</key>
+            <key type="filename">../rawimages/zobject_tree_3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -236,6 +248,18 @@
             <filename>../rawimages/object_rock_1.png</filename>
             <filename>../rawimages/object_tree_1.png</filename>
             <filename>../rawimages/object_tree_2.png</filename>
+            <filename>../rawimages/zHole-01.png</filename>
+            <filename>../rawimages/zHole-02.png</filename>
+            <filename>../rawimages/zHole-03.png</filename>
+            <filename>../rawimages/zHole-04.png</filename>
+            <filename>../rawimages/zobject_grass_1.png</filename>
+            <filename>../rawimages/zobject_grass_2.png</filename>
+            <filename>../rawimages/zobject_rock_2.png</filename>
+            <filename>../rawimages/zobject_rock_3.png</filename>
+            <filename>../rawimages/zobject_rock_4.png</filename>
+            <filename>../rawimages/zobject_rock_5.png</filename>
+            <filename>../rawimages/zobject_rock_6.png</filename>
+            <filename>../rawimages/zobject_tree_3.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
