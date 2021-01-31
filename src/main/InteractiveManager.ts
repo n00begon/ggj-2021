@@ -92,7 +92,9 @@ export class InteractiveManager {
             this.barrels.push(barrel);
         }
 
-        this.scene.add.rectangle(GameSettings.XmarksTheSpot.x, GameSettings.XmarksTheSpot.y, 8, 8, 0xff0000);
+        if (GameSettings.DEBUG) {
+            this.scene.add.rectangle(GameSettings.XmarksTheSpot.x, GameSettings.XmarksTheSpot.y, 8, 8, 0xff0000);
+        }
     }
     /**
      * The main update loop for the scene.
