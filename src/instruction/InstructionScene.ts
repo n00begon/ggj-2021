@@ -1,17 +1,15 @@
-import { LicenceEventsManager } from "./LicenceEventsManager";
-import { LicenceText } from "./LicenceText";
+import { InstructionEventsManager } from "./InstructionEventsManager";
+import { InstructionText } from "./InstructionText";
 /**
- * Licence is the final scene where the showing End about the game
  */
-export class Licence extends Phaser.Scene {
-    private static readonly NEXT_SCENE = "Instruction";
-    private licenceText!: LicenceText;
-
+export class Instruction extends Phaser.Scene {
+    private static readonly NEXT_SCENE = "Main";
+    private instructionText!: InstructionText;
     /**
      * The constructor sets the scene ID
      */
     public constructor() {
-        super("Licence");
+        super("Instruction");
     }
 
     /**
@@ -25,11 +23,11 @@ export class Licence extends Phaser.Scene {
      * Create is called when the scene is loaded and sets up the Game End Text
      */
     public create(): void {
-        this.licenceText = new LicenceText(this);
+        this.instructionText = new InstructionText(this);
         this.scale.on("resize", this.resize);
 
         this.input.on("pointerdown", () => {
-            this.scene.start(Licence.NEXT_SCENE);
+            this.scene.start(Instruction.NEXT_SCENE);
         });
     }
 
@@ -37,8 +35,8 @@ export class Licence extends Phaser.Scene {
      * The update loop gets the text to appear on screen
      */
     public update(): void {
-        if (this.licenceText.update()) {
-            this.scene.start(Licence.NEXT_SCENE);
+        if (this.instructionText.update()) {
+            // this.scene.start(Instruction.NEXT_SCENE);
         }
     }
 
@@ -49,6 +47,6 @@ export class Licence extends Phaser.Scene {
      * @param gameSize - the new size of the screen
      */
     private resize(gameSize: Phaser.Structs.Size): void {
-        LicenceEventsManager.emit("resize", gameSize);
+        InstructionEventsManager.emit("resize", gameSize);
     }
 }
