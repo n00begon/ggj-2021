@@ -67,7 +67,7 @@ export class BackgroundManager {
             width: mapWidth,
             height: mapHeight,
         });
-        const tileset = map.addTilesetImage("background", "background", tileSize, tileSize, 0, 4, 1);
+        const tileset = map.addTilesetImage("newbackground", "newbackground", tileSize, tileSize, 0, 4, 1);
 
         Perlin.Init();
         if (GameSettings.DEBUG) {
