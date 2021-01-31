@@ -100,6 +100,7 @@ export class Pirate {
         pirateFrom.stun();
         pirateFrom.hasTreasure = false;
         pirateTo.hasTreasure = true;
+        pirateTo.pirate.play("pirateTreasureWalk");
     }
 
     public addCollider(scene: Phaser.Scene, anotherPirate: Pirate): void {
