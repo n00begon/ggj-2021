@@ -155,6 +155,7 @@ export class Pirate {
                 if (holeTile && treasure_tile && holeTile.x === treasure_tile.x && holeTile.y === treasure_tile.y) {
                     GameSettings.chasing = true;
                     this.hasTreasure = true;
+                    this.pirate.play("pirateTreasureWalk");
                     // MainEventsManager.emit("GameWon");
                     console.log("Won game");
                 }
