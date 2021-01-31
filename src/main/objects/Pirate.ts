@@ -186,7 +186,16 @@ export class Pirate {
             }
             if (x_dir !== 0) {
                 this.currentSpeedX = x_dir * Pirate.MOVE_SPEED;
-                if (currentCollision != null && currentCollision.index == PirateTile.Rock) this.currentSpeedX *= 0.5;
+                if (
+                    currentCollision != null &&
+                    (currentCollision.index == PirateTile.RockA ||
+                        currentCollision.index == PirateTile.RockB ||
+                        currentCollision.index == PirateTile.RockC ||
+                        currentCollision.index == PirateTile.RockD ||
+                        currentCollision.index == PirateTile.RockE ||
+                        currentCollision.index == PirateTile.RockF)
+                )
+                    this.currentSpeedX *= 0.5;
                 this.pirate.setVelocityX(this.currentSpeedX);
             }
 
@@ -205,7 +214,16 @@ export class Pirate {
             }
             if (y_dir !== 0) {
                 this.currentSpeedY = y_dir * Pirate.MOVE_SPEED;
-                if (currentCollision != null && currentCollision.index == PirateTile.Rock) this.currentSpeedY *= 0.5;
+                if (
+                    currentCollision != null &&
+                    (currentCollision.index == PirateTile.RockA ||
+                        currentCollision.index == PirateTile.RockB ||
+                        currentCollision.index == PirateTile.RockC ||
+                        currentCollision.index == PirateTile.RockD ||
+                        currentCollision.index == PirateTile.RockE ||
+                        currentCollision.index == PirateTile.RockF)
+                )
+                    this.currentSpeedY *= 0.5;
                 this.pirate.setVelocityY(this.currentSpeedY);
             }
 
