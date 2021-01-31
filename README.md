@@ -1,6 +1,6 @@
 # Loot 'n' Scoot
 
-![Dig](/assets/images/PirateBasicDig.png)
+![Dig](/assets/images/Banner.jpg)
 
 A game by Griff, dedicated to all the pirates that were second to arrive at the treasure.
 
