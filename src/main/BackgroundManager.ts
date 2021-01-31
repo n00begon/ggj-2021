@@ -47,7 +47,7 @@ export class BackgroundManager {
     private collision: Phaser.Tilemaps.TilemapLayer;
     private holes: Phaser.Tilemaps.TilemapLayer;
     private barrels: Array<Phaser.Tilemaps.Tile>;
-
+    private treasureMap: Phaser.Tilemaps.Tilemap;
     /**
      * Adds the parallax background to the scene
      */
@@ -266,13 +266,13 @@ export class BackgroundManager {
             }
         }
         const treasureMapSize = 5;
-        const treasureMap = scene.make.tilemap({
+        this.treasureMap = scene.make.tilemap({
             tileWidth: tileSize,
             tileHeight: tileSize,
             width: treasureMapSize,
             height: treasureMapSize,
         });
-        const treasureWater = treasureMap.createBlankLayer("treasureWater", tileset);
+        const treasureWater = this.treasureMap.createBlankLayer("treasureWater", tileset);
         treasureWater.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
 
         const treasureIsland = map.createBlankLayer("treasureIsland", tileset);
