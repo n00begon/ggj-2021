@@ -27,7 +27,7 @@ export class InstructionText {
                 "Break barrels to find map pieces",
                 (top + 100 * order) / defaultHeight,
                 wait * order++,
-                GameSettings.LARGE_FONT_SIZE * scale,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
                 InstructionEventsManager,
             ),
 
@@ -36,7 +36,7 @@ export class InstructionText {
                 "Stand still to dig",
                 (top + 100 * order) / defaultHeight,
                 wait * order++,
-                GameSettings.LARGE_FONT_SIZE * scale,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
                 InstructionEventsManager,
             ),
 
@@ -45,7 +45,7 @@ export class InstructionText {
                 "Escape with the Treasure",
                 (top + 100 * order) / defaultHeight,
                 wait * order++,
-                GameSettings.LARGE_FONT_SIZE * scale,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
                 InstructionEventsManager,
             ),
 
@@ -54,7 +54,7 @@ export class InstructionText {
                 "Up Down Left Right Space",
                 (top + 100 * order) / defaultHeight,
                 wait * order++,
-                GameSettings.LARGE_FONT_SIZE * scale,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
                 InstructionEventsManager,
             ),
 
@@ -63,7 +63,7 @@ export class InstructionText {
                 "WASD E",
                 (top + 100 * order) / defaultHeight,
                 wait * order,
-                GameSettings.LARGE_FONT_SIZE * scale,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
                 InstructionEventsManager,
             ),
         );

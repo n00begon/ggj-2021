@@ -19,6 +19,8 @@ export class InteractiveManager {
 
     private pirateA: Pirate;
     private pirateB: Pirate;
+    private pirateC: Pirate;
+    private pirateD: Pirate;
     private screenWidth: number;
     private screenHeight: number;
     private barrels: Array<Barrel>;
@@ -57,8 +59,32 @@ export class InteractiveManager {
             GameSettings.XmarksTheSpot,
         );
 
-        // TODO add colliders for all pirate pairs
+        this.pirateC = new Pirate(
+            scene,
+            3,
+            this.screenWidth / 2 + 300,
+            this.screenHeight / 2,
+            backgroundManager.getCollisionTilemap(),
+            backgroundManager.getHoleTilemap(),
+            GameSettings.XmarksTheSpot,
+        );
+
+        this.pirateD = new Pirate(
+            scene,
+            4,
+            this.screenWidth / 2 + 300,
+            this.screenHeight / 2 - 300,
+            backgroundManager.getCollisionTilemap(),
+            backgroundManager.getHoleTilemap(),
+            GameSettings.XmarksTheSpot,
+        );
+
         this.pirateA.addCollider(scene, this.pirateB);
+        this.pirateA.addCollider(scene, this.pirateC);
+        this.pirateA.addCollider(scene, this.pirateD);
+        this.pirateB.addCollider(scene, this.pirateC);
+        this.pirateB.addCollider(scene, this.pirateD);
+        this.pirateC.addCollider(scene, this.pirateD);
 
         // NOTE(Leon) : sprinkle our barrels with puzzle pieces!
         const validPuzzleCoords = [
@@ -121,6 +147,8 @@ export class InteractiveManager {
     public update(): void {
         this.pirateA.update();
         this.pirateB.update();
+        this.pirateC.update();
+        this.pirateD.update();
 
         this.controlManager.update();
     }

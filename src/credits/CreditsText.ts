@@ -18,7 +18,7 @@ export class CreditsText {
         this.textList.push(
             new FadeText(
                 scene,
-                "Lost Treasure",
+                "Loot 'n' Scoot",
                 (top - 60) / defaultHeight,
                 wait * order++,
                 GameSettings.LARGE_FONT_SIZE * scale,

@@ -27,7 +27,7 @@ export class Instruction extends Phaser.Scene {
         this.scale.on("resize", this.resize);
 
         this.input.on("pointerdown", () => {
-            // this.scene.start(Instruction.NEXT_SCENE);
+            this.scene.start(Instruction.NEXT_SCENE);
         });
 
         this.sound.stopAll();

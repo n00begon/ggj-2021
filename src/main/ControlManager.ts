@@ -92,7 +92,8 @@ export class ControlManager {
     update(): void {
         this.keyboardInput();
         this.mouseInput();
-        this.gamepadInput();
+        this.gamepadInput1();
+        this.gamepadInput2();
     }
 
     private keyboardInput() {
@@ -135,21 +136,6 @@ export class ControlManager {
         if (this.showPuzzleKey2.isDown) {
             MainEventsManager.emit("puzzle2");
         }
-
-        if (this.DEBUGPuzzle) {
-            for (let i = 0; i < this.DEBUGKeys.length; i++) {
-                const key = this.DEBUGKeys[i];
-
-                // NOTE(Leon) : I would like this to be shift but phaser / I suck so bad
-                // the shift key doesn't work??? so use W instead FML
-                const coords = this.DEBUGKeyCoords[i];
-                if (key.isDown && this.upKey2.isDown) {
-                    MainEventsManager.emit("foundPuzzle1", coords.x, coords.y);
-                } else if (key.isDown) {
-                    MainEventsManager.emit("foundPuzzle2", coords.x, coords.y);
-                }
-            }
-        }
     }
 
     private mouseInput() {
@@ -168,7 +154,7 @@ export class ControlManager {
         }
     }
 
-    private gamepadInput() {
+    private gamepadInput1() {
         if (this.scene.input.gamepad.total === 0) {
             return;
         }
@@ -178,7 +164,7 @@ export class ControlManager {
 
         // Every button is jump
         if (pad.buttons[0].pressed) {
-            MainEventsManager.emit("jumpMove");
+            MainEventsManager.emit("puzzle3");
         }
 
         const xMovement = pad.leftStick.x;
@@ -186,19 +172,83 @@ export class ControlManager {
         // Stick
 
         if (xMovement < -ControlManager.PAD_THRESHOLD) {
-            MainEventsManager.emit("leftMove");
+            MainEventsManager.emit("leftMove3");
         } else if (xMovement > ControlManager.PAD_THRESHOLD) {
-            MainEventsManager.emit("rightMove");
+            MainEventsManager.emit("rightMove3");
         }
 
+        const yMovement = pad.leftStick.y;
+
+        if (yMovement < -ControlManager.PAD_THRESHOLD) {
+            MainEventsManager.emit("upMove3");
+        } else if (yMovement > ControlManager.PAD_THRESHOLD) {
+            MainEventsManager.emit("downMove3");
+        }
         // DPad
 
         if (pad.left) {
-            MainEventsManager.emit("leftMove");
+            MainEventsManager.emit("leftMove3");
         }
 
         if (pad.right) {
-            MainEventsManager.emit("rightMove");
+            MainEventsManager.emit("rightMove3");
+        }
+
+        if (pad.up) {
+            MainEventsManager.emit("upMove3");
+        }
+
+        if (pad.down) {
+            MainEventsManager.emit("downMove3");
+        }
+    }
+
+    private gamepadInput2() {
+        if (this.scene.input.gamepad.total <= 1) {
+            return;
+        }
+
+        // Get the first gamepad
+        const pad = this.scene.input.gamepad.gamepads[1];
+
+        // Every button is jump
+        if (pad.buttons[0].pressed) {
+            MainEventsManager.emit("puzzle4");
+        }
+
+        const xMovement = pad.leftStick.x;
+
+        // Stick
+
+        if (xMovement < -ControlManager.PAD_THRESHOLD) {
+            MainEventsManager.emit("leftMove4");
+        } else if (xMovement > ControlManager.PAD_THRESHOLD) {
+            MainEventsManager.emit("rightMove4");
+        }
+
+        const yMovement = pad.leftStick.y;
+
+        if (yMovement < -ControlManager.PAD_THRESHOLD) {
+            MainEventsManager.emit("upMove4");
+        } else if (yMovement > ControlManager.PAD_THRESHOLD) {
+            MainEventsManager.emit("downMove4");
+        }
+        // DPad
+
+        if (pad.left) {
+            MainEventsManager.emit("leftMove4");
+        }
+
+        if (pad.right) {
+            MainEventsManager.emit("rightMove4");
+        }
+
+        if (pad.up) {
+            MainEventsManager.emit("upMove4");
+        }
+
+        if (pad.down) {
+            MainEventsManager.emit("downMove4");
         }
     }
 }
