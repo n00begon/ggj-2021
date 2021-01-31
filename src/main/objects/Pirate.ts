@@ -88,13 +88,12 @@ export class Pirate {
     }
 
     private stun(): void {
-        console.log(this, "stun");
         this.stunned = true;
-        this.pirate.setImmovable(true);
-        this.pirate.play("barrelExplode");
+        this.pirate.play("pirateStunned");
         this.pirate.once("animationcomplete", () => {
             this.stunned = false;
-            this.pirate.setImmovable(false);
+            this.pirate.play("pirateWalk");
+            console.log("stun is finished");
         });
     }
 
@@ -156,8 +155,8 @@ export class Pirate {
                     GameSettings.chasing = true;
                     this.hasTreasure = true;
                     this.pirate.play("pirateTreasureWalk");
-                    // MainEventsManager.emit("GameWon");
                     console.log("Won game");
+                    // MainEventsManager.emit("GameWon");
                 }
             }
         } else {

@@ -7,6 +7,7 @@ export class AnimationManager {
      */
     constructor(scene: Phaser.Scene) {
         this.createWalkAnimation(scene);
+        this.createStunAnimation(scene);
         this.createDigAnimation(scene);
         this.createBarrelAnimation(scene);
         this.createFrontDustAnimation(scene);
@@ -36,6 +37,19 @@ export class AnimationManager {
 
             key: "pirateTreasureWalk",
             repeat: -1,
+        });
+    }
+
+    private createStunAnimation(scene: Phaser.Scene): void {
+        scene.anims.create({
+            frameRate: 6,
+            frames: scene.anims.generateFrameNames("sprites", {
+                start: 1,
+                end: 4,
+                prefix: "Stunned",
+            }),
+            key: "pirateStunned",
+            repeat: 3,
         });
     }
 
