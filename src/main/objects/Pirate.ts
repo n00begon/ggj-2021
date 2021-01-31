@@ -64,7 +64,7 @@ export class Pirate {
         this.pirate.play("pirateWalk");
         this.walkSound = scene.sound.get("walking1");
         this.digSound = scene.sound.get("dig");
-        this.pirate.setBodySize(this.pirate.width, this.pirate.height - 50);
+        this.pirate.setBodySize(this.pirate.width - 60, this.pirate.height - 60);
         this.holes = holeLayer;
         this.pirate.setBounce(0.1);
         scene.physics.add.collider(this.pirate, collisionLayer);
