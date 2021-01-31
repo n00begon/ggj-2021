@@ -22,7 +22,6 @@ export class Pirate {
     private currentSpeedY = 0;
     private holes: Phaser.Tilemaps.TilemapLayer;
     private collisionLayer: Phaser.Tilemaps.TilemapLayer;
-    private walkSound: Phaser.Sound.BaseSound;
     private digSound: Phaser.Sound.BaseSound;
     private digwait = 0;
     private digtime = 0;
@@ -62,7 +61,6 @@ export class Pirate {
         this.pirate.setFriction(0);
         this.scene.cameras.main.startFollow(this.pirate);
         this.pirate.play("pirateWalk");
-        this.walkSound = scene.sound.get("walking1");
         this.digSound = scene.sound.get("dig");
         this.pirate.setBodySize(this.pirate.width - 60, this.pirate.height - 60);
         this.holes = holeLayer;
@@ -164,9 +162,6 @@ export class Pirate {
 
             if (this.leftMove || this.rightMove || this.upMove || this.downMove) {
                 this.pirate.play(this.hasTreasure ? "pirateTreasureWalk" : "pirateWalk", true);
-                if (!this.walkSound.isPlaying) {
-                    this.walkSound.play();
-                }
                 this.digwait = 0;
             } else {
                 if (holeTile && !holeTile.visible && this.digwait++ >= Pirate.DIGWAIT && !GameSettings.chasing) {

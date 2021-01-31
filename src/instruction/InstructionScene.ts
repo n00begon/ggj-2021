@@ -29,6 +29,14 @@ export class Instruction extends Phaser.Scene {
         this.input.on("pointerdown", () => {
             this.scene.start(Instruction.NEXT_SCENE);
         });
+
+        this.sound.stopAll();
+
+        const backgroundMusic = this.sound.add("shantypart1");
+        backgroundMusic.play({
+            loop: true,
+            volume: 1,
+        });
     }
 
     /**
