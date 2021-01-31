@@ -5,6 +5,7 @@ import { AnimationManager } from "./AnimationManager";
 import { BackgroundManager } from "./BackgroundManager";
 import { GameSettings } from "../utilities/GameSettings";
 import { MainEventsManager } from "./MainEventsManager";
+import { Boat } from "./objects/Boat";
 
 /**
  * InteractiveManager controls the interactive game objects and player interaction.
@@ -21,6 +22,7 @@ export class InteractiveManager {
     private screenWidth: number;
     private screenHeight: number;
     private barrels: Array<Barrel>;
+    private boats: Array<Boat>;
 
     /**
      * Adds the interactive objects to the scene
@@ -93,6 +95,20 @@ export class InteractiveManager {
             }
 
             this.barrels.push(barrel);
+        }
+
+        this.boats = new Array<Boat>();
+        const boatsCoords = backgroundManager.getBoats();
+        for (let i = 0; i < boatsCoords.length; i++) {
+            const boat = new Boat(
+                scene,
+                boatsCoords[i].getCenterX(),
+                boatsCoords[i].getCenterY(),
+                this.pirateA,
+                this.pirateB,
+            );
+
+            this.boats.push(boat);
         }
 
         if (GameSettings.DEBUG) {
