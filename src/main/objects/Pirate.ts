@@ -93,7 +93,6 @@ export class Pirate {
         this.pirate.once("animationcomplete", () => {
             this.stunned = false;
             this.pirate.play("pirateWalk");
-            console.log("stun is finished");
         });
     }
 
@@ -124,6 +123,7 @@ export class Pirate {
 
         const holeTile = this.holes.getTileAtWorldXY(this.pirate.getBottomCenter().x, this.pirate.getBottomCenter().y);
         this.pirate.setVelocityX(0);
+        this.pirate.setVelocityY(0);
 
         if (this.stunned) {
             return;
@@ -170,7 +170,7 @@ export class Pirate {
                 }
                 this.digwait = 0;
             } else {
-                if (holeTile && !holeTile.visible && this.digwait++ >= Pirate.DIGWAIT) {
+                if (holeTile && !holeTile.visible && this.digwait++ >= Pirate.DIGWAIT && !GameSettings.chasing) {
                     this.digging = true;
                 }
 
