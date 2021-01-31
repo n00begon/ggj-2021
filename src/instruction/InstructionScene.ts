@@ -5,6 +5,7 @@ import { InstructionText } from "./InstructionText";
 export class Instruction extends Phaser.Scene {
     private static readonly NEXT_SCENE = "Main";
     private instructionText!: InstructionText;
+    private ready = false;
     /**
      * The constructor sets the scene ID
      */
@@ -27,7 +28,9 @@ export class Instruction extends Phaser.Scene {
         this.scale.on("resize", this.resize);
 
         this.input.on("pointerdown", () => {
-            this.scene.start(Instruction.NEXT_SCENE);
+            if (this.ready) {
+                this.scene.start(Instruction.NEXT_SCENE);
+            }
         });
 
         this.sound.stopAll();
@@ -43,9 +46,7 @@ export class Instruction extends Phaser.Scene {
      * The update loop gets the text to appear on screen
      */
     public update(): void {
-        if (this.instructionText.update()) {
-            this.scene.start(Instruction.NEXT_SCENE);
-        }
+        this.ready = this.instructionText.update();
     }
 
     /**
