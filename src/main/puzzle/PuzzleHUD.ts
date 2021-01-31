@@ -21,6 +21,19 @@ export class PuzzleHUD {
         this.hide();
     }
 
+    public foundPiece(): void {
+        console.log("foundPiece");
+        for (let i = 0; i < this.visibility.length; i++) {
+            for (let j = 0; j < this.visibility[i].length; j++) {
+                if (!this.visibility[i][j] && Math.random() < 0.2) {
+                    this.visibility[i][j] = true;
+                }
+            }
+        }
+        this.hide();
+        this.show();
+    }
+
     public hide(): void {
         const treasureMapSize = 5;
         for (let x = 0; x < treasureMapSize; x++) {

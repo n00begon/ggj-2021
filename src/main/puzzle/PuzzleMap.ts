@@ -28,6 +28,7 @@ export class PuzzleMap {
 
     private handleFoundPuzzle(x: number, y: number): void {
         console.log("Found piece");
+        this.puzzleHUD.foundPiece();
     }
 
     private handlePlayerXY(x: number, y: number): void {
