@@ -18,7 +18,7 @@ export enum PirateTile {
     CenterCenterPlainSand = 7,
     CenterCenterDotsSand = 8,
 
-    Rock = 9,
+    RockA = 9,
     PlantA = 10,
     PlantB = 11,
 
@@ -31,15 +31,29 @@ export enum PirateTile {
     TopRightSideSand = 18,
 
     Water = 19,
-    Hole = 11,
+    Hole1 = 20,
+    Hole2 = 21,
+    Hole3 = 22,
+    Hole4 = 23,
+
+    PlantC = 24,
+    PlantD = 25,
+
+    RockB = 26,
+    RockC = 27,
+    RockD = 28,
+    RockE = 29,
+    RockF = 30,
+
+    PlantE = 31,
 }
 
 export class BackgroundManager {
     private static gravelSandProb = 0.3;
     private static plainSandProb = 0.2;
-    private static rockProb = 0.1;
-    private static plantAProb = 0.05;
-    private static plantBProb = 0.05;
+    private static rockProb = 0.02;
+    private static plantProb = 0.01;
+    private static holeProb = 1 / 4;
 
     private water: Phaser.Tilemaps.TilemapLayer;
     private island: Phaser.Tilemaps.TilemapLayer;
@@ -93,7 +107,7 @@ export class BackgroundManager {
                 const noise = (Perlin.perlin2((x / mapWidth) * 2 - 1, (y / mapHeight) * 2 - 1) + 1) / 2;
                 if (noise * dist < 0.2) {
                     this.island.putTileAt(this.genSand(), x, y);
-                    this.holes.putTileAt(PirateTile.Hole, x, y).setVisible(false);
+                    this.holes.putTileAt(this.genHole(), x, y).setVisible(false);
                 }
             }
         }
@@ -105,7 +119,7 @@ export class BackgroundManager {
             for (let y = 1; y < mapHeight - 1; y++) {
                 if (!this.island.hasTileAt(x, y) && this.adjacentIslandTiles(x, y) >= 3) {
                     this.island.putTileAt(this.genSand(), x, y);
-                    this.holes.putTileAt(PirateTile.Hole, x, y).setVisible(false);
+                    this.holes.putTileAt(this.genHole(), x, y).setVisible(false);
                 }
             }
         }
@@ -303,8 +317,19 @@ export class BackgroundManager {
                 if (!this.island.hasTileAt(x, y)) {
                     this.collision.putTileAt(PirateTile.Water, x, y);
                 }
-                if (this.objects.hasTileAt(x, y) && this.objects.getTileAt(x, y).index == PirateTile.Rock) {
-                    this.collision.putTileAt(PirateTile.Rock, x, y);
+
+                if (this.objects.hasTileAt(x, y)) {
+                    const tile = this.objects.getTileAt(x, y).index;
+                    if (
+                        tile == PirateTile.RockA ||
+                        tile == PirateTile.RockB ||
+                        tile == PirateTile.RockC ||
+                        tile == PirateTile.RockD ||
+                        tile == PirateTile.RockE ||
+                        tile == PirateTile.RockF
+                    ) {
+                        this.collision.putTileAt(tile, x, y);
+                    }
                 }
             }
         }
@@ -432,25 +457,104 @@ export class BackgroundManager {
         return PirateTile.CenterCenterDotsSand;
     }
 
+    private genHole(): PirateTile {
+        let rnd = Math.random();
+
+        if (rnd < BackgroundManager.holeProb) {
+            return PirateTile.Hole1;
+        } else {
+            rnd -= BackgroundManager.holeProb;
+        }
+
+        if (rnd < BackgroundManager.holeProb) {
+            return PirateTile.Hole2;
+        } else {
+            rnd -= BackgroundManager.holeProb;
+        }
+
+        if (rnd < BackgroundManager.holeProb) {
+            return PirateTile.Hole3;
+        } else {
+            rnd -= BackgroundManager.holeProb;
+        }
+
+        if (rnd < BackgroundManager.holeProb) {
+            return PirateTile.Hole4;
+        } else {
+            rnd -= BackgroundManager.holeProb;
+        }
+
+        return PirateTile.Hole1;
+    }
+
     private genObject(): PirateTile {
         let rnd = Math.random();
 
         if (rnd < BackgroundManager.rockProb) {
-            return PirateTile.Rock;
+            return PirateTile.RockA;
         } else {
             rnd -= BackgroundManager.rockProb;
         }
 
-        if (rnd < BackgroundManager.plantAProb) {
-            return PirateTile.PlantA;
+        if (rnd < BackgroundManager.rockProb) {
+            return PirateTile.RockB;
+        } else {
+            rnd -= BackgroundManager.rockProb;
         }
-        // } else {
-        //     rnd -= BackgroundManager.plantAProb;
-        // }
 
-        // if (rnd < BackgroundManager.plantBProb) {
-        //     return PirateTile.PlantB;
-        // }
+        if (rnd < BackgroundManager.rockProb) {
+            return PirateTile.RockC;
+        } else {
+            rnd -= BackgroundManager.rockProb;
+        }
+
+        if (rnd < BackgroundManager.rockProb) {
+            return PirateTile.RockD;
+        } else {
+            rnd -= BackgroundManager.rockProb;
+        }
+
+        if (rnd < BackgroundManager.rockProb) {
+            return PirateTile.RockE;
+        } else {
+            rnd -= BackgroundManager.rockProb;
+        }
+
+        if (rnd < BackgroundManager.rockProb) {
+            return PirateTile.RockF;
+        } else {
+            rnd -= BackgroundManager.rockProb;
+        }
+
+        if (rnd < BackgroundManager.plantProb) {
+            return PirateTile.PlantA;
+        } else {
+            rnd -= BackgroundManager.plantProb;
+        }
+
+        if (rnd < BackgroundManager.plantProb) {
+            return PirateTile.PlantB;
+        } else {
+            rnd -= BackgroundManager.plantProb;
+        }
+
+        if (rnd < BackgroundManager.plantProb) {
+            return PirateTile.PlantC;
+        } else {
+            rnd -= BackgroundManager.plantProb;
+        }
+
+        if (rnd < BackgroundManager.plantProb) {
+            return PirateTile.PlantD;
+        } else {
+            rnd -= BackgroundManager.plantProb;
+        }
+
+        if (rnd < BackgroundManager.plantProb) {
+            return PirateTile.PlantE;
+        } else {
+            rnd -= BackgroundManager.plantProb;
+        }
 
         return PirateTile.None;
     }

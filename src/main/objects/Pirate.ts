@@ -21,6 +21,7 @@ export class Pirate {
     private downMove = false;
     private currentSpeedY = 0;
     private holes: Phaser.Tilemaps.TilemapLayer;
+    private collisionLayer: Phaser.Tilemaps.TilemapLayer;
     private walkSound: Phaser.Sound.BaseSound;
     private digSound: Phaser.Sound.BaseSound;
     private digwait = 0;
@@ -67,8 +68,8 @@ export class Pirate {
         this.holes = holeLayer;
         this.pirate.setBounce(0.1);
         scene.physics.add.collider(this.pirate, collisionLayer);
-        collisionLayer.setCollision(PirateTile.Water);
-        collisionLayer.setCollision(PirateTile.Rock);
+        this.collisionLayer = collisionLayer;
+        this.collisionLayer.setCollision(PirateTile.Water);
 
         MainEventsManager.on("leftMove" + player, this.handleLeftMove, this);
         MainEventsManager.on("rightMove" + player, this.handleRightMove, this);
@@ -118,7 +119,7 @@ export class Pirate {
      * The update cycle.This is controlling the movement
      */
     public update(): void {
-        //  const currentTile = this.island.getTileAtWorldXY(this.pirate.x, this.pirate.y);
+        const currentCollision = this.collisionLayer.getTileAtWorldXY(this.pirate.x, this.pirate.y);
         const treasure_tile = this.holes.getTileAtWorldXY(this.XmarksTheSpot.x, this.XmarksTheSpot.y);
 
         const holeTile = this.holes.getTileAtWorldXY(this.pirate.getBottomCenter().x, this.pirate.getBottomCenter().y);
@@ -155,8 +156,6 @@ export class Pirate {
                     GameSettings.chasing = true;
                     this.hasTreasure = true;
                     this.pirate.play("pirateTreasureWalk");
-                    console.log("Won game");
-                    // MainEventsManager.emit("GameWon");
                 }
             }
         } else {
@@ -187,6 +186,16 @@ export class Pirate {
             }
             if (x_dir !== 0) {
                 this.currentSpeedX = x_dir * Pirate.MOVE_SPEED;
+                if (
+                    currentCollision != null &&
+                    (currentCollision.index == PirateTile.RockA ||
+                        currentCollision.index == PirateTile.RockB ||
+                        currentCollision.index == PirateTile.RockC ||
+                        currentCollision.index == PirateTile.RockD ||
+                        currentCollision.index == PirateTile.RockE ||
+                        currentCollision.index == PirateTile.RockF)
+                )
+                    this.currentSpeedX *= 0.5;
                 this.pirate.setVelocityX(this.currentSpeedX);
             }
 
@@ -205,6 +214,16 @@ export class Pirate {
             }
             if (y_dir !== 0) {
                 this.currentSpeedY = y_dir * Pirate.MOVE_SPEED;
+                if (
+                    currentCollision != null &&
+                    (currentCollision.index == PirateTile.RockA ||
+                        currentCollision.index == PirateTile.RockB ||
+                        currentCollision.index == PirateTile.RockC ||
+                        currentCollision.index == PirateTile.RockD ||
+                        currentCollision.index == PirateTile.RockE ||
+                        currentCollision.index == PirateTile.RockF)
+                )
+                    this.currentSpeedY *= 0.5;
                 this.pirate.setVelocityY(this.currentSpeedY);
             }
 
