@@ -1,3 +1,4 @@
+import { GameSettings } from "../../utilities/GameSettings";
 import { BackgroundManager } from "../BackgroundManager";
 import { PuzzleMap } from "./PuzzleMap";
 
@@ -11,8 +12,16 @@ export class UIManager {
      */
     constructor(scene: Phaser.Scene, background: BackgroundManager) {
         this.maps.push(new PuzzleMap(scene, 0, 0, 1, background));
-        this.maps.push(new PuzzleMap(scene, 4850, 0, 2, background));
-        this.maps.push(new PuzzleMap(scene, 0, 2400, 3, background));
-        this.maps.push(new PuzzleMap(scene, 4850, 2400, 4, background));
+        this.maps.push(new PuzzleMap(scene, Math.floor(scene.game.canvas.width), 0, 2, background));
+        this.maps.push(new PuzzleMap(scene, 0, Math.floor(scene.game.canvas.height), 3, background));
+        this.maps.push(
+            new PuzzleMap(
+                scene,
+                Math.floor(scene.game.canvas.width),
+                Math.floor(scene.game.canvas.height),
+                4,
+                background,
+            ),
+        );
     }
 }
