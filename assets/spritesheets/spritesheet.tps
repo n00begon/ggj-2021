@@ -357,6 +357,10 @@
             <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-04.png</key>
             <key type="filename">../rawimages/Updated Barrel and Crate/Crate Exploding Artboards-05.png</key>
             <key type="filename">../rawimages/hole.png</key>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Holes/Hole-01.png</key>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Holes/Hole-02.png</key>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Holes/Hole-03.png</key>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Holes/Hole-04.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -403,6 +407,8 @@
                 <false/>
             </struct>
             <key type="filename">../rawimages/pirate_walk_3.png</key>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Pirate Walking With Treasure/V2/PirateTreasureWalk1.png</key>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Pirate Walking With Treasure/V2/PirateTreasureWalk2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -414,6 +420,111 @@
                 <rect>29,43,57,85</rect>
                 <key>scale9Paddings</key>
                 <rect>29,43,57,85</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Boat.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>57,28,114,55</rect>
+                <key>scale9Paddings</key>
+                <rect>57,28,114,55</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Cactus1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,27,55,55</rect>
+                <key>scale9Paddings</key>
+                <rect>28,27,55,55</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Pirate Walking With Treasure/V2/PirateTreasureWalk3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,43,57,86</rect>
+                <key>scale9Paddings</key>
+                <rect>29,43,57,86</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Stunned Pirate/Stunned1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,57,57,113</rect>
+                <key>scale9Paddings</key>
+                <rect>29,57,57,113</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Stunned Pirate/Stunned2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,56,59,113</rect>
+                <key>scale9Paddings</key>
+                <rect>29,56,59,113</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Stunned Pirate/Stunned3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,55,57,109</rect>
+                <key>scale9Paddings</key>
+                <rect>29,55,57,109</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../../../This PC/Sprites/Sprites GGJ/Stunned Pirate/Stunned4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,56,59,111</rect>
+                <key>scale9Paddings</key>
+                <rect>29,56,59,111</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -446,6 +557,19 @@
             <filename>../rawimages/Dust Hole DiggingBack/DustBack2.png</filename>
             <filename>../rawimages/Dust Hole DiggingBack/DustBack3.png</filename>
             <filename>../rawimages/hole.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Cactus1.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Stunned Pirate/Stunned1.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Stunned Pirate/Stunned2.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Stunned Pirate/Stunned3.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Stunned Pirate/Stunned4.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Pirate Walking With Treasure/V2/PirateTreasureWalk1.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Pirate Walking With Treasure/V2/PirateTreasureWalk2.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Pirate Walking With Treasure/V2/PirateTreasureWalk3.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Boat.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Holes/Hole-01.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Holes/Hole-02.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Holes/Hole-03.png</filename>
+            <filename>../../../../../This PC/Sprites/Sprites GGJ/Holes/Hole-04.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
