@@ -83,7 +83,7 @@ export class Pirate {
 
     public receivedBarrel(barrel: Barrel): void {
         if (barrel.isPuzzlePiece) {
-            MainEventsManager.emit("foundPuzzle", this.player, barrel.puzzleX, barrel.puzzleY);
+            MainEventsManager.emit("foundPuzzle" + this.player, barrel.puzzleX, barrel.puzzleY);
         }
     }
 
