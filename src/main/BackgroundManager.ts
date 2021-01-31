@@ -46,7 +46,6 @@ export class BackgroundManager {
     private objects: Phaser.Tilemaps.TilemapLayer;
     private collision: Phaser.Tilemaps.TilemapLayer;
     private holes: Phaser.Tilemaps.TilemapLayer;
-
     private barrels: Array<Phaser.Tilemaps.Tile>;
 
     /**
@@ -266,6 +265,35 @@ export class BackgroundManager {
                 // }
             }
         }
+        const treasureMapSize = 5;
+        const treasureMap = scene.make.tilemap({
+            tileWidth: tileSize,
+            tileHeight: tileSize,
+            width: treasureMapSize,
+            height: treasureMapSize,
+        });
+        const treasureWater = treasureMap.createBlankLayer("treasureWater", tileset);
+        treasureWater.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
+
+        const treasureIsland = map.createBlankLayer("treasureIsland", tileset);
+        for (let x = 0; x < 5; x++) {
+            for (let y = 0; y < 5; y++) {
+                const islandTile = this.island.getTileAtWorldXY(
+                    treasureLocation.getCenterX() + tileSize * (x - Math.floor(treasureMapSize / 2)),
+                    treasureLocation.getCenterY() + tileSize * (y - Math.floor(treasureMapSize / 2)),
+                );
+                if (islandTile) {
+                    treasureIsland.putTileAt(islandTile.index, x, y);
+                }
+            }
+        }
+
+        const rt = scene.add.renderTexture(0, 0, 800, 600);
+        rt.draw(treasureWater);
+        rt.draw(treasureIsland);
+
+        // private island: Phaser.Tilemaps.TilemapLayer;
+        // private objects: Phaser.Tilemaps.TilemapLayer;
 
         // const debugGraphics = scene.add.graphics();
 
