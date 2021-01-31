@@ -29,7 +29,7 @@ export class Credits extends Phaser.Scene {
         this.creditsText = new CreditsText(this);
 
         this.input.on("pointerdown", () => {
-            this.scene.start(Credits.NEXT_SCENE);
+            // this.scene.start(Credits.NEXT_SCENE);
         });
     }
 
@@ -38,7 +38,7 @@ export class Credits extends Phaser.Scene {
      */
     public update(): void {
         if (this.creditsText.update()) {
-            this.scene.start(Credits.NEXT_SCENE);
+            //  this.scene.start(Credits.NEXT_SCENE);
         }
     }
 

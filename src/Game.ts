@@ -5,14 +5,13 @@ import { Instruction } from "./instruction/InstructionScene";
 import { Main } from "./main/MainScene";
 import { End } from "./end/EndScene";
 import { Credits } from "./credits/CreditsScene";
-import { Licence } from "./licence/LicenceScene";
 
 const config: Phaser.Types.Core.GameConfig = {
     width: 1640,
     height: 960,
 
     parent: "canvas",
-    scene: [Bootloader, Preloader, Instruction, Main, End, Credits, Licence],
+    scene: [Bootloader, Preloader, Instruction, Main, End, Credits],
     type: Phaser.AUTO,
 
     physics: {

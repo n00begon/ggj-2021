@@ -134,6 +134,8 @@ export class InteractiveManager {
                 boatsCoords[i].getCenterY(),
                 this.pirateA,
                 this.pirateB,
+                this.pirateC,
+                this.pirateD,
             );
 
             this.boats.push(boat);
