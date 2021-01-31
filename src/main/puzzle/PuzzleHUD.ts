@@ -10,6 +10,7 @@ export class PuzzleHUD {
         this.y = y;
         const treasureMap = background.getTreasureMap(player);
         treasureMap.getLayer("treasureIsland").tilemapLayer.setPosition(x, y);
+        treasureMap.getLayer("treasureObjects").tilemapLayer.setPosition(x, y);
     }
 
     public hide(): void {

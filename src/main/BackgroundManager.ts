@@ -378,7 +378,19 @@ export class BackgroundManager {
                 }
             }
         }
-        treasureIsland.setPosition(500, 500);
+
+        const treasureObjects = treasureMap.createBlankLayer("treasureObjects", tileset);
+        for (let x = 0; x < treasureMapSize; x++) {
+            for (let y = 0; y < treasureMapSize; y++) {
+                const objectTile = this.objects.getTileAtWorldXY(
+                    treasureLocation.getCenterX() + tileSize * (x - Math.floor(treasureMapSize / 2)),
+                    treasureLocation.getCenterY() + tileSize * (y - Math.floor(treasureMapSize / 2)),
+                );
+                if (objectTile) {
+                    treasureObjects.putTileAt(objectTile.index, x, y).setVisible(true);
+                }
+            }
+        }
         return treasureMap;
     }
 
