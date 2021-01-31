@@ -108,6 +108,8 @@ export class InteractiveManager {
                 barrelsCoords[i].getCenterY(),
                 this.pirateA,
                 this.pirateB,
+                this.pirateC,
+                this.pirateD,
             );
             if (validPuzzleCoords.length > 0) {
                 const puzzle_index = Phaser.Math.RND.integerInRange(0, validPuzzleCoords.length - 1);

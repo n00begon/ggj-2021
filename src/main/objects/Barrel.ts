@@ -11,7 +11,15 @@ export class Barrel {
 
     private explodeSound: Phaser.Sound.BaseSound;
 
-    constructor(scene: Phaser.Scene, x: number, y: number, pirateA: Pirate, pirateB: Pirate) {
+    constructor(
+        scene: Phaser.Scene,
+        x: number,
+        y: number,
+        pirateA: Pirate,
+        pirateB: Pirate,
+        pirateC: Pirate,
+        pirateD: Pirate,
+    ) {
         this.scene = scene;
         this.isCrate = Math.random() < 0.5;
         this.barrel = scene.physics.add.sprite(
@@ -24,6 +32,8 @@ export class Barrel {
         this.barrel.setImmovable(true);
         this.addCollider(scene, pirateA);
         this.addCollider(scene, pirateB);
+        this.addCollider(scene, pirateC);
+        this.addCollider(scene, pirateD);
 
         this.explodeSound = scene.sound.get("explode");
     }
