@@ -5,6 +5,13 @@ export class PuzzleHUD {
     public x: number;
     public y: number;
     private treasureMap: Phaser.Tilemaps.Tilemap;
+    private visibility: boolean[][] = [
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, true, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+    ];
     constructor(scene: Phaser.Scene, x: number, y: number, player: number, background: BackgroundManager) {
         this.x = x;
         this.y = y;
@@ -36,11 +43,11 @@ export class PuzzleHUD {
             for (let y = 0; y < treasureMapSize; y++) {
                 const islandTile = this.treasureMap.getLayer("treasureIsland").tilemapLayer.getTileAt(x, y);
                 if (islandTile) {
-                    islandTile.setVisible(true);
+                    islandTile.setVisible(this.visibility[x][y]);
                 }
                 const objectTile = this.treasureMap.getLayer("treasureObjects").tilemapLayer.getTileAt(x, y);
                 if (objectTile) {
-                    objectTile.setVisible(true);
+                    objectTile.setVisible(this.visibility[x][y]);
                 }
             }
         }
