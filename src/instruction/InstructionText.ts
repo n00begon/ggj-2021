@@ -11,12 +11,57 @@ export class InstructionText {
         const wait = 100;
         const defaultHeight = 960;
         const scale = scene.game.canvas.height / defaultHeight;
-        const order = 0;
+        let order = 0;
         this.textList.push(
             new TypewriterText(
                 scene,
                 "Find the Treasure!",
                 (top - 60) / defaultHeight,
+                wait * order++,
+                GameSettings.LARGE_FONT_SIZE * scale,
+                InstructionEventsManager,
+            ),
+
+            new TypewriterText(
+                scene,
+                "Break barrels to find map pieces",
+                (top + 100 * order) / defaultHeight,
+                wait * order++,
+                GameSettings.LARGE_FONT_SIZE * scale,
+                InstructionEventsManager,
+            ),
+
+            new TypewriterText(
+                scene,
+                "Stand still to dig",
+                (top + 100 * order) / defaultHeight,
+                wait * order++,
+                GameSettings.LARGE_FONT_SIZE * scale,
+                InstructionEventsManager,
+            ),
+
+            new TypewriterText(
+                scene,
+                "Escape with the Treasure",
+                (top + 100 * order) / defaultHeight,
+                wait * order++,
+                GameSettings.LARGE_FONT_SIZE * scale,
+                InstructionEventsManager,
+            ),
+
+            new TypewriterText(
+                scene,
+                "Up Down Left Right Space",
+                (top + 100 * order) / defaultHeight,
+                wait * order++,
+                GameSettings.LARGE_FONT_SIZE * scale,
+                InstructionEventsManager,
+            ),
+
+            new TypewriterText(
+                scene,
+                "WASD E",
+                (top + 100 * order) / defaultHeight,
                 wait * order,
                 GameSettings.LARGE_FONT_SIZE * scale,
                 InstructionEventsManager,
