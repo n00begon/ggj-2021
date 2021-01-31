@@ -105,7 +105,7 @@ export class Pirate {
     }
 
     public addCollider(scene: Phaser.Scene, anotherPirate: Pirate): void {
-        scene.physics.add.collider(this.pirate, anotherPirate.getSprite(), () => {
+        scene.physics.add.overlap(this.pirate, anotherPirate.getSprite(), () => {
             if (GameSettings.chasing && !this.stunned && !anotherPirate.stunned) {
                 if (this.hasTreasure) {
                     Pirate.passTreasure(this, anotherPirate);
