@@ -1,4 +1,4 @@
-# Lost and Found: In search of treasure!
+# Loot 'n' Scoot
 
 ![Dig](/assets/images/PirateBasicDig.png)
 
