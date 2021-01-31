@@ -159,7 +159,7 @@ export class BackgroundManager {
             treasureLocation.getCenterY(),
         );
 
-        const barrelsCnt = 5 + 5 * Math.random();
+        const barrelsCnt = 12 + 5 * Math.random();
         while (this.barrels.length > barrelsCnt) this.barrels.pop();
 
         // Add borders
