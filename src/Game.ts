@@ -3,7 +3,6 @@ import { Bootloader } from "./preloader/BootloaderScene'";
 import { Preloader } from "./preloader/PreloaderScene";
 import { Instruction } from "./instruction/InstructionScene";
 import { Main } from "./main/MainScene";
-import { UI } from "./main/UIScene";
 import { End } from "./end/EndScene";
 import { Credits } from "./credits/CreditsScene";
 import { Licence } from "./licence/LicenceScene";
@@ -13,7 +12,7 @@ const config: Phaser.Types.Core.GameConfig = {
     height: 960,
 
     parent: "canvas",
-    scene: [Bootloader, Preloader, Instruction, Main, UI, End, Credits, Licence],
+    scene: [Bootloader, Preloader, Instruction, Main, End, Credits, Licence],
     type: Phaser.AUTO,
 
     physics: {

@@ -374,14 +374,12 @@ export class BackgroundManager {
                     treasureLocation.getCenterY() + tileSize * (y - Math.floor(treasureMapSize / 2)),
                 );
                 if (islandTile) {
-                    treasureIsland.putTileAt(islandTile.index, x, y).setVisible(false);
+                    treasureIsland.putTileAt(islandTile.index, x, y).setVisible(true);
                 }
             }
         }
+        treasureIsland.setPosition(500, 500);
         return treasureMap;
-        // const rt = scene.add.renderTexture(0, 0, 800, 600);
-        // rt.draw(treasureWater);
-        // rt.draw(treasureIsland);
     }
 
     public getTreasureMap(player: number): Phaser.Tilemaps.Tilemap {

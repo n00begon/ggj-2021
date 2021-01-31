@@ -1,3 +1,4 @@
+import { BackgroundManager } from "../BackgroundManager";
 import { PuzzleMap } from "./PuzzleMap";
 
 /**
@@ -8,8 +9,10 @@ export class UIManager {
     /**
      * Adds the interactive objects to the scene
      */
-    constructor(scene: Phaser.Scene) {
-        this.maps.push(new PuzzleMap(scene, 64, 64, 1));
-        this.maps.push(new PuzzleMap(scene, 800, 64, 2));
+    constructor(scene: Phaser.Scene, background: BackgroundManager) {
+        this.maps.push(new PuzzleMap(scene, 0, 0, 1, background));
+        this.maps.push(new PuzzleMap(scene, 4850, 0, 2, background));
+        this.maps.push(new PuzzleMap(scene, 0, 2400, 3, background));
+        this.maps.push(new PuzzleMap(scene, 4850, 2400, 4, background));
     }
 }
