@@ -256,7 +256,8 @@ export class BackgroundManager {
                     borders.getTileAt(x, y).index != PirateTile.TopLeftCornerSand &&
                     borders.getTileAt(x, y).index != PirateTile.TopRightCornerSand &&
                     borders.getTileAt(x, y).index != PirateTile.BottomRightCornerSand &&
-                    this.adjacentObjectTiles(x, y) == 0
+                    this.adjacentObjectTiles(x, y) == 0 &&
+                    this.adjacentBarrels(x, y) == 0
                 ) {
                     this.boats.push(borders.getTileAt(x, y));
                 }
@@ -271,6 +272,17 @@ export class BackgroundManager {
 
         const boatsCnt = 4 + 1 * Math.random();
         while (this.boats.length > boatsCnt) this.boats.pop();
+        for (let i = 0; i < this.boats.length; i++) {
+            for (let j = i + 1; j < this.boats.length; j++) {
+                if (Math.abs(this.boats[i].x - this.boats[j].x) <= 2 && this.boats[i].y == this.boats[j].y) {
+                    const temp = this.boats[this.boats.length - 1];
+                    this.boats[this.boats.length - 1] = this.boats[j];
+                    this.boats[j] = temp;
+                    this.boats.pop();
+                    j--;
+                }
+            }
+        }
 
         for (let x = 1; x < mapWidth - 1; x++) {
             for (let y = 1; y < mapHeight - 1; y++) {
@@ -354,10 +366,27 @@ export class BackgroundManager {
         return count;
     }
 
+    private adjacentBarrels(x: number, y: number): number {
+        let count = 0;
+        const dx = [-1, 1, 0, 0];
+        const dy = [0, 0, -1, 1];
+        for (let i = 0; i < dx.length; i++) {
+            if (this.isBarrel(x + dx[i], y + dy[i])) count++;
+        }
+        return count;
+    }
+
     private distanceSquared(x: number, y: number, width: number, height: number): number {
         const dx = (2 * x) / width - 1;
         const dy = (2 * y) / height - 1;
         return dx * dx + dy * dy;
+    }
+
+    private isBarrel(x: number, y: number): boolean {
+        for (let i = 0; i < this.barrels.length; i++) {
+            if (this.barrels[i].x == x && this.barrels[i].y == y) return true;
+        }
+        return false;
     }
 
     private genSand(): PirateTile {
