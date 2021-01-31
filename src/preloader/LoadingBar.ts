@@ -18,7 +18,7 @@ export class LoadingBar {
         progressBox.fillStyle(LoadingBar.PROGRESS_BOX_COLOR, 0.8);
         progressBox.fillRect(
             scene.sys.canvas.width / 2 - LoadingBar.BOX_WIDTH / 2,
-            (scene.sys.canvas.height / 3) * 2 - LoadingBar.BOX_HEIGHT / 2,
+            (scene.sys.canvas.height / 5) * 4 - LoadingBar.BOX_HEIGHT / 2,
             LoadingBar.BOX_WIDTH,
             LoadingBar.BOX_HEIGHT,
         );
@@ -28,7 +28,7 @@ export class LoadingBar {
             progressBar.fillStyle(LoadingBar.PROGRESS_BAR_COLOR, 1);
             progressBar.fillRect(
                 scene.sys.canvas.width / 2 - LoadingBar.BOX_WIDTH / 2 + LoadingBar.BAR_OFFSET,
-                (scene.sys.canvas.height / 3) * 2 - LoadingBar.BOX_HEIGHT / 2 + LoadingBar.BAR_OFFSET,
+                (scene.sys.canvas.height / 5) * 4 - LoadingBar.BOX_HEIGHT / 2 + LoadingBar.BAR_OFFSET,
                 (LoadingBar.BOX_WIDTH - LoadingBar.BAR_OFFSET * 2) * progress,
                 LoadingBar.BOX_HEIGHT - LoadingBar.BAR_OFFSET * 2,
             );
