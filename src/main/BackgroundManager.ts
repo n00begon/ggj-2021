@@ -365,7 +365,7 @@ export class BackgroundManager {
             for (let y = 0; y < treasureMapSize; y++) {
                 treasureWater.getTileAt(x, y).setVisible(false);
             }
-
+        }
         const treasureIsland = treasureMap.createBlankLayer("treasureIsland", tileset);
         for (let x = 0; x < treasureMapSize; x++) {
             for (let y = 0; y < treasureMapSize; y++) {
@@ -379,9 +379,9 @@ export class BackgroundManager {
             }
         }
         return treasureMap;
-        const rt = scene.add.renderTexture(0, 0, 800, 600);
-        rt.draw(treasureWater);
-        rt.draw(treasureIsland);
+        // const rt = scene.add.renderTexture(0, 0, 800, 600);
+        // rt.draw(treasureWater);
+        // rt.draw(treasureIsland);
     }
 
     public getTreasureMap(player: number): Phaser.Tilemaps.Tilemap {
