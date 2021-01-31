@@ -15,7 +15,7 @@ export class UIManager {
         this.maps.push(
             new PuzzleMap(
                 scene,
-                Math.floor((scene.game.canvas.width - 300) / GameSettings.ZOOM_LEVEL),
+                Math.floor(scene.game.canvas.width / GameSettings.ZOOM_LEVEL - 5 * 128),
                 0,
                 2,
                 background,
@@ -25,7 +25,7 @@ export class UIManager {
             new PuzzleMap(
                 scene,
                 0,
-                Math.floor((scene.game.canvas.height - 300) / GameSettings.ZOOM_LEVEL),
+                Math.floor(scene.game.canvas.height / GameSettings.ZOOM_LEVEL - 5 * 128),
                 3,
                 background,
             ),
@@ -33,8 +33,8 @@ export class UIManager {
         this.maps.push(
             new PuzzleMap(
                 scene,
-                Math.floor((scene.game.canvas.width - 300) / GameSettings.ZOOM_LEVEL),
-                Math.floor((scene.game.canvas.height - 300) / GameSettings.ZOOM_LEVEL),
+                Math.floor(scene.game.canvas.width / GameSettings.ZOOM_LEVEL - 5 * 128),
+                Math.floor(scene.game.canvas.height / GameSettings.ZOOM_LEVEL - 5 * 128),
                 4,
                 background,
             ),
