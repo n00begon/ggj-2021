@@ -22,17 +22,6 @@ export class EndText {
                 EndEventsManager,
             ),
         );
-
-        this.textList.push(
-            new TypewriterText(
-                scene,
-                "Click to play again",
-                (top + 600) / defaultHeight,
-                wait * (order + 1),
-                GameSettings.SMALL_FONT_SIZE * scale,
-                EndEventsManager,
-            ),
-        );
     }
 
     public update(): boolean {

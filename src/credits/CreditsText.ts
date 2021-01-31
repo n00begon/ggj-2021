@@ -47,17 +47,6 @@ export class CreditsText {
                 CreditsEventsManager,
             ),
         );
-
-        this.textList.push(
-            new FadeText(
-                scene,
-                "Click to play again",
-                (assets + 100 * assetsCount + 40) / defaultHeight,
-                wait * (order + 1),
-                GameSettings.SMALL_FONT_SIZE * scale,
-                CreditsEventsManager,
-            ),
-        );
     }
 
     public update(): boolean {

@@ -6,7 +6,7 @@ export class InstructionText {
     private countdown: number;
 
     constructor(scene: Phaser.Scene) {
-        this.countdown = GameSettings.END_SCENE_TIME;
+        this.countdown = 5000;
         const top = 200;
         const wait = 100;
         const defaultHeight = 960;
@@ -51,7 +51,7 @@ export class InstructionText {
 
             new TypewriterText(
                 scene,
-                "Up Down Left Right Space",
+                "Player 1 Up Down Left Right Space",
                 (top + 100 * order) / defaultHeight,
                 wait * order++,
                 GameSettings.MEDIUM_FONT_SIZE * scale,
@@ -60,9 +60,27 @@ export class InstructionText {
 
             new TypewriterText(
                 scene,
-                "WASD E",
+                "Player 2 WASD E",
                 (top + 100 * order) / defaultHeight,
-                wait * order,
+                wait * order++,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
+                InstructionEventsManager,
+            ),
+
+            new TypewriterText(
+                scene,
+                "Player 3 & 4 Gamepad",
+                (top + 100 * order) / defaultHeight,
+                wait * order++,
+                GameSettings.MEDIUM_FONT_SIZE * scale,
+                InstructionEventsManager,
+            ),
+
+            new TypewriterText(
+                scene,
+                "Click to start",
+                (top + 100 * order) / defaultHeight,
+                wait * order++,
                 GameSettings.MEDIUM_FONT_SIZE * scale,
                 InstructionEventsManager,
             ),
@@ -75,6 +93,6 @@ export class InstructionText {
             finished = displayText.update();
         });
 
-        return finished && this.countdown-- <= 0;
+        return finished;
     }
 }
