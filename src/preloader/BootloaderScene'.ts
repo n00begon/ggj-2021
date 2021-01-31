@@ -15,7 +15,7 @@ export class Bootloader extends Phaser.Scene {
      * Loads the logo image to display on the preloading scene
      */
     public preload(): void {
-        this.load.image("logo", `${Bootloader.ASSET_DIRECTORY}/images/logo.png`);
+        this.load.image("logo", `${Bootloader.ASSET_DIRECTORY}/images/Banner.jpg`);
     }
 
     /**
