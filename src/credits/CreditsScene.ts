@@ -1,3 +1,4 @@
+import { GameSettings } from "../utilities/GameSettings";
 import { CreditsEventsManager } from "./CreditsEventsManager";
 import { CreditsText } from "./CreditsText";
 /**

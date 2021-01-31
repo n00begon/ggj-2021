@@ -1,3 +1,4 @@
+import { GameSettings } from "../utilities/GameSettings";
 import { EndEventsManager } from "./EndEventsManager";
 import { EndText } from "./EndText";
 /**

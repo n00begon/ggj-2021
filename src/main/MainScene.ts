@@ -3,6 +3,7 @@ import { InteractiveManager } from "./InteractiveManager";
 import { BackgroundManager } from "./BackgroundManager";
 import { MainEventsManager } from "./MainEventsManager";
 import { UIManager } from "./puzzle/UIManager";
+import { GameSettings } from "../utilities/GameSettings";
 
 /**
  * Main is the gameplay scene which calls the managers to control different aspects of the game
@@ -25,6 +26,7 @@ export class Main extends Phaser.Scene {
         const backgroundManager = new BackgroundManager(this);
         new UIManager(this, backgroundManager);
         this.interactiveManager = new InteractiveManager(this, backgroundManager);
+        GameSettings.chasing = false;
         this.scene.run("UI");
         // this.scene.start("Credits");
         this.scale.on("resize", this.resize);
