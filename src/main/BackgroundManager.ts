@@ -48,6 +48,7 @@ export class BackgroundManager {
     private holes: Phaser.Tilemaps.TilemapLayer;
 
     private barrels: Array<Phaser.Tilemaps.Tile>;
+    private boats: Array<Phaser.Tilemaps.Tile>;
 
     /**
      * Adds the parallax background to the scene
@@ -247,6 +248,31 @@ export class BackgroundManager {
             }
         }
 
+        this.boats = new Array<Phaser.Tilemaps.Tile>();
+        for (let x = 0; x < mapWidth; x++) {
+            for (let y = 0; y < mapHeight; y++) {
+                if (
+                    borders.hasTileAt(x, y) &&
+                    borders.getTileAt(x, y).index != PirateTile.BottomLeftCornerSand &&
+                    borders.getTileAt(x, y).index != PirateTile.TopLeftCornerSand &&
+                    borders.getTileAt(x, y).index != PirateTile.TopRightCornerSand &&
+                    borders.getTileAt(x, y).index != PirateTile.BottomRightCornerSand &&
+                    this.adjacentObjectTiles(x, y) == 0
+                ) {
+                    this.boats.push(borders.getTileAt(x, y));
+                }
+            }
+        }
+        for (let i = this.boats.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = this.boats[i];
+            this.boats[i] = this.boats[j];
+            this.boats[j] = temp;
+        }
+
+        const boatsCnt = 4 + 1 * Math.random();
+        while (this.boats.length > boatsCnt) this.boats.pop();
+
         for (let x = 1; x < mapWidth - 1; x++) {
             for (let y = 1; y < mapHeight - 1; y++) {
                 if (borders.hasTileAt(x, y)) {
@@ -261,9 +287,9 @@ export class BackgroundManager {
                 if (!this.island.hasTileAt(x, y)) {
                     this.collision.putTileAt(PirateTile.Water, x, y);
                 }
-                // if (this.objects.hasTileAt(x, y) && this.objects.getTileAt(x, y).index == PirateTile.Rock) {
-                //     this.collision.putTileAt(PirateTile.Rock, x, y);
-                // }
+                if (this.objects.hasTileAt(x, y) && this.objects.getTileAt(x, y).index == PirateTile.Rock) {
+                    this.collision.putTileAt(PirateTile.Rock, x, y);
+                }
             }
         }
 
@@ -286,6 +312,16 @@ export class BackgroundManager {
         const dy = [0, 0, -1, 1];
         for (let i = 0; i < dx.length; i++) {
             if (this.island.hasTileAt(x + dx[i], y + dy[i])) count++;
+        }
+        return count;
+    }
+
+    private adjacentObjectTiles(x: number, y: number): number {
+        let count = 0;
+        const dx = [-1, 1, 0, 0];
+        const dy = [0, 0, -1, 1];
+        for (let i = 0; i < dx.length; i++) {
+            if (this.objects.hasTileAt(x + dx[i], y + dy[i])) count++;
         }
         return count;
     }
@@ -357,6 +393,10 @@ export class BackgroundManager {
 
     public getBarrels(): Array<Phaser.Tilemaps.Tile> {
         return this.barrels;
+    }
+
+    public getBoats(): Array<Phaser.Tilemaps.Tile> {
+        return this.boats;
     }
 
     private randInt(max: number) {
