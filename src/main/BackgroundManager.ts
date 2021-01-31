@@ -47,7 +47,11 @@ export class BackgroundManager {
     private collision: Phaser.Tilemaps.TilemapLayer;
     private holes: Phaser.Tilemaps.TilemapLayer;
     private barrels: Array<Phaser.Tilemaps.Tile>;
-    private treasureMap: Phaser.Tilemaps.Tilemap;
+    private treasureMap1: Phaser.Tilemaps.Tilemap;
+    private treasureMap2: Phaser.Tilemaps.Tilemap;
+    private treasureMap3: Phaser.Tilemaps.Tilemap;
+    private treasureMap4: Phaser.Tilemaps.Tilemap;
+
     private boats: Array<Phaser.Tilemaps.Tile>;
 
     /**
@@ -304,47 +308,69 @@ export class BackgroundManager {
                 }
             }
         }
+
+        this.treasureMap1 = this.createTreasureMap(scene, tileSize, tileset, mapWidth, mapHeight, treasureLocation);
+        this.treasureMap2 = this.createTreasureMap(scene, tileSize, tileset, mapWidth, mapHeight, treasureLocation);
+        this.treasureMap3 = this.createTreasureMap(scene, tileSize, tileset, mapWidth, mapHeight, treasureLocation);
+        this.treasureMap4 = this.createTreasureMap(scene, tileSize, tileset, mapWidth, mapHeight, treasureLocation);
+
+        scene.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    }
+
+    private createTreasureMap(
+        scene: Phaser.Scene,
+        tileSize: number,
+        tileset: Phaser.Tilemaps.Tileset,
+        mapWidth: number,
+        mapHeight: number,
+        treasureLocation: Phaser.Tilemaps.Tile,
+    ): Phaser.Tilemaps.Tilemap {
         const treasureMapSize = 5;
-        this.treasureMap = scene.make.tilemap({
+
+        const treasureMap = scene.make.tilemap({
             tileWidth: tileSize,
             tileHeight: tileSize,
             width: treasureMapSize,
             height: treasureMapSize,
         });
-        const treasureWater = this.treasureMap.createBlankLayer("treasureWater", tileset);
+        const treasureWater = treasureMap.createBlankLayer("treasureWater", tileset);
         treasureWater.fill(PirateTile.Water, 0, 0, mapWidth, mapHeight);
 
-        const treasureIsland = map.createBlankLayer("treasureIsland", tileset);
-        for (let x = 0; x < 5; x++) {
-            for (let y = 0; y < 5; y++) {
+        for (let x = 0; x < treasureMapSize; x++) {
+            for (let y = 0; y < treasureMapSize; y++) {
+                treasureWater.getTileAt(x, y).setVisible(false);
+            }
+
+        const treasureIsland = treasureMap.createBlankLayer("treasureIsland", tileset);
+        for (let x = 0; x < treasureMapSize; x++) {
+            for (let y = 0; y < treasureMapSize; y++) {
                 const islandTile = this.island.getTileAtWorldXY(
                     treasureLocation.getCenterX() + tileSize * (x - Math.floor(treasureMapSize / 2)),
                     treasureLocation.getCenterY() + tileSize * (y - Math.floor(treasureMapSize / 2)),
                 );
                 if (islandTile) {
-                    treasureIsland.putTileAt(islandTile.index, x, y);
+                    treasureIsland.putTileAt(islandTile.index, x, y).setVisible(false);
                 }
             }
         }
-
+        return treasureMap;
         const rt = scene.add.renderTexture(0, 0, 800, 600);
         rt.draw(treasureWater);
         rt.draw(treasureIsland);
+    }
 
-        // private island: Phaser.Tilemaps.TilemapLayer;
-        // private objects: Phaser.Tilemaps.TilemapLayer;
+    public getTreasureMap(player: number): Phaser.Tilemaps.Tilemap {
+        if (player === 1) {
+            return this.treasureMap1;
+        }
 
-        // const debugGraphics = scene.add.graphics();
-
-        // this.objects.setCollisionByProperty({ collides: true });
-        // this.objects.renderDebug(debugGraphics, {
-        //     tileColor: new Phaser.Display.Color(5, 5, 5, 100), // Non-colliding tiles
-        //     collidingTileColor: new Phaser.Display.Color(211, 36, 255, 100), // Colliding tiles
-        //     faceColor: new Phaser.Display.Color(211, 36, 255, 255), // Colliding face edges
-        // });
-
-        // temp
-        scene.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        if (player === 2) {
+            return this.treasureMap2;
+        }
+        if (player === 3) {
+            return this.treasureMap3;
+        }
+        return this.treasureMap4;
     }
 
     private adjacentIslandTiles(x: number, y: number): number {
