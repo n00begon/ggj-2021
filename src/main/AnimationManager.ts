@@ -25,6 +25,18 @@ export class AnimationManager {
             key: "pirateWalk",
             repeat: -1,
         });
+
+        scene.anims.create({
+            frameRate: 6,
+            frames: scene.anims.generateFrameNames("sprites", {
+                start: 1,
+                end: 4,
+                prefix: "PirateTreasureWalk",
+            }),
+
+            key: "pirateTreasureWalk",
+            repeat: -1,
+        });
     }
 
     private createDigAnimation(scene: Phaser.Scene): void {

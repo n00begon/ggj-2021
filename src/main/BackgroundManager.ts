@@ -261,6 +261,9 @@ export class BackgroundManager {
                 if (!this.island.hasTileAt(x, y)) {
                     this.collision.putTileAt(PirateTile.Water, x, y);
                 }
+                // if (this.objects.hasTileAt(x, y) && this.objects.getTileAt(x, y).index == PirateTile.Rock) {
+                //     this.collision.putTileAt(PirateTile.Rock, x, y);
+                // }
             }
         }
 

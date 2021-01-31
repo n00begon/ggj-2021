@@ -11,4 +11,5 @@ export class GameSettings {
     public static MAP_WIDTH: number;
     public static MAP_HEIGHT: number;
     public static XmarksTheSpot: Phaser.Math.Vector2;
+    public static chasing = false;
 }

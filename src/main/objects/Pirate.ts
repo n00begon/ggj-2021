@@ -1,3 +1,4 @@
+import { GameSettings } from "../../utilities/GameSettings";
 import { PirateTile } from "../BackgroundManager";
 import { KeyControls } from "../KeyControls";
 import { MainEventsManager } from "../MainEventsManager";
@@ -30,6 +31,8 @@ export class Pirate {
     private rearDust: Phaser.GameObjects.Sprite;
     private XmarksTheSpot: Phaser.Math.Vector2;
     private player: number;
+    public hasTreasure = false;
+    public stunned = false;
     /**
      * Creates the pirate object
      *
@@ -66,6 +69,7 @@ export class Pirate {
         this.pirate.setBounce(0.1);
         scene.physics.add.collider(this.pirate, collisionLayer);
         collisionLayer.setCollision(PirateTile.Water);
+        collisionLayer.setCollision(PirateTile.Rock);
 
         MainEventsManager.on("leftMove" + player, this.handleLeftMove, this);
         MainEventsManager.on("rightMove" + player, this.handleRightMove, this);
@@ -83,6 +87,35 @@ export class Pirate {
         }
     }
 
+    private stun(): void {
+        console.log(this, "stun");
+        this.stunned = true;
+        this.pirate.setImmovable(true);
+        this.pirate.play("barrelExplode");
+        this.pirate.once("animationcomplete", () => {
+            this.stunned = false;
+            this.pirate.setImmovable(false);
+        });
+    }
+
+    private static passTreasure(pirateFrom: Pirate, pirateTo: Pirate): void {
+        pirateFrom.stun();
+        pirateFrom.hasTreasure = false;
+        pirateTo.hasTreasure = true;
+    }
+
+    public addCollider(scene: Phaser.Scene, anotherPirate: Pirate): void {
+        scene.physics.add.collider(this.pirate, anotherPirate.getSprite(), () => {
+            if (GameSettings.chasing && !this.stunned && !anotherPirate.stunned) {
+                if (this.hasTreasure) {
+                    Pirate.passTreasure(this, anotherPirate);
+                } else if (anotherPirate.hasTreasure) {
+                    Pirate.passTreasure(anotherPirate, this);
+                }
+            }
+        });
+    }
+
     /**
      * The update cycle.This is controlling the movement
      */
@@ -92,6 +125,10 @@ export class Pirate {
 
         const holeTile = this.holes.getTileAtWorldXY(this.pirate.getBottomCenter().x, this.pirate.getBottomCenter().y);
         this.pirate.setVelocityX(0);
+
+        if (this.stunned) {
+            return;
+        }
 
         if (this.digging) {
             this.pirate.play("pirateDig", true);
@@ -108,7 +145,7 @@ export class Pirate {
             if (this.digtime++ >= Pirate.DIGTIME) {
                 this.digging = false;
                 this.digtime = 0;
-                this.pirate.play("pirateWalk", true);
+                this.pirate.play(this.hasTreasure ? "pirateTreasureWalk" : "pirateWalk", true);
                 this.frontDust.setVisible(false);
                 this.rearDust.setVisible(false);
                 if (holeTile) {
@@ -116,7 +153,9 @@ export class Pirate {
                 }
 
                 if (holeTile && treasure_tile && holeTile.x === treasure_tile.x && holeTile.y === treasure_tile.y) {
-                    MainEventsManager.emit("GameWon");
+                    GameSettings.chasing = true;
+                    this.hasTreasure = true;
+                    // MainEventsManager.emit("GameWon");
                     console.log("Won game");
                 }
             }
@@ -125,7 +164,7 @@ export class Pirate {
             if (this.rightMove) this.pirate.flipX = false;
 
             if (this.leftMove || this.rightMove || this.upMove || this.downMove) {
-                this.pirate.play("pirateWalk", true);
+                this.pirate.play(this.hasTreasure ? "pirateTreasureWalk" : "pirateWalk", true);
                 if (!this.walkSound.isPlaying) {
                     this.walkSound.play();
                 }

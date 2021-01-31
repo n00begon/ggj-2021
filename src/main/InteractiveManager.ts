@@ -55,6 +55,9 @@ export class InteractiveManager {
             GameSettings.XmarksTheSpot,
         );
 
+        // TODO add colliders for all pirate pairs
+        this.pirateA.addCollider(scene, this.pirateB);
+
         // NOTE(Leon) : sprinkle our barrels with puzzle pieces!
         const validPuzzleCoords = [
             new Phaser.Math.Vector2(0, 0),
